@@ -110,7 +110,11 @@ def plot_token_cost(
     path: Optional[str | Path] = None,
     order: Optional[Sequence[str]] = None,
 ):
-    """Mean in-context prompt tokens per evaluated skill."""
+    """In-context prompt tokens once the library is complete.
+
+    Measured at the final snapshot rather than averaged over the run: early
+    episodes have a small library and would flatter every method equally.
+    """
     methods = results["methods"]
     order = [m for m in (order or list(methods)) if methods[m]["snapshots"]]
     fig, ax = plt.subplots(figsize=(5.4, 3.2))
@@ -124,7 +128,7 @@ def plot_token_cost(
         ax.text(bar.get_x() + bar.get_width() / 2, v, f"{v:.0f}", ha="center",
                 va="bottom", fontsize=8)
     ax.set_ylabel("mean prompt tokens per attempt")
-    ax.set_title("In-context cost after consolidation", fontsize=10)
+    ax.set_title("In-context cost at full library size", fontsize=10)
     ax.tick_params(axis="x", rotation=20, labelsize=8)
     ax.grid(alpha=0.25, axis="y", linewidth=0.6)
     ax.spines["top"].set_visible(False)

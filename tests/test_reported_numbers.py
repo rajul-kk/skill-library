@@ -23,7 +23,7 @@ KEY_BY_ROW = {
     "(c) isolated (peam-style)": "isolated",
     "(d) one-shot text-to-lora (latentskill-style)": "single_shot",
     "(d) one-shot (latentskill-style)": "single_shot",
-    "ours — cumulative lora + replay": "ours",
+    "ours -- cumulative lora + replay": "ours",
     "ours": "ours",
 }
 

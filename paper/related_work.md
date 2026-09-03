@@ -2,8 +2,8 @@
 
 ## Two-timescale distillation
 
-The setting this paper works in — an explicit skill library that periodically
-writes its own contents back into model weights — is named as an open direction
+The setting this paper works in -- an explicit skill library that periodically
+writes its own contents back into model weights -- is named as an open direction
 by the *Dynamic Agent Skills* survey (arXiv:2607.10113), which lists
 "two-timescale distillation" among the emerging and unresolved categories. The
 survey is evidence that the question is recognised, not that it is answered; the
@@ -29,12 +29,12 @@ callable.
 **How forgetting is prevented.** PEAM prevents interference by *construction*:
 physically isolated per-category MoE-LoRA adapters, so no two categories share
 parameters. This paper prevents it by *replay* into one shared cumulative
-adapter. The two strategies have opposite cost profiles — isolation cannot
+adapter. The two strategies have opposite cost profiles -- isolation cannot
 forget but its storage grows with every category, while a shared adapter is
 flat but forgets unless something actively protects earlier skills.
 
 Nobody has run that comparison directly, which is what this paper does. The
-result (§4) is that replay matches isolation's retention at 15× less adapter
+result (Section 4) is that replay matches isolation's retention at 15x less adapter
 storage, and the paper reports the axis where isolation genuinely wins
 (robustness by construction, no replay budget to tune) rather than arguing
 around it.
@@ -51,7 +51,7 @@ than a footnote.
 ## LatentSkill (arXiv:2606.06087)
 
 LatentSkill converts a skill into LoRA parameters with a single hypernetwork
-forward pass — no gradient-based training at consolidation time at all. It is
+forward pass -- no gradient-based training at consolidation time at all. It is
 fast and it is one-shot, but there is no growing library and no offline
 consolidation phase, so nothing accumulates and nothing has to be protected.
 Baseline (d) is the LatentSkill-shaped reference point: one adapter per skill
@@ -69,8 +69,8 @@ to fit on a single T4.
 
 ## Voyager
 
-The outer loop is Voyager's — curriculum, skill library, retrieval, compositional
-reuse — with one deliberate removal. Voyager's GPT-4 self-verification critic is
+The outer loop is Voyager's -- curriculum, skill library, retrieval, compositional
+reuse -- with one deliberate removal. Voyager's GPT-4 self-verification critic is
 replaced by a programmatic predicate over world state. This is a simplification
 made for compute, but it also makes the success signal exact rather than
 model-mediated, which matters when the thing being measured is whether a skill

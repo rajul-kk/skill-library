@@ -12,8 +12,8 @@ The question the project is built to answer is narrow and comparative:
 > physically isolating one adapter per skill, without paying for storage that
 > grows with every skill learned?
 
-That comparison — cumulative-plus-replay against PEAM-style isolation, with a
-no-replay sequential adapter as the control that proves forgetting is real — is
+That comparison -- cumulative-plus-replay against PEAM-style isolation, with a
+no-replay sequential adapter as the control that proves forgetting is real -- is
 the contribution. It is not run in any of the neighbouring papers.
 
 ## Results (CPU pipeline, 20 seeds)
@@ -24,12 +24,17 @@ the contribution. It is not run in any of the neighbouring papers.
 | (b) Sequential LoRA, no replay | 0.10 | 0.27 | 679 | 4.7 M |
 | (c) Isolated per-skill adapters (PEAM-style) | 0.73 | 0.87 | 417 | 70.8 M |
 | (d) One-shot text-to-LoRA (LatentSkill-style) | 0.71 | 0.67 | 320 | 35.4 M |
-| **ours** — cumulative LoRA + replay | **0.73** | **0.87** | **417** | **4.7 M** |
+| **ours** -- cumulative LoRA + replay | **0.73** | **0.87** | **417** | **4.7 M** |
 
-Replay into one shared adapter matches isolation's retention at **15× less
+The table's token column is the mean across the whole run, when the library is
+still small for much of it. At full library size the gap is wider: 1164 tokens
+per attempt for the in-context baseline against 353 once skills have been
+consolidated, which is what figure 3 shows.
+
+Replay into one shared adapter matches isolation's retention at **15x less
 adapter storage**, and cuts prompt cost roughly in half against keeping the
 library in context. It does not match the in-context ceiling on absolute success
-(0.73 vs 0.85) — that gap is the price of moving skills out of the prompt, and
+(0.73 vs 0.85) -- that gap is the price of moving skills out of the prompt, and
 it is reported rather than smoothed over.
 
 Without replay the same cumulative adapter collapses to 0.10. That baseline
@@ -70,7 +75,7 @@ analysis/     evaluation, forgetting curves, figures, GPU result collection
 configs/      default GPU config, CPU pipeline config, ablation grids
 notebooks/    Kaggle notebooks: smoke test, main run, ablations, figures
 scripts/      CPU experiments, ablations, figures, notebook generation
-tests/        132 tests, CPU only
+tests/        144 tests, CPU only
 ```
 
 ## Running it
@@ -78,7 +83,7 @@ tests/        132 tests, CPU only
 ```bash
 pip install -r requirements.txt
 
-python -m pytest -q                      # 132 tests, about 80 seconds
+python -m pytest -q                      # 144 tests, about 70 seconds
 python scripts/reproduce.py              # every CPU result and figure
 python scripts/run_cpu_experiment.py     # the four methods, quick
 python scripts/run_ablations.py --grid buffer
@@ -116,12 +121,12 @@ A night, in order:
 
 1. collect the skills learned since the last night
 2. build one SFT example per skill: task description in, verified program out,
-   with no library text in the prompt — so a correct program can only come from
+   with no library text in the prompt -- so a correct program can only come from
    weights
 3. draw a capped replay sample from everything learned earlier
 4. **interleave** new and replayed examples and run one short LoRA pass over the
    mixture
-5. keep training the *same* adapter — never reset, never fork
+5. keep training the *same* adapter -- never reset, never fork
 6. mark the new skills consolidated, so retrieval serves only their names
 
 Steps 4 and 5 are the method. Interleaving rather than concatenating keeps
