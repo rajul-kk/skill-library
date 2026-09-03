@@ -150,8 +150,21 @@ def frequency_ablation(ks=(1, 3, 5)) -> Dict[str, Method]:
     return out
 
 
-def strategy_ablation(strategies=("round_robin", "uniform", "recency", "tier_balanced")):
+def strategy_ablation(
+    strategies=("round_robin", "uniform", "recency", "tier_balanced"),
+    max_total: int = 8,
+):
+    """How to spend a *scarce* buffer.
+
+    Run at a budget below one example per skill on purpose: once the buffer can
+    cover the whole library every allocation policy is identical, so the
+    question only has content when the cap binds.
+    """
     return {
-        s: replace(_cumulative_replay(strategy=s), key=f"strat_{s}", label=f"replay: {s}")
+        s: replace(
+            _cumulative_replay(per_skill=1, max_total=max_total, strategy=s),
+            key=f"strat_{s}",
+            label=f"replay: {s} (b={max_total})",
+        )
         for s in strategies
     }

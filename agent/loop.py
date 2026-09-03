@@ -115,6 +115,7 @@ class VoyagerLoop:
         return self.consolidator.night_count
 
     def run_episode(self, task: Task, episode: int) -> EpisodeRecord:
+        was_known = task.name in self.library
         success, attempts, tokens, error, world, program = attempt_task(
             task, self.library, self.policy, self.config
         )
@@ -128,7 +129,11 @@ class VoyagerLoop:
                 library_size=len(self.library),
             )
             self.library.add(skill)
-            self.consolidator.note_new_skill(skill.name)
+            if not was_known:
+                # Re-solving a known task must not re-consolidate it: that would
+                # be replay by the back door and would flatter the no-replay
+                # baseline exactly where its forgetting should show.
+                self.consolidator.note_new_skill(skill.name)
 
         record = EpisodeRecord(
             episode=episode,
@@ -151,12 +156,26 @@ class VoyagerLoop:
         self.episodes.append(record)
         return record
 
-    def run_curriculum(self, tasks: Optional[List[Task]] = None, passes: int = 1):
-        """Walk the curriculum in prerequisite order, `passes` times."""
+    def run_curriculum(
+        self, tasks: Optional[List[Task]] = None, retry_rounds: int = 2
+    ):
+        """One pass in prerequisite order, then retries of what is still unlearned.
+
+        A skill is learned once and then never revisited, which is the setting
+        the forgetting question is actually about. Retries exist because a task
+        can legitimately fail early and become solvable once its prerequisites
+        are in place.
+        """
         tasks = tasks or curriculum_order()
         episode = len(self.episodes)
-        for _ in range(passes):
-            for task in tasks:
+        for task in tasks:
+            self.run_episode(task, episode)
+            episode += 1
+        for _ in range(retry_rounds):
+            pending = [t for t in tasks if t.name not in self.library]
+            if not pending:
+                break
+            for task in pending:
                 self.run_episode(task, episode)
                 episode += 1
         return self.episodes

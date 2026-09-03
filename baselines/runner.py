@@ -17,6 +17,8 @@ from agent.loop import LoopConfig, VoyagerLoop
 from agent.policy import SimulatedPolicy, SynthesisModel
 from analysis.metrics import (
     Snapshot,
+    curve_support,
+    normalized_forgetting_curve,
     evaluate_library,
     forgetting_curve,
     forward_transfer,
@@ -36,7 +38,7 @@ class RunConfig:
     run_id: str = "cpu_dev"
     seed: int = 0
     seeds: tuple = (0, 1, 2)
-    passes: int = 3
+    retry_rounds: int = 2
     eval_repeats: int = 3
     max_attempts: int = 4
     checkpoint: bool = True
@@ -83,6 +85,13 @@ class RunResult:
             "forgetting_curve_by_skills": {
                 str(k): v for k, v in forgetting_curve(self.snapshots, "skills").items()
             },
+            "normalized_forgetting_curve": {
+                str(k): v
+                for k, v in normalized_forgetting_curve(self.snapshots, "skills").items()
+            },
+            "curve_support": {
+                str(k): v for k, v in curve_support(self.snapshots, "skills").items()
+            },
             "snapshots": [s.to_dict() for s in self.snapshots],
             "episodes": self.episodes,
             "nights": self.nights,
@@ -124,6 +133,7 @@ def run_method(
             episode=record.episode,
             stored_params=backend.stored_parameters(),
             repeats=config.eval_repeats,
+            seed=config.seed,
         )
         snapshots.append(snap)
         if config.checkpoint:
@@ -145,7 +155,7 @@ def run_method(
             )
 
     loop = VoyagerLoop(policy, consolidator, loop_config, on_night=on_night)
-    loop.run_curriculum(curriculum_order(), passes=config.passes)
+    loop.run_curriculum(curriculum_order(), retry_rounds=config.retry_rounds)
     loop.finish()
 
     if not snapshots:
@@ -159,6 +169,7 @@ def run_method(
                 episode=len(loop.episodes),
                 stored_params=backend.stored_parameters(),
                 repeats=config.eval_repeats,
+                seed=config.seed,
             )
         )
 
@@ -236,7 +247,7 @@ def write_results(results: Dict[str, RunResult], config: RunConfig) -> Path:
     payload = {
         "run_id": config.run_id,
         "seed": config.seed,
-        "passes": config.passes,
+        "retry_rounds": config.retry_rounds,
         "backend": config.backend_name,
         "methods": {k: v.to_dict() for k, v in results.items()},
     }

@@ -11,7 +11,7 @@ from baselines import MAIN_ORDER, RunConfig, run_all
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--run-id", default="cpu_dev")
-    ap.add_argument("--passes", type=int, default=3)
+    ap.add_argument("--retry-rounds", type=int, default=2)
     ap.add_argument("--seeds", type=int, nargs="*", default=[0, 1, 2])
     ap.add_argument("--eval-repeats", type=int, default=3)
     ap.add_argument("--methods", nargs="*", default=MAIN_ORDER)
@@ -20,7 +20,7 @@ def main() -> None:
 
     cfg = RunConfig(
         run_id=args.run_id,
-        passes=args.passes,
+        retry_rounds=args.retry_rounds,
         seeds=tuple(args.seeds),
         eval_repeats=args.eval_repeats,
         checkpoint=not args.no_checkpoint,
