@@ -76,7 +76,7 @@ def plot_forgetting_curve(
     )
     ax.set_ylim(-0.03, 1.03)
     ax.set_title("Retention of earlier skills as the library grows", fontsize=10)
-    return _finish(ax, Path(path) if path else None, "lower left")
+    return _finish(ax, Path(path) if path else None, "center right")
 
 
 def plot_parameter_growth(
