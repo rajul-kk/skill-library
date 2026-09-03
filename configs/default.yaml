@@ -1,0 +1,42 @@
+# Defaults for a GPU run on a single T4 or P100.
+model:
+  name: Qwen/Qwen2.5-1.5B-Instruct
+  dtype: bfloat16          # falls back to float16 on cards without bf16 (T4)
+  device: cuda
+
+lora:
+  rank: 16                 # 8-16 only, per the compute budget
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj]
+  learning_rate: 1.0e-4
+  batch_size: 4
+  steps_per_night: 300     # a few hundred steps, not a full epoch
+  max_length: 512
+
+sleep:
+  every_k_tasks: 3
+  drop_full_text_after_consolidation: true
+  replay:
+    enabled: true
+    per_skill: 2
+    max_total: 24          # capped from the start, on purpose
+    strategy: round_robin
+
+decode:
+  max_new_tokens: 128      # the longest reference program is 12 lines
+  temperature: 0.7         # first attempt is greedy; retries sample
+  top_p: 0.9
+  max_program_lines: 24
+
+loop:
+  max_attempts: 4
+  retry_rounds: 2
+  max_skills_in_context: 12
+
+run:
+  run_id: gpu_main
+  root: runs
+  seeds: [0]
+  eval_repeats: 1          # GPU eval is decode-bound; repeats cost real time
+  checkpoint: true

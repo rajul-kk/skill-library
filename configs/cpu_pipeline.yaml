@@ -1,0 +1,29 @@
+# CPU configuration: simulated retention backend, used to validate the pipeline
+# and the figures. These runs are not a source of headline numbers.
+backend: simulated
+
+interference:
+  capacity: 6.0
+  decay: 0.55
+  floor: 0.02
+  gain: 1.0
+  replay_gain: 0.85
+
+sleep:
+  every_k_tasks: 3
+  replay:
+    enabled: true
+    per_skill: 2
+    max_total: 24
+    strategy: round_robin
+
+loop:
+  max_attempts: 4
+  retry_rounds: 2
+
+run:
+  run_id: cpu_main
+  root: runs
+  seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+  eval_repeats: 5
+  checkpoint: true

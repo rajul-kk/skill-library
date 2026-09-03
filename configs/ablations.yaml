@@ -1,0 +1,13 @@
+# Ablation grids. Each runs the full curriculum per variant per seed.
+replay_buffer_size:
+  sizes: [0, 6, 12, 24, 48]
+  note: retention against buffer budget; 0 is the no-replay baseline
+
+consolidation_frequency:
+  K: [1, 3, 5]
+  note: nights per K completed tasks, against retention and nightly compute
+
+replay_strategy:
+  strategies: [round_robin, uniform, recency, tier_balanced]
+  max_total: 8
+  note: only meaningful when the cap binds, so this grid runs at b=8
