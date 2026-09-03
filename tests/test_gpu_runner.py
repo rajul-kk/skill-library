@@ -133,3 +133,36 @@ def test_manifest_records_the_backend_and_method(tmp_path):
     assert manifest["backend"] == "lora"
     assert manifest["method"] == "ours"
     assert manifest["library_size"] >= 3
+
+
+def test_a_finished_run_collects_into_a_plottable_payload(tmp_path):
+    """The path from checkpoints to figures, which only runs after a real run."""
+    from analysis.collect import collect_run, summary_table, write_collected
+    from analysis.plots import make_all_figures
+
+    config = base_config(tmp_path)
+    for method in ("ours", "seq_no_replay"):
+        run = GPURun(config, method, tiny_model(), CharTokenizer(),
+                     policy_factory=ScriptedPolicy)
+        run.run()
+        assert len(run.library) == 15
+
+    root = tmp_path / "t"
+    payload = collect_run(root, ["ours", "seq_no_replay"], run_id="t")
+    assert set(payload["methods"]) == {"ours", "seq_no_replay"}
+    assert payload["methods"]["ours"]["normalized_forgetting_curve"]
+    assert payload["methods"]["ours"]["final_stored_params"] > 0
+
+    write_collected(root, ["ours", "seq_no_replay"], run_id="t")
+    assert (root / "results.json").exists()
+    assert "method" in summary_table(payload)
+
+    figures = make_all_figures(payload, tmp_path / "figures")
+    assert all(p.exists() for p in figures)
+
+
+def test_collecting_a_run_with_no_snapshots_is_empty(tmp_path):
+    from analysis.collect import collect_run
+
+    (tmp_path / "ours").mkdir(parents=True)
+    assert collect_run(tmp_path, ["ours"])["methods"] == {}
