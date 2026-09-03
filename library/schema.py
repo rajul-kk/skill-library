@@ -23,6 +23,7 @@ class Skill:
     tier: int = 0
     learned_at_episode: int = 0
     learned_at_night: int = 0
+    learned_at_size: int = 0
     consolidated_night: Optional[int] = None
     uses: int = 0
     notes: str = ""

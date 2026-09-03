@@ -43,6 +43,7 @@ def skill_from_episode(
     world: CraftingWorld,
     episode: int,
     night: int,
+    library_size: int = 0,
     description: Optional[str] = None,
 ) -> Skill:
     """Build the library entry for a task the agent has just verifiably solved."""
@@ -55,5 +56,6 @@ def skill_from_episode(
         tier=task.tier,
         learned_at_episode=episode,
         learned_at_night=night,
+        learned_at_size=library_size,
         metadata={"env_steps": world.steps},
     )

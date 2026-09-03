@@ -50,6 +50,7 @@ class SkillLibrary:
         if existing is not None:
             skill.learned_at_episode = existing.learned_at_episode
             skill.learned_at_night = existing.learned_at_night
+            skill.learned_at_size = existing.learned_at_size
             skill.uses = existing.uses
             if skill.consolidated_night is None:
                 skill.consolidated_night = existing.consolidated_night

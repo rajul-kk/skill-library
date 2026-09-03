@@ -83,14 +83,16 @@ class Consolidator:
             self.pending.append(name)
 
     def should_sleep(self) -> bool:
-        return (
-            self.config.enabled
-            and len(self.pending) >= max(1, self.config.every_k_tasks)
-        )
+        """Nights are scheduled events, not a property of the method.
+
+        The no-consolidation baseline still ticks through them so every method
+        is measured on the same cadence; it simply trains nothing when it wakes.
+        """
+        return len(self.pending) >= max(1, self.config.every_k_tasks)
 
     def run_night(self, library: SkillLibrary, episode: int) -> Optional[NightRecord]:
         """Consolidate everything pending. Returns None if there is nothing to do."""
-        if not self.config.enabled or not self.pending:
+        if not self.pending:
             return None
 
         night = self.night_count + 1
@@ -98,6 +100,9 @@ class Consolidator:
         if not new_skills:
             self.pending.clear()
             return None
+
+        if not self.config.enabled:
+            return self._idle_night(night, episode, new_skills, library)
 
         new_examples = [example_from_skill(s, night) for s in new_skills]
         replay_examples = self.buffer.sample(exclude=[s.name for s in new_skills])
@@ -119,6 +124,21 @@ class Consolidator:
             new_skills=[s.name for s in new_skills],
             replayed_skills=[e.skill for e in replay_examples],
             stats=stats,
+            stored_params=self.backend.stored_parameters(),
+            library_size=len(library),
+        )
+        self.nights.append(record)
+        self.pending.clear()
+        return record
+
+    def _idle_night(self, night, episode, new_skills, library) -> NightRecord:
+        """A scheduled night for a method that does no consolidation."""
+        record = NightRecord(
+            night=night,
+            episode=episode,
+            new_skills=[s.name for s in new_skills],
+            replayed_skills=[],
+            stats=TrainStats(night=night, n_new=0, n_replay=0, steps=0),
             stored_params=self.backend.stored_parameters(),
             library_size=len(library),
         )
