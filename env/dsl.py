@@ -1,18 +1,11 @@
-"""Crafting DSL: items, recipes, and the action grammar the agent writes programs in.
-
-The DSL is deliberately tiny and fully CPU-executable. A *skill* is a named
-procedure written in this DSL; skills may call previously-learned skills by
-name, which is what gives the library its Voyager-style compositional growth.
-"""
+"""Crafting DSL: items, recipes, and the action grammar the agent writes programs in."""
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
-# --------------------------------------------------------------------------- #
-# World definition
-# --------------------------------------------------------------------------- #
+# ------------------------------- World definition -------------------------- #
 
 LOCATIONS: Tuple[str, ...] = ("forest", "plains", "cave", "mountain", "river")
 
@@ -76,9 +69,7 @@ STATIONS: Tuple[str, ...] = ("table", "furnace")
 ALL_ITEMS: Tuple[str, ...] = tuple(sorted(set(RESOURCES) | set(RECIPES)))
 
 
-# --------------------------------------------------------------------------- #
-# Program representation
-# --------------------------------------------------------------------------- #
+# ---------------------------- Program representation ----------------------- #
 
 
 class DSLError(Exception):
@@ -107,11 +98,7 @@ _LINE = re.compile(r"^\s*([a-z_]+)\s*\(([^)]*)\)\s*$")
 
 
 def parse_program(text: str) -> List[Instruction]:
-    """Parse a newline-separated DSL program.
-
-    Comments start with '#'. Blank lines are ignored. Raises DSLError on the
-    first malformed line so the agent gets a precise error to retry against.
-    """
+    """Parse a newline-separated DSL program."""
     instructions: List[Instruction] = []
     for lineno, raw in enumerate(text.splitlines(), start=1):
         line = raw.split("#", 1)[0].strip()

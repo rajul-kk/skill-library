@@ -9,12 +9,7 @@ from .schema import Skill
 
 
 class SkillLibrary:
-    """Ordered store of learned skills, keyed by name.
-
-    Growth is append-only within a run: a task solved twice updates the body in
-    place rather than adding a duplicate entry, so `len()` tracks distinct
-    capabilities and the forgetting curve stays interpretable.
-    """
+    """Ordered store of learned skills, keyed by name."""
 
     def __init__(self, skills: Optional[Iterable[Skill]] = None) -> None:
         self._skills: Dict[str, Skill] = {}

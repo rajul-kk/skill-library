@@ -1,9 +1,4 @@
-"""The curriculum: a 15-task skill tree with programmatic success checks.
-
-Each task carries a goal predicate evaluated against `CraftingWorld` state.
-There is no LLM critic anywhere in this project -- success is decided by
-`check()` alone, which is what makes the loop cheap enough for a T4.
-"""
+"""The curriculum: a 15-task skill tree with programmatic success checks."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

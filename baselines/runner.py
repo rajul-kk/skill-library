@@ -1,10 +1,4 @@
-"""One driver for every method.
-
-The runner owns the loop, the per-night evaluation and the checkpointing, so
-methods differ only by their Method record. Results are written as JSON under
-runs/<run_id>/<method>/ alongside the night checkpoints, which is what makes a
-run resumable across Kaggle sessions.
-"""
+"""One driver for every method."""
 from __future__ import annotations
 
 import json
@@ -186,11 +180,7 @@ def run_method(
 
 
 def run_method_seeds(method: Method, config: RunConfig) -> RunResult:
-    """Run one method once per seed and pool the results.
-
-    Pooling matters: a single 15-skill run is noisy enough that method
-    differences smaller than a couple of skills are not readable off one seed.
-    """
+    """Run one method once per seed and pool the results."""
     from dataclasses import replace as _replace
 
     runs = [

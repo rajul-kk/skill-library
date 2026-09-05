@@ -1,8 +1,4 @@
-"""Generate the Kaggle notebooks from cell sources kept here as plain text.
-
-Notebooks are painful to review as JSON, so they are built from this file and
-regenerated whenever the workflow changes.
-"""
+"""Generate the Kaggle notebooks from cell sources kept here as plain text."""
 import _paths  # noqa: F401
 
 import json

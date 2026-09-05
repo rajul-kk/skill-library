@@ -1,9 +1,4 @@
-"""The four methods under comparison, as data.
-
-Each is a retrieval configuration plus a sleep configuration plus an adapter
-backend factory. Everything else -- environment, curriculum, policy, metrics --
-is shared, so any difference in the results comes from these three fields.
-"""
+"""The four methods under comparison, as data."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
@@ -14,8 +9,7 @@ from sleep.backend import IsolatedSimulatedAdapters, NullAdapter, SimulatedAdapt
 from sleep.consolidate import SleepConfig
 from sleep.replay import ReplayConfig
 
-# LoRA r=16 on Qwen2.5-1.5B q/k/v/o projections; used for the parameter figure
-# and kept identical across methods so the storage comparison is apples to apples.
+# LoRA r=16 on Qwen2.5-1.5B q/k/v/o, identical across methods so storage compares fairly.
 LORA_PARAMS_R16 = 4_718_592
 
 
@@ -154,12 +148,7 @@ def strategy_ablation(
     strategies=("round_robin", "uniform", "recency", "tier_balanced"),
     max_total: int = 8,
 ):
-    """How to spend a *scarce* buffer.
-
-    Run at a budget below one example per skill on purpose: once the buffer can
-    cover the whole library every allocation policy is identical, so the
-    question only has content when the cap binds.
-    """
+    """How to spend a *scarce* buffer."""
     return {
         s: replace(
             _cumulative_replay(per_skill=1, max_total=max_total, strategy=s),

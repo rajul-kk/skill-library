@@ -1,11 +1,4 @@
-"""The Voyager-style outer loop, minus the LLM critic.
-
-Per episode: retrieve the library into a prompt, propose a program, execute it,
-and let the task's programmatic check decide success. On success the verified
-program is written to the library as a new skill; every K new skills triggers a
-night of consolidation. Token cost is recorded per episode so the capability
-and cost axes come from the same run.
-"""
+"""The Voyager-style outer loop, minus the LLM critic."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -53,11 +46,7 @@ class LoopConfig:
 def context_skill_names(
     library: SkillLibrary, task: Task, config: RetrievalConfig
 ) -> Set[str]:
-    """Skills whose full text is actually in the prompt this episode.
-
-    Anything not in here must be recalled from weights, which is the whole
-    point of the comparison.
-    """
+    """Skills whose full text is actually in the prompt this episode."""
     names = set()
     for skill in relevant_skills(library, task, config):
         text = render_skill(skill, config)
@@ -130,9 +119,7 @@ class VoyagerLoop:
             )
             self.library.add(skill)
             if not was_known:
-                # Re-solving a known task must not re-consolidate it: that would
-                # be replay by the back door and would flatter the no-replay
-                # baseline exactly where its forgetting should show.
+                # Re-consolidating a known task would be replay by the back door.
                 self.consolidator.note_new_skill(skill.name)
 
         record = EpisodeRecord(
@@ -159,13 +146,7 @@ class VoyagerLoop:
     def run_curriculum(
         self, tasks: Optional[List[Task]] = None, retry_rounds: int = 2
     ):
-        """One pass in prerequisite order, then retries of what is still unlearned.
-
-        A skill is learned once and then never revisited, which is the setting
-        the forgetting question is actually about. Retries exist because a task
-        can legitimately fail early and become solvable once its prerequisites
-        are in place.
-        """
+        """One pass in prerequisite order, then retries of what is still unlearned."""
         tasks = tasks or curriculum_order()
         episode = len(self.episodes)
         for task in tasks:

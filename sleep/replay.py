@@ -1,12 +1,4 @@
-"""The capped replay buffer -- the core mechanism of the method.
-
-Each night the consolidation pass trains on the new skills interleaved with a
-bounded sample of examples drawn from every skill learned so far. The cap is
-deliberate: an unbounded buffer would make nightly cost grow with library size
-and would defeat the point of a lifelong loop on a single T4. How the cap is
-spent across skills is the main knob, so the strategies are first-class and
-compared in the ablations.
-"""
+"""The capped replay buffer -- the core mechanism of the method."""
 from __future__ import annotations
 
 import random
@@ -20,12 +12,7 @@ STRATEGIES = ("uniform", "recency", "round_robin", "tier_balanced")
 
 @dataclass
 class ReplayConfig:
-    """Budget and allocation policy for one night's replay sample.
-
-    max_total caps the whole buffer; per_skill caps how much any one skill may
-    take. With 15 skills and per_skill=2 the buffer tops out at 30 examples,
-    which keeps a night at a few hundred optimizer steps.
-    """
+    """Budget and allocation policy for one night's replay sample."""
 
     enabled: bool = True
     per_skill: int = 2
@@ -41,12 +28,7 @@ class ReplayConfig:
 
 
 class ReplayBuffer:
-    """Holds one example pool per consolidated skill and samples within a cap.
-
-    round_robin is the default because it is the only strategy that guarantees
-    every prior skill is touched before any skill is touched twice, which is
-    what keeps the oldest skills on the forgetting curve alive.
-    """
+    """Holds one example pool per consolidated skill and samples within a cap."""
 
     def __init__(self, config: ReplayConfig | None = None) -> None:
         self.config = config or ReplayConfig()

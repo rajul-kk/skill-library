@@ -1,10 +1,4 @@
-"""Turning library entries into SFT examples for the sleep phase.
-
-The training example teaches the model to emit a skill's program from the task
-description *without* the skill text in context -- that is precisely the
-capability that lets retrieval drop to a pointer afterwards. So the prompt is
-built with an empty library view, and the target is the verified program.
-"""
+"""Turning library entries into SFT examples for the sleep phase."""
 from __future__ import annotations
 
 from typing import List, Sequence
@@ -20,11 +14,7 @@ WEIGHTS_ONLY_HEADER = "Known skills:\n(recall from memory)"
 
 
 def consolidation_prompt(skill: Skill, task: Task | None = None) -> str:
-    """The prompt used at both train and eval time for a consolidated skill.
-
-    Nothing about the skill body appears here; if the model produces the right
-    program it is doing so from weights.
-    """
+    """The prompt used at both train and eval time for a consolidated skill."""
     task = task or TASKS.get(skill.task)
     goal = task.goal_text() if task else skill.description
     return (

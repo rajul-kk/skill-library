@@ -1,9 +1,4 @@
-"""Notebooks have to at least be syntactically valid and import what they use.
-
-They cannot be executed here (no GPU, no model download), so this checks the
-things that break silently: malformed JSON, code cells that do not parse, and
-references to helpers that no longer exist.
-"""
+"""Notebooks have to at least be syntactically valid and import what they use."""
 import ast
 import json
 from pathlib import Path

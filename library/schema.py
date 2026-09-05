@@ -8,13 +8,7 @@ from typing import Any, Dict, Optional
 
 @dataclass
 class Skill:
-    """One entry in the Voyager-style library.
-
-    `consolidated_night` is the night on which this skill's full text was
-    distilled into the cumulative adapter. Once set, retrieval serves only the
-    pointer (name + one-line description) instead of the full entry, which is
-    where the in-context token savings come from.
-    """
+    """One entry in the Voyager-style library."""
 
     name: str
     description: str

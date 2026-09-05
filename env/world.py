@@ -1,9 +1,4 @@
-"""CPU-only executor for the crafting DSL.
-
-`CraftingWorld` holds the full mutable state (inventory, location, placed
-stations) and executes parsed programs. Skill calls are resolved through a
-`skill_resolver` callback so the executor stays decoupled from the library.
-"""
+"""CPU-only executor for the crafting DSL."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

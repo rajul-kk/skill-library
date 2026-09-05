@@ -1,8 +1,4 @@
-"""Exercises the real LoRA training path on CPU with a tiny model.
-
-The GPU notebooks run the same code against Qwen2.5-1.5B; nothing here is a
-stand-in for the backend itself, only for the size of the model it wraps.
-"""
+"""Exercises the real LoRA training path on CPU with a tiny model."""
 import pytest
 
 torch = pytest.importorskip("torch")

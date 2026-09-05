@@ -1,10 +1,4 @@
-"""Oracle solutions for every task in the curriculum.
-
-These serve three purposes: they prove the skill tree is solvable, they are the
-targets used to build SFT examples during consolidation, and they give the
-scripted policy something to be scored against. Each program starts from a
-fresh world and composes previously-learned skills with `call()`.
-"""
+"""Oracle solutions for every task in the curriculum."""
 from __future__ import annotations
 
 from typing import Dict

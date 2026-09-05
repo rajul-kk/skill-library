@@ -1,14 +1,4 @@
-"""Real LoRA backends, used by the GPU notebooks.
-
-The cumulative backend keeps exactly one adapter for the whole run: every night
-continues training the same LoRA parameters on new skills interleaved with
-replay. Nothing is re-initialised and nothing is forked, so storage is flat in
-the number of skills. The isolated backend is the PEAM-style contrast -- one
-named adapter per skill, so nothing can interfere and storage grows linearly.
-
-Model and tokenizer are injected rather than loaded here so the whole path can
-be exercised on CPU with a tiny model in the tests.
-"""
+"""Real LoRA backends, used by the GPU notebooks."""
 from __future__ import annotations
 
 import json
@@ -55,11 +45,7 @@ def build_peft_model(model, config: LoRAConfig, adapter_name: str = "default"):
 
 
 def encode(tokenizer, example: Example, max_length: int):
-    """Tokenise prompt+target, masking the prompt out of the loss.
-
-    Only the program is trained on: the prompt is the same boilerplate for every
-    skill, and letting it into the loss would drown the signal we care about.
-    """
+    """Tokenise prompt+target, masking the prompt out of the loss."""
     import torch
 
     prompt_ids = tokenizer(example.prompt, add_special_tokens=False)["input_ids"]
@@ -112,11 +98,7 @@ def program_agreement(produced: str, target: str) -> float:
 
 
 def train_lora(model, tokenizer, examples, config, device, trainable=None, night=0):
-    """Run one short SFT pass over `examples` and report what it cost.
-
-    Deliberately a few hundred steps at most: a night has to fit alongside
-    rollout collection inside one Kaggle session, not take the whole session.
-    """
+    """Run one short SFT pass over `examples` and report what it cost."""
     import torch
 
     if not examples:
@@ -236,12 +218,7 @@ class LoRAAdapterBackend:
         )
 
     def knows(self, skill: str) -> float:
-        """Measured, not modelled: decode the skill and compare with what it was
-        trained to produce.
-
-        Line-level agreement rather than exact match, so a program that is one
-        quantity off does not score the same as a program that is unrelated.
-        """
+        """Measured, not modelled: decode the skill and compare against its target."""
         if skill in self.retention_cache:
             return self.retention_cache[skill]
         prompt, target = self.prompts.get(skill), self.targets.get(skill)
@@ -278,15 +255,7 @@ class LoRAAdapterBackend:
 
 
 class IsolatedLoRABackend:
-    """PEAM-style isolation over real adapters: one named adapter per category.
-
-    All adapters live on a single base model and only the active one is applied,
-    which is how peft keeps them genuinely separate -- wrapping the base model
-    again per skill would nest adapters instead of isolating them. Retention
-    cannot degrade because no two skills share parameters, and the cost of that
-    is a linear pile of adapters: the tradeoff this project reports rather than
-    argues away.
-    """
+    """PEAM-style isolation over real adapters: one named adapter per category."""
 
     def __init__(
         self,
@@ -431,11 +400,7 @@ def load_base_model(
     device: str = "cuda",
     dtype: str = "bfloat16",
 ):
-    """Load the base model and tokenizer for a GPU run.
-
-    Falls back to float16 on cards without bfloat16 support, which is what a T4
-    needs; a P100 takes float16 as well.
-    """
+    """Load the base model and tokenizer for a GPU run."""
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 

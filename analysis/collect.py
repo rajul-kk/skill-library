@@ -1,9 +1,4 @@
-"""Assembling GPU run outputs into the payload the figures already understand.
-
-A GPU run writes one snapshots.json per method as it goes, because a session
-can end at any time. This turns those files into the same structure the CPU
-runner emits, so both kinds of run share the plotting code and the tables.
-"""
+"""Assembling GPU run outputs into the payload the figures already understand."""
 from __future__ import annotations
 
 import json

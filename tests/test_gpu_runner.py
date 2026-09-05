@@ -1,8 +1,4 @@
-"""Config plumbing and resume logic for the GPU runner.
-
-Runs against a two-layer model on CPU, so the parts that decide *what* gets
-trained are covered here even though the actual GPU run is not.
-"""
+"""Config plumbing and resume logic for the GPU runner."""
 import json
 
 import pytest
@@ -34,8 +30,7 @@ def tiny_model():
 
 
 class ScriptedPolicy:
-    """Always writes the reference program, so runner plumbing can be tested
-    without asking an untrained two-layer model to solve a crafting tree."""
+    """Always writes the reference program, so runner plumbing can be tested alone."""
 
     def __init__(self, seed=0):
         self.seed = seed

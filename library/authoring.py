@@ -1,11 +1,4 @@
-"""Turning a successful episode into a library entry.
-
-The agent has no LLM critic, so the skill entry is written mechanically from
-what actually happened: the verified program plus the pre/postconditions read
-off the world state. Those notes are what a Voyager-style entry carries, and
-they are also what stops being paid for in context once the skill is
-consolidated into weights.
-"""
+"""Turning a successful episode into a library entry."""
 from __future__ import annotations
 
 from typing import Optional

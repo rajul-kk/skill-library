@@ -1,10 +1,4 @@
-"""Figures.
-
-Two of these are the paper's load-bearing plots: the forgetting curve that
-carries the capability claim, and the adapter-parameter plot that carries the
-cost claim against PEAM-style isolation. Everything reads from the results JSON
-so figures can be regenerated without re-running an experiment.
-"""
+"""Figures."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -18,8 +12,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 STYLE: Dict[str, dict] = {
     "in_context": dict(color="#444444", marker="o", ls="--", lw=1.6, ms=5),
     "seq_no_replay": dict(color="#c0392b", marker="s", ls="-", lw=1.8, ms=5),
-    # isolated is drawn as a wide halo because our method lands on top of it:
-    # matching PEAM-style retention exactly is the result, so it must stay legible
+    # Wide halo: our method lands exactly on top of this, and both must stay legible.
     "isolated": dict(color="#2980b9", marker="^", ls="-", lw=5.0, ms=9, alpha=0.35),
     "single_shot": dict(color="#8e44ad", marker="d", ls=":", lw=1.6, ms=5),
     "ours": dict(color="#27ae60", marker="*", ls="-", lw=1.8, ms=8),
@@ -110,11 +103,7 @@ def plot_token_cost(
     path: Optional[str | Path] = None,
     order: Optional[Sequence[str]] = None,
 ):
-    """In-context prompt tokens once the library is complete.
-
-    Measured at the final snapshot rather than averaged over the run: early
-    episodes have a small library and would flatter every method equally.
-    """
+    """In-context prompt tokens once the library is complete."""
     methods = results["methods"]
     order = [m for m in (order or list(methods)) if methods[m]["snapshots"]]
     fig, ax = plt.subplots(figsize=(5.4, 3.2))

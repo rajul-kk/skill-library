@@ -1,12 +1,4 @@
-"""The sleep phase: every K completed tasks, distil new skills into weights.
-
-One night is: collect the skills learned since the last night, build their SFT
-examples, interleave a capped replay sample of everything learned earlier, run
-one short LoRA pass over the mixture, then mark the new skills consolidated so
-retrieval serves only their pointers. The adapter is never reset and never
-forked -- the same cumulative adapter absorbs every night, which is the
-difference from PEAM-style isolation.
-"""
+"""The sleep phase: every K completed tasks, distil new skills into weights."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -22,12 +14,7 @@ from .replay import ReplayBuffer, ReplayConfig
 
 @dataclass
 class SleepConfig:
-    """When and how hard to consolidate.
-
-    every_k_tasks is the night trigger studied in the frequency ablation;
-    drop_full_text_after_consolidation is what converts weight memory into
-    context savings and is disabled for the no-consolidation baseline.
-    """
+    """When and how hard to consolidate."""
 
     enabled: bool = True
     every_k_tasks: int = 3
@@ -83,11 +70,7 @@ class Consolidator:
             self.pending.append(name)
 
     def should_sleep(self) -> bool:
-        """Nights are scheduled events, not a property of the method.
-
-        The no-consolidation baseline still ticks through them so every method
-        is measured on the same cadence; it simply trains nothing when it wakes.
-        """
+        """Nights are scheduled events, not a property of the method."""
         return len(self.pending) >= max(1, self.config.every_k_tasks)
 
     def run_night(self, library: SkillLibrary, episode: int) -> Optional[NightRecord]:
@@ -148,12 +131,7 @@ class Consolidator:
 
     @staticmethod
     def _interleave(new: Sequence[Example], replay: Sequence[Example]) -> List[Example]:
-        """Alternate new and replayed examples rather than concatenating them.
-
-        Interleaving keeps replay gradients spread across the pass instead of
-        front-loading them, which is the whole point of training on the mixture
-        together rather than sequentially.
-        """
+        """Alternate new and replayed examples rather than concatenating them."""
         out: List[Example] = []
         n, r = list(new), list(replay)
         if not n:

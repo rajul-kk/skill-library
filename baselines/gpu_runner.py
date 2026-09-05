@@ -1,10 +1,4 @@
-"""Driving a GPU run from a config file, one resumable night at a time.
-
-Kaggle sessions end. This runner is written so a session does whatever nights
-it can, checkpoints each one, and the next session picks up from the last
-manifest -- the library is text and the adapter is a few megabytes, so the
-resume is cheap.
-"""
+"""Driving a GPU run from a config file, one resumable night at a time."""
 from __future__ import annotations
 
 import json
@@ -192,11 +186,7 @@ class GPURun:
         )
 
     def run(self, max_nights: Optional[int] = None) -> VoyagerLoop:
-        """Run the curriculum, optionally stopping after `max_nights` nights.
-
-        Stopping early is the point: a session that only fits two nights still
-        leaves a checkpoint for the next session to continue from.
-        """
+        """Run the curriculum, optionally stopping after `max_nights` nights."""
         start_night = self.consolidator.night_count
         loop = VoyagerLoop(
             self._policy(self.seed), self.consolidator, self.loop_config, self.library

@@ -1,11 +1,4 @@
-"""Policy interface and the CPU recall simulator.
-
-A policy turns a prompt into a DSL program. Whether that program succeeds is
-never decided here -- it is executed against the environment and judged by the
-task's programmatic check. The simulator therefore only models one thing: can
-the agent recall a skill it is supposed to reuse, given what is in context and
-what is in the adapter. Everything downstream of that is the real system.
-"""
+"""Policy interface and the CPU recall simulator."""
 from __future__ import annotations
 
 import random
@@ -28,13 +21,7 @@ class Policy(Protocol):
 
 @dataclass
 class SynthesisModel:
-    """How hard it is to write a correct program for an unseen task.
-
-    base is the chance of getting the non-call lines right on the first try;
-    tier_penalty makes deeper tasks harder; prereq_bonus is the forward-transfer
-    channel -- having the prerequisites reliably available makes composing the
-    new skill easier, which is exactly the effect the transfer metric measures.
-    """
+    """How hard it is to write a correct program for an unseen task."""
 
     base: float = 0.62
     tier_penalty: float = 0.035
@@ -44,13 +31,7 @@ class SynthesisModel:
 
 
 class SimulatedPolicy:
-    """Recall-and-synthesis simulator used for CPU runs of the full pipeline.
-
-    A skill is available if its full text is in the prompt, or if the adapter
-    recalls it: retention is read as a probability, so a decayed skill fails
-    intermittently, which is what produces a graded forgetting curve rather
-    than a step function.
-    """
+    """Recall-and-synthesis simulator used for CPU runs of the full pipeline."""
 
     def __init__(
         self,

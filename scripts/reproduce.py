@@ -1,8 +1,4 @@
-"""Reproduce every CPU result and figure in one command.
-
-Writes to results/ rather than runs/ because these are the artefacts the paper
-cites and they belong in version control; runs/ is scratch.
-"""
+"""Reproduce every CPU result and figure in one command."""
 import _paths  # noqa: F401
 
 import json

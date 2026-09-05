@@ -1,8 +1,4 @@
-"""Extraction tests for the real-model policy.
-
-Small instruct models wrap answers in prose and fences; these pin down what
-counts as the program so a chatty model is not scored as a failure.
-"""
+"""Extraction tests for the real-model policy."""
 import pytest
 
 from agent.lm_policy import extract_program

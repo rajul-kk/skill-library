@@ -1,11 +1,4 @@
-"""Resumable night-N checkpoints.
-
-A lifelong run has to survive being chopped into Kaggle sessions, so after
-every night we write a self-describing directory: the library JSON (cheap), the
-adapter state, the consolidator state, and a manifest naming the run. Resuming
-means reading the highest night directory and continuing -- no other state is
-needed to reproduce the rest of the run.
-"""
+"""Resumable night-N checkpoints."""
 from __future__ import annotations
 
 import json

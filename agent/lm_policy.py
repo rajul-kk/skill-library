@@ -1,10 +1,4 @@
-"""Policy backed by a real language model.
-
-Same interface as the CPU simulator, so `VoyagerLoop`, the metrics and the
-figures are all unchanged between a CPU pipeline run and a GPU one. The model
-sees the retrieved library and writes a program; whether that program works is
-still decided by executing it, not by anything the model says about itself.
-"""
+"""Policy backed by a real language model."""
 from __future__ import annotations
 
 import re
@@ -30,12 +24,7 @@ class DecodeConfig:
 
 
 def extract_program(text: str, max_lines: int = 24) -> str:
-    """Pull the DSL out of whatever the model wrote around it.
-
-    Small instruct models pad answers with prose and code fences; keeping only
-    lines that parse as DSL is more robust than demanding clean output, and any
-    genuinely malformed program still fails in the environment.
-    """
+    """Pull the DSL out of whatever the model wrote around it."""
     lines: List[str] = []
     for raw in _FENCE.sub("", text).splitlines():
         line = raw.split("#", 1)[0].strip()

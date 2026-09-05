@@ -1,11 +1,4 @@
-"""Evaluation and metrics.
-
-Retention is measured the way the system would actually be deployed: each
-learned task is re-attempted under the method's own retrieval configuration, so
-a method that keeps everything in context pays tokens for its score and a
-method that consolidated into weights has to recall. Evaluation never writes to
-the library and never triggers a night.
-"""
+"""Evaluation and metrics."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -79,11 +72,7 @@ def evaluate_library(
     eval_attempts: int = 1,
     seed: int = 0,
 ) -> Snapshot:
-    """Re-attempt every learned skill under the deployed retrieval config.
-
-    `policy_factory(seed)` must return a fresh policy so evaluation draws its
-    own randomness and cannot perturb the training run.
-    """
+    """Re-attempt every learned skill under the deployed retrieval config."""
     eval_config = LoopConfig(
         max_attempts=eval_attempts,
         retrieval=config.retrieval,
@@ -125,18 +114,7 @@ def forgetting_curve(
     exclude_recall_free: bool = True,
     min_samples: int = 3,
 ) -> Dict[int, float]:
-    """Retention as a function of elapsed time since a skill was learned.
-
-    Pools every (skill, snapshot) pair across the run. `axis="skills"` measures
-    elapsed time in skills added rather than nights, which is the comparable
-    x-axis when methods consolidate at different frequencies K.
-
-    Skills whose program calls nothing (the tier-0 roots) are excluded by
-    default: they need no recall to execute, so they cannot show forgetting and
-    including them lifts the tail of the curve wherever only roots are old
-    enough to be sampled. Points backed by fewer than `min_samples` pairs are
-    dropped for the same reason.
-    """
+    """Retention as a function of elapsed time since a skill was learned."""
     if axis not in ("nights", "skills"):
         raise ValueError("axis must be 'nights' or 'skills'")
     key = "nights_since_learned" if axis == "nights" else "skills_since_learned"
@@ -166,11 +144,7 @@ def curve_support(
 
 
 def forward_transfer(episodes, library: SkillLibrary) -> Dict[str, float]:
-    """Attempts needed for the first success on each task.
-
-    Fewer attempts on later, dependent tasks means consolidating the early
-    skills paid off during learning, not just at eval time.
-    """
+    """Attempts needed for the first success on each task."""
     first: Dict[str, int] = {}
     for e in episodes:
         if e.success and e.task not in first:
@@ -200,14 +174,7 @@ def normalized_forgetting_curve(
     exclude_recall_free: bool = True,
     min_samples: int = 3,
 ) -> Dict[int, float]:
-    """Retention as a fraction of each skill's own freshly-learned score.
-
-    The raw curve confounds elapsed time with which skills happen to be that
-    old: a tier-8 skill is harder than a tier-1 skill whatever the method
-    remembers. Normalising each (seed, skill) trajectory by its first
-    measurement after consolidation removes that confound, so the curve reads
-    as "share of demonstrated capability still intact".
-    """
+    """Retention as a fraction of each skill's own freshly-learned score."""
     key = "nights_since_learned" if axis == "nights" else "skills_since_learned"
     trajectories: Dict[tuple, List[tuple]] = {}
     for snap in snapshots:

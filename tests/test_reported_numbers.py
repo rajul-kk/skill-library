@@ -1,10 +1,4 @@
-"""The tables in README.md and paper/paper.md must match results/cpu.
-
-Numbers in prose drift the moment an experiment is re-run with different seeds.
-This parses the tables back out and checks them against the results file, so a
-re-run that changes the outcome fails here instead of shipping a paper that
-disagrees with its own data.
-"""
+"""The tables in README.md and paper/paper.md must match results/cpu."""
 import json
 import re
 from pathlib import Path

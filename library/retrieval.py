@@ -1,10 +1,4 @@
-"""In-context retrieval over the library, plus the token accounting that makes
-the cost side of the consolidation tradeoff measurable.
-
-Consolidated skills are served as one-line pointers instead of full bodies.
-That substitution is the entire source of token savings, so it is implemented
-here in one place and measured by `context_token_cost`.
-"""
+"""Library retrieval, and the token accounting that makes its cost measurable."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -35,11 +29,7 @@ def hf_token_counter(tokenizer) -> TokenCounter:
 
 @dataclass
 class RetrievalConfig:
-    """How the library is rendered into the prompt.
-
-    `serve_full_text_always=True` reproduces baseline (a): no consolidation, so
-    every skill stays in context at full length forever.
-    """
+    """How the library is rendered into the prompt."""
 
     max_skills: int = 12
     serve_full_text_always: bool = False

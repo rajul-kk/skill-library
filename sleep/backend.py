@@ -1,14 +1,4 @@
-"""The adapter backend interface shared by every method in the study.
-
-Everything that differs between our method, PEAM-style isolation, naive
-sequential LoRA and LatentSkill-style one-shot lives behind this interface, so
-baselines/runner.py drives all four with identical rollout and metric code.
-
-knows(name) returns a retention score in [0, 1]: how reliably the model can
-reproduce that skill from weights alone, with no library text in context. On
-GPU it is measured by decoding; on CPU it comes from the interference model in
-SimulatedAdapter.
-"""
+"""The adapter backend interface shared by every method in the study."""
 from __future__ import annotations
 
 import json
@@ -52,11 +42,7 @@ class AdapterBackend(Protocol):
     def knows(self, skill: str) -> float: ...
 
     def stored_parameters(self) -> int:
-        """Adapter parameters that must be kept on disk.
-
-        Flat for a cumulative shared adapter; linear in skill count for
-        PEAM-style isolated adapters. This is the secondary figure.
-        """
+        """Adapter parameters that must be kept on disk."""
 
     def save(self, path: str | Path) -> None: ...
 
@@ -83,13 +69,7 @@ class JsonPersisted:
 
 @dataclass
 class InterferenceModel:
-    """Parameters of the CPU retention simulator.
-
-    A stand-in for gradient interference, used to exercise the pipeline without
-    a GPU. It is not a source of paper results -- the GPU notebooks measure
-    retention by decoding from a real LoRA. Every reported number records which
-    backend produced it.
-    """
+    """Parameters of the CPU retention simulator."""
 
     capacity: float = 6.0      # skills a rank-r adapter holds before it strains
     decay: float = 0.55        # retention lost per interfering night at load 1.0
@@ -99,13 +79,7 @@ class InterferenceModel:
 
 
 class SimulatedAdapter(JsonPersisted):
-    """Retention dynamics for CPU runs of a single cumulative adapter.
-
-    Training on a skill sets its retention high. Every other skill in the
-    adapter decays, and decay grows once the number of distinct skills sharing
-    the adapter exceeds capacity. Replay counteracts this precisely because
-    replayed skills are trained on, so they take replay_gain instead of decay.
-    """
+    """Retention dynamics for CPU runs of a single cumulative adapter."""
 
     def __init__(
         self,
@@ -173,12 +147,7 @@ class SimulatedAdapter(JsonPersisted):
 
 
 class IsolatedSimulatedAdapters(JsonPersisted):
-    """PEAM-style isolation: one adapter per skill or category, never shared.
-
-    Retention is perfect by construction -- nothing interferes because nothing
-    is shared -- and storage grows linearly with the number of categories. That
-    tradeoff is the honest comparison the paper has to make.
-    """
+    """PEAM-style isolation: one adapter per skill or category, never shared."""
 
     def __init__(
         self, rank: int = 16, base_params: int = 4_718_592, category_of=None
