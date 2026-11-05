@@ -1,0 +1,11 @@
+# CPU smoke: simulated backend, two library sizes. Validates plumbing only; never evidence about LoRA.
+name: sweep_smoke_cpu
+backend: simulated
+models: ["sim:Qwen/Qwen2.5-1.5B-Instruct"]
+seeds: [0, 1, 2, 3, 4]
+milestones: [10, 25]
+arms: [no_skill, ic_full, ic_topk, ours_b24, ours_cover, seq_no_replay, isolated]
+night_every: 10
+device: cpu
+dtype: float32
+out_dir: runs/sweep_smoke_cpu

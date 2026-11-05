@@ -1,0 +1,24 @@
+# CPU smoke with a real tiny model (real LoRA, real decoding), two library sizes. Plumbing only.
+name: sweep_smoke_tiny
+backend: hf
+models: [HuggingFaceTB/SmolLM2-135M-Instruct]
+seeds: [0]
+milestones: [10, 25]
+arms: [no_skill, ic_full, ic_topk, ours_b24, seq_no_replay, isolated]
+night_every: 10
+eval_max: 25
+eval_full_up_to: 25
+device: cpu
+dtype: float32
+out_dir: runs/sweep_smoke_tiny
+train:
+  rank: 8
+  alpha: 16
+  learning_rate: 1.0e-3
+  epochs: 2
+  batch_size: 4
+  max_length: 1024
+decode:
+  max_new_tokens: 48
+  batch_size: 8
+  max_batch_tokens: 16384
