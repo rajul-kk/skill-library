@@ -201,3 +201,37 @@ before confirmatory seeds start.
 | Kaggle session limits (12 h, 30 h/week) | runs cut | resumable per (arm, milestone) via records.jsonl; reruns skip finished cells |
 | Synthetic env written by the evaluator | external validity | stated as a limitation; the 15-skill env stays as anchor |
 | Bootstrap with 10 seeds is narrow | over-confident intervals | stated; full design uses 20 seeds |
+
+## 6. Discrepancies found in the existing results (for the user to decide; nothing changed)
+
+Reported by the Myrios shared-harness cross-check and confirmed against the code here. The README,
+paper and `results/cpu` numbers are left exactly as published.
+
+1. **Final success drops seeds.** `baselines/runner.py:RunResult.final` takes the maximum night
+   over all seeds' snapshots and averages only snapshots at that night. Seeds whose run ends on an
+   earlier night are silently excluded. Reported effect: `seq_no_replay` 0.098 from 15 of 20 seeds
+   vs 0.107 when each seed's own last score is averaged; ours/isolated 0.733 vs 0.740. The sweep
+   avoids this by construction (fixed milestones, a forced night at each) and the protocol defines
+   cell success as the mean of every seed's own score.
+2. **Adapter size is hard-coded.** `baselines/methods.py:LORA_PARAMS_R16 = 4,718,592`; the real
+   rank-16 q/k/v/o adapter on Qwen2.5-1.5B has 4,358,144 parameters (k/v projections are
+   1536 -> 256 under grouped-query attention). The README's 4.7 M and 70.8 M (15 x 4.7 M) are
+   therefore about 8% high; the 15x storage ratio is unaffected. `tests/test_skillmetrics.py`
+   checks the shape formula against peft on a tiny model.
+3. **Identical rows.** In `results/cpu/summary.txt` the `ours` and `isolated` rows are identical
+   to every printed digit, including the retention curve. With b=24 covering a 15-skill library,
+   both retentions saturate in the simulator, but exact equality of every point deserves a look
+   before the table is cited.
+4. **Self-call shortcut on GPU.** See section 1 item 3; it does not affect CPU numbers.
+
+Options for the user: re-run `scripts/reproduce.py` with a fixed `final()` and the computed adapter
+size and update README/paper; or keep the published numbers and add an erratum note.
+
+## 7. Interoperability
+
+`skillmetrics` is stdlib-only and imports nothing from this repo (a test enforces it). The Myrios
+`myrios_eval` package (schema 1.0, branch `feat/shared-eval-harness`) reportedly agrees with it on
+bootstrap intervals, LoRA parameter counts and LoRA training FLOPs once the attention term is
+removed; `skillmetrics` keeps the attention term because `ic_full` prompts reach ~8k tokens, where
+it is no longer negligible. Writing sweep records in the `myrios_eval` schema is left as a follow-up
+adapter over `records.jsonl`, so neither repo depends on the other.
