@@ -14,7 +14,7 @@ def cells(path, kind="code"):
 
 
 def test_there_are_notebooks():
-    assert len(NOTEBOOKS) == 4
+    assert len(NOTEBOOKS) == 5
 
 
 @pytest.mark.parametrize("path", NOTEBOOKS, ids=lambda p: p.name)
@@ -53,7 +53,7 @@ def imported_names(path):
 def test_project_imports_resolve(path):
     import importlib
 
-    roots = {"env", "library", "sleep", "agent", "baselines", "analysis"}
+    roots = {"env", "library", "sleep", "agent", "baselines", "analysis", "sweep", "skillmetrics"}
     for module, name in imported_names(path):
         if module.split(".")[0] not in roots:
             continue
@@ -78,3 +78,12 @@ def test_the_figures_notebook_needs_no_gpu():
     source = "\n".join(cells("notebooks/04_figures.ipynb"))
     assert "load_base_model" not in source
     assert "cuda" not in source
+
+
+def test_the_sweep_pilot_notebook_runs_the_pilot_config_and_measures_throughput():
+    source = "
+".join(cells("notebooks/05_sweep_pilot.ipynb"))
+    assert "configs/sweep_pilot.yaml" in source
+    assert "throughput.json" in source
+    assert "run_model_seed" in source and "run_analysis" in source
+    assert "empty_cache" in source
