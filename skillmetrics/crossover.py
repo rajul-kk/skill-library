@@ -85,6 +85,7 @@ def crossover_analysis(
     horizon: float = INF,
     n_boot: int = 10_000,
     seed: int = 0,
+    alpha: float = 0.05,
 ) -> Dict:
     """ours/comp: milestone -> seed -> cell; seeds are resampled jointly across all milestones."""
     sizes = sorted(set(ours) & set(comp))
@@ -119,10 +120,12 @@ def crossover_analysis(
         "horizon": horizon,
         "sizes": sizes,
         "seeds": seeds,
-        "ratio": {n: {"point": point[n], "lo": percentile(boot_ratios[n], 2.5), "hi": percentile(boot_ratios[n], 97.5)} for n in sizes},
+        "alpha": alpha,
+        "ratio": {n: {"point": point[n], "lo": percentile(boot_ratios[n], 50 * alpha), "hi": percentile(boot_ratios[n], 100 - 50 * alpha)} for n in sizes},
+        "wins_at": [n for n in sizes if percentile(boot_ratios[n], 50 * alpha) > 1.0],
         "n_star": sustained_crossover(point),
         "n_star_interpolated": interpolated_crossover(point),
-        "n_star_ci": [percentile(boot_nstar, 2.5), percentile(boot_nstar, 97.5)],
+        "n_star_ci": [percentile(boot_nstar, 50 * alpha), percentile(boot_nstar, 100 - 50 * alpha)],
         "n_star_distribution": {k: v / len(boot_nstar) for k, v in sorted(dist.items())},
     }
 
