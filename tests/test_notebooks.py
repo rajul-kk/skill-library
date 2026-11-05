@@ -81,8 +81,7 @@ def test_the_figures_notebook_needs_no_gpu():
 
 
 def test_the_sweep_pilot_notebook_runs_the_pilot_config_and_measures_throughput():
-    source = "
-".join(cells("notebooks/05_sweep_pilot.ipynb"))
+    source = "\n".join(cells("notebooks/05_sweep_pilot.ipynb"))
     assert "configs/sweep_pilot.yaml" in source
     assert "throughput.json" in source
     assert "run_model_seed" in source and "run_analysis" in source
