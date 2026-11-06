@@ -65,6 +65,8 @@ sys.path.insert(0, WORK)
 os.chdir(WORK)
 
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "peft>=0.11", "transformers>=4.40", "accelerate", "pyyaml"], check=False)
+# Kaggle images ship an old torchao that recent peft rejects at LoRA injection (ImportError); nothing here uses torchao.
+subprocess.run([sys.executable, "-m", "pip", "uninstall", "-y", "-q", "torchao"], check=False)
 
 import torch
 print("torch", torch.__version__, "| cuda", torch.cuda.is_available())
