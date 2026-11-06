@@ -196,3 +196,33 @@ def test_real_tiny_model_runs_every_arm_kind(tmp_path):
     assert all(r["lora_params"] > 0 for r in attempts if r["arm"] in ("ours_b24", "isolated"))
     # the base weights must come back untouched after LoRA arms unload
     assert not any("lora_" in n for n, _ in backend.base.named_parameters())
+
+
+@pytest.mark.skipif(not tiny_model_cached(), reason="SmolLM2-135M-Instruct not in the local HF cache")
+def test_micro_batches_give_the_full_batch_gradient():
+    torch = pytest.importorskip("torch")
+    import os
+
+    os.environ.setdefault("HF_HUB_OFFLINE", "1")
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    from sleep.backend import Example
+    from sleep.lora import encode
+    from sweep.backends import accumulate_batch_loss
+
+    name = "HuggingFaceTB/SmolLM2-135M-Instruct"
+    tok = AutoTokenizer.from_pretrained(name)
+    model = AutoModelForCausalLM.from_pretrained(name, torch_dtype=torch.float32)
+    texts = [("make a plank", "craft plank"), ("make two sticks from wood", "craft stick; craft stick"),
+             ("a much longer request that needs more tokens to describe", "gather wood; craft plank; craft table"),
+             ("x", "y")]
+    items = [encode(tok, Example(skill=f"s{i}", prompt=p, target=t), 128) for i, (p, t) in enumerate(texts)]
+    pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
+    grads = []
+    for micro in (0, 1, 3):
+        model.zero_grad(set_to_none=True)
+        loss = accumulate_batch_loss(model, items, pad, micro, "cpu")
+        grads.append((loss, model.lm_head.weight.grad.clone()))
+    for loss, g in grads[1:]:
+        assert abs(loss - grads[0][0]) < 1e-4
+        assert torch.allclose(g, grads[0][1], atol=1e-6, rtol=1e-4)

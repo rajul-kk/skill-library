@@ -51,6 +51,9 @@ class TrainConfig:
     max_length: int = 1024
     grad_clip: float = 1.0
     grad_checkpointing: bool = False
+    # memory only: each batch is split into micro-batches whose token-weighted gradients are accumulated before one
+    # optimizer step, so the update equals the full batch_size update. 0 = no split.
+    micro_batch_size: int = 0
 
 
 @dataclass

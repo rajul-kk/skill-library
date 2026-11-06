@@ -213,24 +213,21 @@ class HFSweepBackend:
             tokens += sum(lengths)
             tokens_sq += sum(x * x for x in lengths)
             padded += max(lengths) * len(lengths)
-            batch = {k: v.to(self.device) for k, v in collate(items, pad_id).items()}
-            loss = self.model(**batch).loss
-            if not torch.isfinite(loss):
+            loss = accumulate_batch_loss(self.model, items, pad_id, tc.micro_batch_size, self.device, scaler)
+            if loss is None:
                 nan = True
                 optimizer.zero_grad(set_to_none=True)
                 continue
             if scaler is not None:
-                scaler.scale(loss).backward()
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm_(trainable, tc.grad_clip)
                 scaler.step(optimizer)
                 scaler.update()
             else:
-                loss.backward()
                 torch.nn.utils.clip_grad_norm_(trainable, tc.grad_clip)
                 optimizer.step()
             optimizer.zero_grad(set_to_none=True)
-            losses.append(float(loss.detach()))
+            losses.append(loss)
             steps += 1
         if tc.grad_checkpointing:
             self.model.gradient_checkpointing_disable()
@@ -330,3 +327,29 @@ class _BlankLineStop:
             text = self.tokenizer.decode(new, skip_special_tokens=True).lstrip("\n")
             done.append(eos in new or "\n\n" in text)
         return torch.tensor(done, dtype=torch.bool, device=input_ids.device)
+
+
+def accumulate_batch_loss(model, items, pad_id, micro: int, device, scaler=None):
+    """Backward pass for one optimizer batch, optionally in micro-batches. Each micro-batch loss (a mean over its label
+    tokens) is weighted by its share of the batch's label tokens, so the accumulated gradient equals the full-batch one.
+    Returns the batch loss as a float, or None if any micro-batch loss is non-finite (gradients are then discarded by the
+    caller)."""
+    import torch
+
+    from sleep.lora import collate
+
+    chunks = [items] if not micro or micro >= len(items) else [items[i:i + micro] for i in range(0, len(items), micro)]
+    batches = [collate(c, pad_id) for c in chunks]
+    counts = [int((b["labels"][:, 1:] != -100).sum()) for b in batches]
+    total = max(sum(counts), 1)
+    out = 0.0
+    for b, n in zip(batches, counts):
+        if n == 0:
+            continue
+        loss = model(**{k: v.to(device) for k, v in b.items()}).loss
+        if not torch.isfinite(loss):
+            return None
+        w = loss * (n / total)
+        (scaler.scale(w) if scaler is not None else w).backward()
+        out += float(w.detach())
+    return out
