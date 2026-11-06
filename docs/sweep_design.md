@@ -219,10 +219,24 @@ paper and `results/cpu` numbers are left exactly as published.
    therefore about 8% high; the 15x storage ratio is unaffected. `tests/test_skillmetrics.py`
    checks the shape formula against peft on a tiny model.
 3. **Identical rows.** In `results/cpu/summary.txt` the `ours` and `isolated` rows are identical
-   to every printed digit, including the retention curve. With b=24 covering a 15-skill library,
-   both retentions saturate in the simulator, but exact equality of every point deserves a look
-   before the table is cited.
-4. **Self-call shortcut on GPU.** See section 1 item 3; it does not affect CPU numbers.
+   to every printed digit, including the retention curve. **Root cause (checked 2026-11-06,
+   `tests/test_replay_saturation.py`):** not a bookkeeping bug but a property of the simulator.
+   Round one of `ReplayBuffer.sample` takes one example of every known skill up to `max_total`; the
+   CPU curriculum never exceeds 15 skills, so with b=24 every skill is replayed every night.
+   `SimulatedAdapter.consolidate` skips decay for trained skills and sets retention with
+   `max(old, gain)`, so every learned skill stays at exactly 1.0, the value
+   `IsolatedSimulatedAdapters.knows` returns. Same retention, same recall draws, same snapshots
+   (seeds 0-2 verified identical). Consequence: the CPU table's "replay matches isolation's
+   retention" is true by construction and is **not evidence** for the claim; with b=6 the two
+   arms differ. The sweep (libraries up to 200 > b=24) is the first setting where the comparison
+   can come out either way. Suggested wording for README/paper, if kept: "in the simulator, a
+   replay buffer that covers the whole library reproduces isolation exactly; the informative
+   regime is a library larger than the buffer".
+4. **Model shapes verified.** The `skillmetrics.flops.SHAPES` entries for Qwen2.5-1.5B and 3B
+   (layers, hidden, heads, KV heads, FFN, vocab) match the published `config.json` of both
+   Instruct models exactly (fetched from Hugging Face 2026-11-06); the 3B entry is no longer
+   "from memory".
+5. **Self-call shortcut on GPU.** See section 1 item 3; it does not affect CPU numbers.
 
 Options for the user: re-run `scripts/reproduce.py` with a fixed `final()` and the computed adapter
 size and update README/paper; or keep the published numbers and add an erratum note.
