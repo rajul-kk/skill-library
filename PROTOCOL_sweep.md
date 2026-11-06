@@ -162,7 +162,7 @@ check (always labelled).
 
 | date | change | reason | POST HOC? |
 |---|---|---|---|
-| | (none yet) | | |
+| 2026-11-07 | Pilot config: `grad_checkpointing: true` (allowed by section 6) and `micro_batch_size: 2`, a new memory-only setting that splits each batch of 8 into micro-batches with token-weighted gradient accumulation, so the optimizer update equals the batch-8 update (`tests/test_sweep.py::test_micro_batches_give_the_full_batch_gradient`). Batch size, lr, epochs unchanged. Notebook also removes Kaggle's torchao 0.10, which recent peft rejects. | First pilot run on a T4: CUDA out of memory in the training loss (float32 logits of 8 x 1024 x 151,936); before that, peft ImportError on torchao. No pilot result existed. | no |
 
 ## 13. Compute estimate (at freeze)
 
