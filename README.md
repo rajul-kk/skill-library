@@ -33,7 +33,15 @@ consolidated, which is what figure 3 shows.
 
 Replay into one shared adapter matches isolation's retention at **15x less
 adapter storage**, and cuts prompt cost roughly in half against keeping the
-library in context. It does not match the in-context ceiling on absolute success
+library in context. **That match is true by construction here, not evidence:**
+the CPU library never exceeds 15 skills, so a 24-example buffer replays every
+skill every night and the simulator then holds each learned skill at retention
+1.0, exactly what isolation returns (`tests/test_replay_saturation.py`). In the
+simulator, a replay buffer that covers the whole library reproduces isolation
+exactly; the informative regime is a library larger than the buffer, which the
+library-size sweep (`PROTOCOL_sweep.md`) tests. The stored-parameter column is
+about 8% high (grouped-query attention, `docs/sweep_design.md`); the 15x ratio
+is unaffected. It does not match the in-context ceiling on absolute success
 (0.73 vs 0.85) -- that gap is the price of moving skills out of the prompt, and
 it is reported rather than smoothed over.
 
