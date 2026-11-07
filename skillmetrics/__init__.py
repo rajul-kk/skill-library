@@ -18,13 +18,13 @@ from .flops import (
     prefill_flops,
     shape_from_hf_config,
 )
-from .records import aggregate, append_jsonl, attempt_record, per_seed, read_jsonl, train_record
+from .records import aggregate, append_jsonl, attempt_record, finished_runs_only, per_seed, read_jsonl, train_record
 
 __all__ = [
     "SHAPES", "ModelShape", "FLOOR_ROOT_SUCCESS", "HEADROOM_CRAFTED",
     "aggregate", "append_jsonl", "attempt_flops", "attempt_record", "bootstrap",
     "break_even_analysis", "break_even_queries", "crossover_analysis", "decode_flops",
-    "efficiency_ratio", "floor_check", "headroom_check", "interpolated_crossover",
+    "efficiency_ratio", "finished_runs_only", "floor_check", "headroom_check", "interpolated_crossover",
     "lora_train_flops", "mean_ci", "per_seed", "percentile", "prefill_flops",
     "read_jsonl", "resample_indices", "shape_from_hf_config", "sustained_crossover",
     "train_record",

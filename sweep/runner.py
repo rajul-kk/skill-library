@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import random
 import time
+import uuid
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence
 
@@ -56,9 +57,11 @@ class ArmRun:
         self.block_of: Dict[str, str] = {}
         self.night = 0
         self.seconds = {"train": 0.0, "eval": 0.0}
+        # tags every row of this run, so rows left by a crashed earlier run can be told apart (finished_runs_only)
+        self.run_id = uuid.uuid4().hex
 
     def common(self) -> dict:
-        return {"model": self.model, "seed": self.seed, "arm": self.arm.key}
+        return {"model": self.model, "seed": self.seed, "arm": self.arm.key, "run": self.run_id}
 
     def library(self, k: int) -> List[GenSkill]:
         return [] if self.arm.prompt == "none" else self.world.prefix(k)
@@ -173,7 +176,7 @@ def run_model_seed(cfg: SweepConfig, model: str, seed: int, backend, out: Path, 
         stored = backend_stored(arm, run, backend)
         backend.end_arm()
         record = {
-            "kind": "arm_done", "model": model, "seed": seed, "arm": arm.key, "backend": backend.name,
+            "kind": "arm_done", **run.common(), "backend": backend.name,
             "nights": run.night, "stored_lora_params": stored,
             "seconds_total": time.time() - started, "seconds": run.seconds, "success": per_milestone,
         }

@@ -53,11 +53,25 @@ def append_jsonl(path: str | Path, records: Iterable[Dict]) -> None:
 CellKey = Tuple[str, str, int, int]  # model, arm, milestone, seed
 
 
+def finished_runs_only(records: Iterable[Dict]) -> List[Dict]:
+    """Drop rows written by an arm run that never finished.
+
+    A rerun after a crash appends a second copy of the arm's rows. Rows that carry a "run" id are kept only when that
+    run wrote the arm_done row for its (model, seed, arm); the first finished run wins. Rows without a run id (records
+    from before run ids existed) are kept as they are."""
+    records = list(records)
+    finished: Dict[Tuple[str, int, str], str] = {}
+    for r in records:
+        if r.get("kind") == "arm_done" and "run" in r:
+            finished.setdefault((r["model"], int(r["seed"]), r["arm"]), r["run"])
+    return [r for r in records if "run" not in r or finished.get((r["model"], int(r["seed"]), r["arm"])) == r["run"]]
+
+
 def aggregate(records: Iterable[Dict], shapes: Dict[str, ModelShape]) -> Dict[CellKey, Dict[str, float]]:
     """Per (model, arm, milestone, seed): success, tokens, inference FLOPs, cumulative training FLOPs."""
     attempts: Dict[CellKey, List[Dict]] = defaultdict(list)
     nights: Dict[Tuple[str, str, int], List[Dict]] = defaultdict(list)
-    for r in records:
+    for r in finished_runs_only(records):
         if r.get("kind") == "attempt":
             attempts[(r["model"], r["arm"], int(r["milestone"]), int(r["seed"]))].append(r)
         elif r.get("kind") == "train":

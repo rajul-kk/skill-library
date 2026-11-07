@@ -4,8 +4,8 @@ from pathlib import Path
 import pytest
 
 from env.procgen import generate_world
-from skillmetrics import read_jsonl
-from sweep.analyze import analyze, summary_text
+from skillmetrics import append_jsonl, read_jsonl
+from sweep.analyze import analyze, cells_from, summary_text
 from sweep.backends import SimulatedSweepBackend
 from sweep.budget import train_examples_per_night
 from sweep.config import ARMS, SweepConfig, from_dict, load_sweep_config
@@ -134,6 +134,25 @@ def test_rerunning_skips_finished_arms(sim_records):
     summary = run_model_seed(cfg, SIM, 0, SimulatedSweepBackend(cfg, 0), sim_records, log=lambda *_: None)
     assert summary == {}
     assert len(read_jsonl(sim_records)) == before
+
+
+def test_a_crashed_arm_is_rerun_without_double_counting(tmp_path):
+    cfg = small_cfg(seeds=[0], arms=["ours_b24"])
+    out = tmp_path / "records.jsonl"
+    run_model_seed(cfg, SIM, 0, SimulatedSweepBackend(cfg, 0), out, log=lambda *_: None)
+    clean = cells_from(read_jsonl(out))
+    # simulate a crash mid-arm: the partial rows of a first run stay in the file, without arm_done
+    partial = [dict(r, run="crashed") for r in read_jsonl(out) if r["kind"] != "arm_done"]
+    out.write_text("", encoding="utf-8")
+    append_jsonl(out, partial)
+    run_model_seed(cfg, SIM, 0, SimulatedSweepBackend(cfg, 0), out, log=lambda *_: None)
+    recs = read_jsonl(out)
+    assert len(recs) > len(partial)
+    rerun = cells_from(recs)
+    assert rerun.keys() == clean.keys()
+    for key in clean:
+        assert rerun[key]["n"] == clean[key]["n"]
+        assert rerun[key]["train_flops_cum"] == clean[key]["train_flops_cum"]
 
 
 def test_no_skill_never_solves_a_composed_skill(sim_records):

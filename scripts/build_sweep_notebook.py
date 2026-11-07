@@ -177,9 +177,9 @@ print(summary_text(report))
 
 SAMPLES = '''
 # Eyeball what the model actually wrote: first failures per arm at the largest pilot size.
-from skillmetrics import read_jsonl
+from skillmetrics import finished_runs_only, read_jsonl
 
-rows = [r for r in read_jsonl(RECORDS) if r["kind"] == "attempt" and r["milestone"] == max(cfg.milestones)]
+rows = [r for r in finished_runs_only(read_jsonl(RECORDS)) if r["kind"] == "attempt" and r["milestone"] == max(cfg.milestones)]
 for arm in cfg.arms:
     bad = [r for r in rows if r["arm"] == arm and not r["success"]][:2]
     for r in bad:
