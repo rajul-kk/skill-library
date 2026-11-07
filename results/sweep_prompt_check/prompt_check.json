@@ -1,0 +1,2216 @@
+[
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": false,
+  "text": "gather(kroukol, 2) To solve the task \"Collect 2 kroukol from the staikel,\" you can follow these steps:",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": false,
+  "text": "gather(skotinan, 3) To solve the task \"Collect 3 skotinan from the ponum,\" you can follow these steps:",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": false,
+  "text": "gather(rebox, 3) To solve the task \"Collect 3 rebox from the ponum,\" we need to follow these steps:",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": false,
+  "text": "gather(faver, 2) To solve the task \"Collect 2 faver from the ponum,\" you can follow these steps:",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": false,
+  "text": "gather(dopaistol, 2) To solve the task \"Collect 2 dopaistol from the laiplix,\" we need to follow these steps:",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "call(gather_kroukol)\ncall(gather_rebox)\ncall(make_gaiglil) To complete the task of making a gaiglil using the given program and locations, you need to follow these steps:",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "call(gather_kroukol)\ngoto(staikel)\ngather(2, kroukol)\ncall(make_gaiglil)\ncraft(draivox) To complete the task of making a draivox using the given program and locations, you need to follow these steps:",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": false,
+  "text": "call(gather_plakor)\ncraft(zourar) ",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "call(gather_plakor) # collect 2 plakor from laiplix\ncall(make_souskofur) # make a souskofur\ncall(gather_skotinan) # collect 2 gletrers from krupai\ncall(make_stunira) # make a stunira with the gathered materials",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": false,
+  "text": "call(gather_faver)\ncraft(zaidair) Here's the program for making a zaidair in the given world:",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": false,
+  "text": "call(gather_plakor)\ncall(make_souskofur)\ncraft(dimusk)\ncall(gather_mepluplosk)\ncraft(dudesk)\ncall(make_maivail)\ncraft(gidril) To complete the task of making a naizi while adhering to the constraints and following the provided instructions, we need to break down the process into smaller steps. Here's how you can achieve this:",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": false,
+  "text": "call(gather_plakor)\ngoto(laiplix)\ngather(plakor, 2)\ngoto(ponum)\ngather(mepluplosk, 1)\ncall(make_maise)\ncraft(maise)\ncall(make_souskofur)\ncraft(souskofur)\ncraft(koubum) ",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "call(gather_plakor)\ngoto(laiplix)\ngather(plakor, 2)\ngoto(krupai)\ngather(gletrer, 2)\ngoto(nasan)\ngather(kreglail, 1)\ncraft(souskofur) # This is the first step in making a sougaibrem. \ngoto(ponum)\ngather(rebox, 1)\ncraft(sougaibrem) # Now we can use this souga",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_kroukol)    # collect 2 kroukol from staikel\ncall(gather_kroukol)    # collect another 2 kroukol from staikel\ncall(gather_kroukol)    # collect another 2 kroukol from staikel\ncall(gather_kroukol)    # collect another 2 kroukol from staikel\ncall(gather_kroukol)    # collect another 2 kroukol from",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(desar) ",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": true,
+  "text": "call(gather_kroukol)    # Gather 2 kroukol from Staikel\ncall(gather_lairel)    # Gather 1 lairel from Laiplix\ncall(gather_dopaistol) # Gather 1 dopaistol from Digaix\ncraft(vaira)           # Craft 1 vaira using gathered items",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)    # Gather 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather another 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\n",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)    # Gather 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather another 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\n",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)    # Gather 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather another 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather yet another 2 kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Staikel\ncall(gather_kroukol)    # Gather one more kroukol from Sta",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)    # Gather 3 kreglail from Nasan\ngoto(digaix)             # Go to Digax\ngather(lairel, 1)        # Gather 1 lairel\ncall(make_koubum)       # Craft a koubum\ngoto(laiplix)            # Go to Laipix\ngather(dopaistol, 1)    # Gather 1 dopaistol\ncall",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "call(gather_kreglail)    # Gather 3 kreglail from Nasan\ngoto(digaix)             # Go to Digax\ngather(lairel, 1)        # Gather 1 lairel\ncraft(koubum)            # Craft a koubum\ncall(gather_fastenaix)  # Gather 2 fastenaix\ncraft(dozaix)            # Craft a dozaix",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": false,
+  "text": "gather(ziplusk, 3) Here's how you can translate the given task into a DSL program for the specified locations and known skills:",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": false,
+  "text": "gather(tribrou, 3) ",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": false,
+  "text": "gather(drigal, 2) ",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": true,
+  "text": "gather(gaitrikre, 3) ",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "call(gather_tribrou) # Gather 2 tribrous\ncall(gather_gaitrikre) # Gather 2 gaitrikres\ncall(gather_ziplusk) # Gather 1 ziplusk\ncall(make_gosuplai) # Craft 1 gosuplai",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": true,
+  "text": "call(gather_ziplusk) # Gather 1x ziplusk\ncall(make_gosuplai) # Make 1x gosuplai\ncraft(glaiglair)    # Craft 1x glaiglair",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "call(gather_gaitrikre)\ncall(gather_plazaiglor)\ncall(gather_zokrezix)\ncall(gather_nousudaix)\ncraft(foubadrix) To complete the task of making a foubadrix according to the given program and instructions, follow these steps:",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "call(gather_plizaiglor)\ncall(make_luplir) To complete the task of making a luplir without calling `make_luplir` directly, you can follow these steps:",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": false,
+  "text": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul) To complete the task of making a goudul without calling `make_goudul` directly, you can follow these steps:",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "call(gather_plizaiglor)\ngoto(laizousk)\ngather(plizaiglor, 2)\ncall(gather_zokrezix)\ncraft(palestal) Here's how you can break down the task into steps using the provided DSL and locations:",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "call(gather_plizaiglor)\ngoto(laizousk)\ngather(plizaiglor, 2)\ncall(make_fagouth) To complete the task of making a fagouth using the given program and locations, you need to follow these steps:",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": false,
+  "text": "call(gather_oil)\ngoto(shed)\ngather(wick, 1)\ncraft(lamp) # Lamp is made with one wick and one oil. \ncraft(bairadosk)",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_ziplusk) # collect 3 ziplusk\ncall(gather_tribrou) # collect 3 tribrou\ncall(gather_drigal) # collect 2 drigal\ncall(gather_gaitrikre) # collect 3 gaitrikre\ncraft(gosuplai) # make a gosuplai\ncall(gather_gaitrikre) # collect 2 gaitrikre\ncraft",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_ziplusk) # collect 3 ziplusk\ncall(gather_tribrou) # collect 3 tribrou\ncall(gather_drigal) # collect 2 drigal\ncraft(koutigaith) # craft koutigaith using the collected items",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": false,
+  "text": "call(gather_bremesk)\ngoto(laizousk)\ngather(pakan, 1)\ncraft(muplu)",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_divoun)\ncall(gather_stoutoko)\ncall(make_folaikraisk) To complete the task of making a folaikraisk without calling the `make_folaikraisk` skill directly, you can follow these steps:",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_ziplusk)\ngoto(laigim)\ngather(tribrou, 1)\ncall(gather_tedurusk)\ncraft(sitrox) ",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": false,
+  "text": "call(gather_bremesk)\ngoto(laizousk)\ngather(pakan, 1)\ncall(gather_stoutoko)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(kaglen)\ngoto(laigim)\ngather(divoun, 2)\ncall(gather_tedurusk)\ncraft(zerur)\ngoto(laizousk)\ngather(pakan, 1)\ncraft(kaglo)\ngoto(gazu)\ngather",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)\ngoto(laizousk)\ngather(pakan, 1)\ncraft(kraipaith) ",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "A_old_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": false,
+  "text": "call(gather_bremesk)\ngoto(laizousk)\ngather(pakan, 1)\ncall(gather_tedurusk)\ncraft(garakom)",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ngather(kroukol, 2)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": false,
+  "text": "call(gather_skotinan)  \ngather(skotinan, 3)",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": false,
+  "text": "call(gather_rebox)  \ngather(rebox, 3)",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": false,
+  "text": "call(gather_faver)\ngather(faver, 2)",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": false,
+  "text": "call(gather_dopaistol)  \ngather(dopaistol, 2)",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ngather(rebox, 1)  \ncraft(gaiglil)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ngather(kroukol, 2)  \ncall(make_draivox)  \ncraft(draivox)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": true,
+  "text": "call(gather_kroukol)  \ncraft(zourar)",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "call(gather_oil)\ngoto(shed)\ngather(wick, 1)\ncraft(stunira)",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": false,
+  "text": "call(gather_faver)",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": false,
+  "text": "call(gather_oil)\ngoto(shed)\ngather(wick, 1)\ncraft(naizi)",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": true,
+  "text": "call(gather_faver)  \ngoto(ponum)  \ngather(rebox, 2)  \ngoto(ponum)  \ngather(skotinan, 2)  \ncraft(koubum)  ",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "call(gather_oil)  \ngoto(shed)  \ngather(wick, 1)  \ncraft(lamp)",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(make_naizi)  \ncraft(vaira)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "call(gather_faver)  \ngoto(ponum)  \ngather(rebox, 2)  \ngoto(ponum)  \ngather(skotinan, 2)  \ncraft(koubum)",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": false,
+  "text": "call(gather_ziplusk)",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": false,
+  "text": "call(gather_tribrou)  \ngather(tribrou, 3)",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": false,
+  "text": "call(gather_drigal)",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": false,
+  "text": "call(gather_gaitrikre)  \ngoto(laigim)  \ngather(gaitrikre, 3)",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "call(gather_tribrou, 2)  \ncall(gather_gaitrikre, 2)  \ncraft(gosuplai)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": false,
+  "text": "call(gather_ziplusk)",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "call(gather_gaitrikre)  \ncall(gather_plazaiglor)  \ncraft(foubadrix)",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "call(gather_oil)\ngoto(shed)\ngather(wick, 1)\ncraft(lamp)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": false,
+  "text": "call(gather_ziplusk)",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "call(gather_plizaiglor)  \ncall(gather_tribrou)  \ncraft(palestal)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "call(gather_plizaiglor)  \ngather(plizaiglor, 2)  \ncall(gather_nousudaix)  \ncraft(fagouth)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": false,
+  "text": "call(gather_oil)  \ngoto(shed)  \ngather(wick, 1)  \ncraft(bairadosk)",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ncall(make_gosuplai)  \ncall(gather_tedurusk)  \ncall(make_bredrator)",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_tribrou)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(koutigaith)",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": true,
+  "text": "call(gather_tribrou)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(muplu)",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_divoun)\ncall(gather_stoutoko)\ncall(make_folaikraisk)",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_tedurusk)",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": false,
+  "text": "call(gather_bremesk)\ncall(gather_tedurusk)\ncall(make_kraipaith)",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_nousudaix)  \ncall(make_kraipaith)",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "B_new_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": false,
+  "text": "call(gather_tribrou)  \ncall(gather_ziplusk)  \ncall(make_gosuplai)  \ncraft(garakom)",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ngoto(staikel)  \ngather(kroukol, 2)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(ponum)  \ngather(skotinan, 3)",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(ponum)  \ngather(rebox, 3)",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(ponum)  \ngather(faver, 2)",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": false,
+  "text": "call(gather_dopaistol)  \ngather(dopaistol, 2)",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_rebox)  \ncraft(gaiglil)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "call(gather_kroukol)\ncall(make_gaiglil)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": true,
+  "text": "call(gather_kroukol)  \ncraft(zourar)",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "call(gather_plakor)\ncall(make_souskofur)",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": false,
+  "text": "call(gather_faver)  \ngather(wood, 3)  \ncraft(zaidair)",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": false,
+  "text": "call(gather_plakor)  \ncall(make_souskofur)  \ncraft(dudesk)  ",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": true,
+  "text": "call(gather_faver)  \ngoto(ponum)  \ngather(rebox, 2)  \ngoto(ponum)  \ngather(skotinan, 2)  \ncraft(koubum)  ",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "call(gather_oil)  \ngoto(shed)  \ngather(wick, 1)  \ncraft(lamp)",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(make_naizi)  \ncraft(vaira)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "call(gather_fastenaix)",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(laigim)  \ngather(ziplusk, 3)",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(gigair)  \ngather(tribrou, 3)",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": false,
+  "text": "call(gather_drigal)",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": true,
+  "text": "goto(laigim)  \ngather(gaitrikre, 3)",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "call(gather_wood)  \ngather(tribrou, 2)  \ncraft(gosuplai)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ngather(wood, 1)  \ncraft(glaiglair)",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "call(gather_gaitrikre)  \ngather(drigal, 1)  \ncraft(foubadrix)",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "call(gather_plizaiglor)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": false,
+  "text": "call(gather_ziplusk)",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "call(gather_wood)  \ngather(tribrou, 2)  \ncraft(palestal)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "call(gather_plizaiglor)  \ngather(plizaiglor, 2)  \ncall(gather_nousudaix)  \ncraft(fagouth)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": false,
+  "text": "call(gather_tribrou)  \ngather(ziplusk, 1)  \ncraft(bairadosk)",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_bremesk)\ncall(gather_tedurusk)\ncall(make_bredrator)",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_tribrou)\ncall(gather_ziplusk)\ncall(gather_gaitrikre)\ncraft(koutigaith)",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": false,
+  "text": "call(gather_tribrou)\ncall(gather_ziplusk)\ncall(gather_gaitrikre)\ncraft(muplu)",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_bouvax)",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_zokrezix)",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": false,
+  "text": "call(gather_bremesk)",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "C_new_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_garakom)",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": false,
+  "text": "call(gather_kroukol) \ngather(kroukol, 2) ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": false,
+  "text": "call(gather_skotinan) \ngoto(ponum)\ngather(skotinan, 3) ",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(ponum)  \ngather(rebox, 3)  ",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(ponum)  \ngather(faver, 2)  ",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": false,
+  "text": "call(gather_dopaistol) \ngoto(laiplix)\ngather(dopaistol, 2) ",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "gather(kroukol, 2)  \ncall(gather_kroukol)  \ncraft(gaiglil)  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "gather_kroukol, 2\ncall(make_gaiglil)  \ncraft_draivox  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": false,
+  "text": "gather(kroukol)  \ncraft(zourar)  ",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "gather(wood, 3)  \ncall(make_stunira)  ",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": false,
+  "text": "gather_faver\ncraft(zaidair) \nmake_zaidair\ncraft(labrax)\nmake_labrax\ncraft(rubridram)\nmake_rubridram\ngather_plakor\ncraft(dudesk)\nmake_dudesk\ngather_mepluplosk\ncraft(gidril)\nmake_gidril\ngather_skotinan\ncraft(souskofur) ",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": false,
+  "text": "gather(plakor)  \nmake_souskofur  \ncraft(souksafur)  ",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": false,
+  "text": "gather_plakor\ncall(make_souskofur)  \ncraft(koubum)  ",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "gather(wood, 2)  \ngather(kroukol, 2)  \ngather(skotinan, 2)  \ncraft(sougaibrem)  ",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(make_naizi)  \ncraft(vaira)  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncraft(bobror)  ",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(gather_kreglail)  \ncall(gather_fastenaix)  \ncraft(labrax)  ",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(make_naizi)  \ncall(make_koubum)  \ncraft(tuplor)  ",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)  \ncall(make_koubum)  \ncall(make_naizi)  \ncraft(staivith)  ",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "gather(fastenaix, 2)  \ncall(gather_kreglail)  \ngoto(digaix)  \ngather(lairel, 1)  \ncraft(dozaix)  ",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": false,
+  "text": "call(gather_wood) \ngoto(laigim)\ngather(ziplusk, 3) ",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": false,
+  "text": "call(gather_wood)  \ngoto(gigair)  \ngather(tribrou, 3)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": false,
+  "text": "call(gather_drigal) \ngather(drigal, 2) ",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": false,
+  "text": "call(gather_gaitrikre) \ngoto(laigim)\ngather(gaitrikre, 3) ",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "gather(wood, 2)  \ncall(gather_drigal)  \ngather(gaitrikre, 2)  \ncraft(gosuplai)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": false,
+  "text": "gather(ziplusk, 1)  \nmake_gosuplai()\ncraft(glaiglair) ",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "gather_wood, 3\nmake_gosuplai\ngather_gaitrikre\ncraft_foubadrix\ngather_plizaiglor, 2\nmake_motun\ngather_nousudaix\ncraft_skosure\ngather_zokrezix, 2\ncall_gather_tedurusk\ncraft_mounemoun\ngather_stoutoko, 1\ncall_gather_pakan\ncraft_mounemoun\ngather_divoun",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "gather(wood, 4)  \ngather(tedurusk, 2)  \ncall(make_luplir)  ",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": false,
+  "text": "gather(ziplusk, 1)  \nmake_goudul()  ",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "gather(wood, 4)  \ngather(tribrou, 2)  \ngather_ziplusk()  \ncraft(palestal)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "gather(wood, 1)  \ncall(make_fagouth)  ",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": true,
+  "text": "gather(ziplusk, 1)  \ncall(gather_tribrou)  \ncraft(bairadosk)  ",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_bredrator)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  ",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ncall(gather_tribrou)  \ncall(gather_drigal)  \ncall(gather_gaitrikre)  \ncraft(koutigaith)  ",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": false,
+  "text": "gather(divoun, 1)  \ncall(gather_bouvax)  \ncraft(muplu)  ",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_divoun)  \ncall(gather_stoutoko)  \ncall(make_folaikraisk)  \ncraft(folaikraisk)  ",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_sitrox)  ",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": false,
+  "text": "gather(divoun, 2)  \ncall(gather_tedurusk)  \ncraft(foutrour)  ",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  ",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "D_new_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_glarion)  \ncall(gather_divoun)  \ncall(make_garakom)  ",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": true,
+  "text": "goto(staikel)\ngather(kroukol, 2)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": true,
+  "text": "goto(ponum)\ngather(skotinan, 3)",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": true,
+  "text": "goto(ponum)\ngather(rebox, 3)",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": true,
+  "text": "goto(ponum)  \ngather(faver, 2)",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": true,
+  "text": "goto(laiplix)\ngather(dopaistol, 2)",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_rebox)  \ncraft(gaiglil)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "call(gather_kroukol)\ncall(make_gaiglil)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": true,
+  "text": "call(gather_kroukol)  \ncraft(zourar)",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "call(make_stunira)",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": true,
+  "text": "call(gather_faver)  \ncraft(zaidair)",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": false,
+  "text": "call(make_naizi)",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": true,
+  "text": "call(gather_faver)  \ngoto(ponum)  \ngather(rebox, 2)  \ngoto(ponum)  \ngather(skotinan, 2)  \ncraft(koubum)  ",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "call(gather_oil)  \ngoto(shed)  \ngather(wick, 1)  \ncraft(lamp)",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_demen)",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kroukol)",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": false,
+  "text": "call(gather_kroukol)",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(make_gaiglil)  \ncall(make_zourar)  \ncraft(labrax)",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "call(gather_fastenaix)",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": true,
+  "text": "goto(laigim)  \ngather(ziplusk, 3)",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": true,
+  "text": "goto(gigair)\ngather(tribrou, 3)",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": true,
+  "text": "goto(skoploux)  \ngather(drigal, 2)",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": true,
+  "text": "goto(laigim)  \ngather(gaitrikre, 3)",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "call(gather_wood)  \ngather(tribrou, 2)  \ncraft(gosuplai)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": true,
+  "text": "call(gather_ziplusk)  \ncall(make_gosuplai)  \ncraft(glaiglair)",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "call(gather_gaitrikre)  \ncall(gather_plizaiglor, 2)  \ncraft(foubadrix)",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "call(gather_plizaiglor)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": true,
+  "text": "call(gather_ziplusk)  \ngoto(gigair)  \ngather(tribrou, 2)  \ncraft(goudul)",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "call(gather_wood)  \ngather(tribrou, 2)  \ncraft(palestal)",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "call(gather_plizaiglor)  \ngather(plizaiglor, 2)  \ncall(gather_nousudaix)  \ncraft(fagouth)",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": false,
+  "text": "call(gather_tribrou)",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ncall(make_gosuplai)  \ncall(gather_tribrou)  \ncraft(bredrator)",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_tribrou)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(koutigaith)",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": false,
+  "text": "call(gather_tribrou)  \ncall(gather_ziplusk)  \ncraft(muplu)",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_bouvax)",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_zokrezix)",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": false,
+  "text": "call(gather_bremesk)",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "E_unnamed_ex2_chat",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": true,
+  "text": "call(gather_bremesk)  \ncall(make_glaiglair)  \ncall(make_bredrator)  \ncraft(garakom)",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_kroukol",
+  "ok": false,
+  "text": "gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol, 2) goto(staikel) gather(kroukol,",
+  "gold": "goto(staikel)\ngather(kroukol, 2)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_skotinan",
+  "ok": false,
+  "text": "gather(skotinan, 3) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan, 1) goto(ponum) gather(skotinan,",
+  "gold": "goto(ponum)\ngather(skotinan, 3)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_rebox",
+  "ok": false,
+  "text": "gather(rebox, 3)  \ngoto(ponum)  \ngather(rebox, 3)  \ngather(rebox, 3)  ",
+  "gold": "goto(ponum)\ngather(rebox, 3)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_faver",
+  "ok": false,
+  "text": "gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum) gather(faver, 2) goto(ponum)",
+  "gold": "goto(ponum)\ngather(faver, 2)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "none",
+  "skill": "gather_dopaistol",
+  "ok": false,
+  "text": "gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laiplix) gather(dopaistol, 2) goto(laipl",
+  "gold": "goto(laiplix)\ngather(dopaistol, 2)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_gaiglil",
+  "ok": false,
+  "text": "gather(kroukol, 2)  \ncall(make_gaiglil)  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_kroukol)\ngoto(ponum)\ngather(rebox, 1)\ncraft(gaiglil)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_draivox",
+  "ok": false,
+  "text": "gather_kroukol, 2\ncall(make_gaiglil)  \ncraft_draivox  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(make_gaiglil)\ncraft(draivox)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zourar",
+  "ok": false,
+  "text": "gather(kroukol)  \ncraft(zourar)  ",
+  "gold": "call(gather_kroukol)\ncraft(zourar)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_stunira",
+  "ok": false,
+  "text": "call(make_stunira) \ngoto(forest)\ngather(wood, 3)  \ncall(make_stunira) \ngoto(laiplix)\ngather(plakor, 2)  \ncall(make_stunira) \ngoto(nasan)\ngather(kreglail, 1)  \ncall(gather_skotinan) \ngoto(krupai)  \ngather(gletrer, 2)  \ncraft(souskofur)  \ngoto(pon",
+  "gold": "call(make_zourar)\ncall(make_gaiglil)\ncraft(stunira)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_zaidair",
+  "ok": true,
+  "text": "call(gather_faver)  \ncraft(zaidair)  ",
+  "gold": "call(gather_faver)\ncraft(zaidair)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_naizi",
+  "ok": true,
+  "text": "call(make_gaiglil)  \ncall(make_zourar)  \ncraft(naizi)  ",
+  "gold": "call(make_gaiglil)\ncall(make_zourar)\ncraft(naizi)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_koubum",
+  "ok": false,
+  "text": "gather_plakor\ncall(make_plakor)  \ngather_faver\ncall(make_faver)   \ngather_skotinan\ncall(make_skotinan) \ngather_rebox\ncall(make_rebox)    \ngather_mepluplosk\ncall(make_mepluplosk)  \ngather_ponum\ngather_souskofur\ncall(make_souskofur)  \ngather_maivail\ncall(make_maivail)     \ngather_gid",
+  "gold": "call(gather_faver)\ngoto(ponum)\ngather(rebox, 2)\ngoto(ponum)\ngather(skotinan, 2)\ncraft(koubum)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "topk",
+  "skill": "make_sougaibrem",
+  "ok": false,
+  "text": "gather(wood, 2)  \ngather(kroukol, 2)  \ngather(skotinan, 2)  \ncraft(sougaibrem)  ",
+  "gold": "goto(ponum)\ngather(rebox, 2)\ngoto(staikel)\ngather(kroukol, 2)\ncall(gather_skotinan)\ncraft(sougaibrem)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_demen",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "goto(ponum)\ngather(faver, 2)\ncall(gather_kroukol)\ncraft(demen)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_desar",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_stunira)\ncall(make_koubum)\ncraft(desar)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_vaira",
+  "ok": false,
+  "text": "gather(mepluplosk, 1)  \ncall(make_souskofur)  \ncraft(vaira)  ",
+  "gold": "goto(staikel)\ngather(kroukol, 2)\ncall(gather_lairel)\ngoto(laiplix)\ngather(dopaistol, 1)\ncraft(vaira)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_bobror",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncraft(bobror)  ",
+  "gold": "call(make_desar)\ncall(make_naizi)\ncraft(bobror)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_labrax",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_lairel)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_zaidair)\ncraft(labrax)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_tuplor",
+  "ok": false,
+  "text": "call(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \ncall(gather_kroukol)  \n",
+  "gold": "call(make_demen)\ncraft(tuplor)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_staivith",
+  "ok": false,
+  "text": "call(gather_kreglail)  \ncall(make_koubum)  \ncall(make_naizi)  \ncraft(staivith)  ",
+  "gold": "call(gather_kreglail)\ngoto(digaix)\ngather(lairel, 1)\ncraft(staivith)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1000,
+  "arm": "full",
+  "skill": "make_dozaix",
+  "ok": false,
+  "text": "gather(fastenaix, 2)  \ncall(make_koubum)  \ncraft(dozaix)  ",
+  "gold": "call(make_labrax)\ncall(gather_fastenaix)\ncraft(dozaix)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_ziplusk",
+  "ok": false,
+  "text": "gather(ziplusk, 3) goto(laigim) gather(ziplusk, 1) goto(laigim) gather(ziplusk, 1) goto(laigim) collect all gathered ziplusk into a single pile craft(ziplusk_pile) goto(me) display(ziplusk_pile) collect all ziplusk in the pile back into the original locations craft(ziplusk) goto(me)",
+  "gold": "goto(laigim)\ngather(ziplusk, 3)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_tribrou",
+  "ok": false,
+  "text": "gather(tribrou, 3)  \ngoto(gigair)  \ngather(tribrou, 3)  \ngather(tribrou, 3)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 3)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_drigal",
+  "ok": false,
+  "text": "gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal, 2) goto(skoploux) gather(drigal,",
+  "gold": "goto(skoploux)\ngather(drigal, 2)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "none",
+  "skill": "gather_gaitrikre",
+  "ok": false,
+  "text": "gather(gaitrikre, 3) goto(laigim) gather(gaitrikre, 3) goto(laigim) gather(gaitrikre, 3) goto(laigim) gather(gaitrikre, 3) goto(laigim) gather(gaitrikre, 3) goto(laigim) gather(gaitrikre, 3) goto(laigim) gather(gaitrikre,",
+  "gold": "goto(laigim)\ngather(gaitrikre, 3)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_gosuplai",
+  "ok": false,
+  "text": "gather(wood, 2)  \ncall(make_gosuplai)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(gather_drigal)\ngoto(laigim)\ngather(gaitrikre, 2)\ncraft(gosuplai)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_glaiglair",
+  "ok": false,
+  "text": "gather_ziplusk\nmake_gosuplai\ncraft(glaiglair)",
+  "gold": "call(gather_ziplusk)\ncall(make_gosuplai)\ncraft(glaiglair)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_foubadrix",
+  "ok": false,
+  "text": "call(gather_gaitrikre)  \ncall(make_foubadrix)  ",
+  "gold": "call(make_gosuplai)\ncall(gather_gaitrikre)\ncraft(foubadrix)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_luplir",
+  "ok": false,
+  "text": "gather(wood, 1)  \ngather(tedurusk, 1)  \ncall(make_luplir)  ",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(gather_ziplusk)\ncall(make_gosuplai)\ncraft(luplir)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_goudul",
+  "ok": false,
+  "text": "gather(ziplusk, 1)  \nmake_goudul()  ",
+  "gold": "call(gather_ziplusk)\ngoto(gigair)\ngather(tribrou, 2)\ncraft(goudul)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_palestal",
+  "ok": false,
+  "text": "gather(wood, 2)  \ncall(make_palestal)  ",
+  "gold": "goto(gigair)\ngather(tribrou, 2)\ncall(make_luplir)\ncall(gather_ziplusk)\ncraft(palestal)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_fagouth",
+  "ok": false,
+  "text": "gather(wood, 1)  \ncall(make_fagouth)  ",
+  "gold": "goto(skoploux)\ngather(drigal, 1)\ncall(make_foubadrix)\ncall(make_glaiglair)\ncraft(fagouth)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "topk",
+  "skill": "make_bairadosk",
+  "ok": true,
+  "text": "gather(ziplusk, 1)  \ncall(gather_tribrou)  \ncraft(bairadosk)  ",
+  "gold": "goto(laigim)\ngather(ziplusk, 1)\ncall(gather_tribrou)\ncraft(bairadosk)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_bredrator",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_bredrator)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_bredrator)  ",
+  "gold": "call(make_luplir)\ncall(gather_ziplusk)\ncraft(bredrator)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_koutigaith",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ncall(make_gosuplai)  \ncraft(koutigaith)  \ncall(gather_tribrou)  \ncraft(koutigaith)  \ncall(gather_gaitrikre)  \ncraft(koutigaith)  \ncall(gather_gaitrikre)  \ncraft(koutigaith)  \ncall(gather_gaitrikre)  \ncraft(koutigaith)  \ncall(gather_gaitrikre)",
+  "gold": "call(make_glaiglair)\ncall(make_gosuplai)\ncall(gather_ziplusk)\ncraft(koutigaith)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_muplu",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(gather_bremesk)  \ncall(gather",
+  "gold": "call(gather_tribrou)\ncall(gather_ziplusk)\ngoto(skoploux)\ngather(drigal, 1)\ncraft(muplu)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_folaikraisk",
+  "ok": false,
+  "text": "call(gather_divoun)  \ncall(make_bredrator)  \ncraft(folaikraisk)  \nProgram:\ncall(gather_stoutoko)  \ncall(make_bredrator)  \ncraft(folaikraisk)  \nProgram:\ncall(gather_divoun)  \ncall(gather_stoutoko)  \ncraft(folaikraisk)  \nProgram:\ncall(gather_divoun)  \ncall(gather_stoutoko)  \ncall(make_bredr",
+  "gold": "call(make_goudul)\ngoto(laigim)\ngather(gaitrikre, 1)\ncraft(folaikraisk)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_sitrox",
+  "ok": false,
+  "text": "call(gather_ziplusk)  \ncall(make_gosuplai)  \ncall(gather_tedurusk)  \ncraft(sitrox)  \ngoto(laizousk)  \ngather(plizaiglor, 2)  \ncraft(sitrox)  \ngoto(gigair)  \ngather(zokrezix, 2)  \ncall(gather_tedurusk)  \ncraft(sitrox)  \ngoto(laigim)  \ngather",
+  "gold": "call(make_bredrator)\ncraft(sitrox)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_foutrour",
+  "ok": true,
+  "text": "call(gather_bremesk)  \ncall(gather_tedurusk)  \ncall(make_folaikraisk)  \ncall(make_bredrator)  \ncraft(foutrour)  ",
+  "gold": "call(make_folaikraisk)\ncraft(foutrour)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_kraipaith",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(make_kraipaith)  \ncall(gather_bremesk)  \ncall(make_kraipaith)  \n",
+  "gold": "call(gather_zokrezix)\ncraft(kraipaith)"
+ },
+ {
+  "variant": "F_unnamed_ex2_raw",
+  "seed": 1001,
+  "arm": "full",
+  "skill": "make_garakom",
+  "ok": false,
+  "text": "call(gather_bremesk)  \ncall(make_glaiglair)  \ncall(make_bredrator)  \ncraft(garakom)  \ncall(gather_bremesk)  \ncall(make_glaiglair)  \ncraft(garakom)  \ncall(gather_bremesk)  \ncall(make_glaiglair)  \ncraft(garakom)  \ncall(gather_bremesk)  \ncall(make_glaiglair)  \ncraft(g",
+  "gold": "call(make_glaiglair)\ncall(make_bredrator)\ncraft(garakom)"
+ }
+]

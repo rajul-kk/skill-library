@@ -20,6 +20,17 @@ FORMAT_EXAMPLE = (
     "craft(lamp)\n"
 )
 
+# Added after the first pilot (PROTOCOL_sweep section 12): without it the model copied the call() of the first example.
+NO_SKILL_EXAMPLE = (
+    "Example 2 (a different world, no known skills):\n"
+    "Known skills:\n"
+    "(none)\n"
+    "Task: Collect 3 wood from the forest.\n"
+    "Program:\n"
+    "goto(forest)\n"
+    "gather(wood, 3)\n"
+)
+
 _STOP = {"a", "an", "the", "from", "make", "collect", "gather", "craft", "goto", "call", "of", "to"}
 _WORD = re.compile(r"[a-z]+")
 
@@ -66,15 +77,17 @@ def skills_block(arm_prompt: str, task: GenSkill, library: Sequence[GenSkill], k
 def build_prompt(world: WorldSpec, arm_prompt: str, task: GenSkill, library: Sequence[GenSkill], k: int) -> str:
     """Grammar, format example, the arm's skills block, then the task with its own skill banned.
 
-    The rules line was revised after the first pilot (PROTOCOL_sweep section 12): the model called the banned skill it was
-    asked to write, copying the example's call(), and wrote prose after the program."""
+    Revised after the first pilot (PROTOCOL_sweep section 12): the model called the banned skill it was asked to write
+    (naming it in the prompt primed the call), copied the example's call(), and wrote prose after the program. The ban
+    is still enforced by the executor."""
     return (
         f"{world.dsl_reference()}\n"
         f"{FORMAT_EXAMPLE}\n"
+        f"{NO_SKILL_EXAMPLE}\n"
         f"Known skills:\n{skills_block(arm_prompt, task, library, k)}\n"
         f"Task: {task.description}\n"
         f"Goal: obtain {task.task.goal_text()}\n"
-        f"Rules: call() only skills listed under Known skills, and never call {task.name}. "
+        f"Rules: call() only skills listed under Known skills, and do not call the skill for this task itself. "
         f"Answer with the program only: DSL instructions, one per line, no other text.\n"
         f"Program:\n"
     )

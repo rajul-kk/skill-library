@@ -66,7 +66,8 @@ def test_prompts_carry_what_each_arm_is_allowed_to_see(world):
     assert task.program not in ptr and "(in weights)" in ptr
     assert "Known skills:\n(none)" in none
     assert len(none) < len(ptr) < len(topk) < len(full)
-    assert f"never call {task.name}" in ptr
+    assert "do not call the skill for this task itself" in ptr
+    assert f"call {task.name}" not in none  # naming the banned skill primed the model to call it (pilot 1)
     assert in_context_names("pointers", task, lib, 8) == set()
     assert task.name in in_context_names("topk", task, lib, 8)
 
