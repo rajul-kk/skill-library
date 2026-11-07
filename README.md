@@ -20,11 +20,16 @@ the contribution. It is not run in any of the neighbouring papers.
 
 | method | final success | oldest 3 skills | prompt tokens | stored params |
 |---|---|---|---|---|
-| (a) Full in-context library | 0.85 | 0.87 | 856 | 0 |
-| (b) Sequential LoRA, no replay | 0.10 | 0.27 | 679 | 4.7 M |
-| (c) Isolated per-skill adapters (PEAM-style) | 0.73 | 0.87 | 417 | 70.8 M |
-| (d) One-shot text-to-LoRA (LatentSkill-style) | 0.71 | 0.67 | 320 | 35.4 M |
-| **ours** -- cumulative LoRA + replay | **0.73** | **0.87** | **417** | **4.7 M** |
+| (a) Full in-context library | 0.80 | 0.76 | 856 | 0 |
+| (b) Sequential LoRA, no replay | 0.09 | 0.23 | 679 | 4.7 M |
+| (c) Isolated per-skill adapters (PEAM-style) | 0.79 | 0.78 | 417 | 70.8 M |
+| (d) One-shot text-to-LoRA (LatentSkill-style) | 0.80 | 0.77 | 320 | 35.4 M |
+| **ours** -- cumulative LoRA + replay | **0.79** | **0.78** | **417** | **4.7 M** |
+
+Regenerated 2026-11-08. The previous table (in-context 0.85 / 0.87, ours 0.73 / 0.87, one-shot 0.71 / 0.67) came
+from evaluation seeds that ignored the run seed and depended on Python's per-process string hash, so every seed
+replayed the same evaluation draws and averaging over 20 seeds did not average out evaluation noise. The differences
+it showed between (a), (c), (d) and ours were that noise.
 
 The table's token column is the mean across the whole run, when the library is
 still small for much of it. At full library size the gap is wider: 1164 tokens
@@ -41,11 +46,12 @@ simulator, a replay buffer that covers the whole library reproduces isolation
 exactly; the informative regime is a library larger than the buffer, which the
 library-size sweep (`PROTOCOL_sweep.md`) tests. The stored-parameter column is
 about 8% high (grouped-query attention, `docs/sweep_design.md`); the 15x ratio
-is unaffected. It does not match the in-context ceiling on absolute success
-(0.73 vs 0.85) -- that gap is the price of moving skills out of the prompt, and
-it is reported rather than smoothed over.
+is unaffected. In the simulator it is also level with the in-context ceiling
+(0.79 vs 0.80); the 0.73 vs 0.85 gap reported earlier was evaluation noise. That
+too follows from the simulated adapter holding covered skills at full recall;
+whether a real LoRA pays a price for leaving the prompt is for the GPU runs.
 
-Without replay the same cumulative adapter collapses to 0.10. That baseline
+Without replay the same cumulative adapter collapses to 0.09. That baseline
 exists to prove the setup can detect forgetting at all; if it ever stops
 collapsing, the result means nothing, which is why it is also a test
 (`test_no_replay_forgets_and_replay_does_not`).
@@ -144,21 +150,21 @@ forking is what keeps storage flat.
 ## Ablations
 
 **Replay budget** saturates as soon as the buffer can cover the library once:
-0 -> 0.10, 6 -> 0.45, 12 -> 0.73, and 24 and 48 are no better than 12. A buffer
+0 -> 0.09, 6 -> 0.56, 12 -> 0.79, and 24 and 48 are no better than 12. A buffer
 does not need to grow with the library, it needs to *cover* it. That is the
 result that makes a fixed cap defensible rather than a compromise.
 
-**Consolidation frequency** favours fewer, larger nights: K=1 gives 0.71, K=3
-gives 0.73, K=5 gives 0.87 while also doing the least work. Consolidating after
-every single skill is both the most expensive option and the worst one, which
-suggests the self-triggered timing machinery PEAM builds is not load-bearing at
-this scale.
+**Consolidation frequency** makes no difference to retention: K=1 gives 0.80, K=3
+0.79, K=5 0.80, so fewer, larger nights are simply cheaper. (Earlier numbers,
+0.71 / 0.73 / 0.87, suggested larger nights were also better; that was shared
+evaluation noise.) The self-triggered timing machinery PEAM builds is not
+load-bearing at this scale.
 
 **Allocation under a scarce buffer** is the only place the strategy matters at
 all; at b=24 every strategy covers the whole library and they are identical, so
 this grid runs at b=8, below one example per skill. There, tier-balanced
-allocation is clearly best on the oldest skills (0.87, against 0.53 for uniform
-and 0.27 for both recency and round-robin). The round-robin default was chosen
+allocation is clearly best on the oldest skills (0.78, against 0.51 for uniform
+and 0.22 for both recency and round-robin). The round-robin default was chosen
 for its coverage guarantee and **the ablation does not support it** -- on a
 binding budget, spreading replay across tiers beats rotating through skills.
 

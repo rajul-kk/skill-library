@@ -12,7 +12,7 @@ abstract: |
   verification, a capped replay buffer interleaved with new skills each night
   matches isolation's retention while storing 15x fewer adapter parameters, and
   halves in-context cost against keeping the library in the prompt. The same
-  adapter without replay collapses to 0.10 success, which is the control that
+  adapter without replay collapses to 0.09 success, which is the control that
   makes the comparison meaningful.
 ---
 
@@ -151,11 +151,17 @@ below are labelled accordingly.
 
 | method | final success | oldest 3 | prompt tokens | stored params |
 |---|---|---|---|---|
-| (a) in-context | 0.85 | 0.87 | 856 | 0 |
-| (b) sequential, no replay | 0.10 | 0.27 | 679 | 4.7 M |
-| (c) isolated (PEAM-style) | 0.73 | 0.87 | 417 | 70.8 M |
-| (d) one-shot (LatentSkill-style) | 0.71 | 0.67 | 320 | 35.4 M |
-| **ours** | **0.73** | **0.87** | **417** | **4.7 M** |
+| (a) in-context | 0.80 | 0.76 | 856 | 0 |
+| (b) sequential, no replay | 0.09 | 0.23 | 679 | 4.7 M |
+| (c) isolated (PEAM-style) | 0.79 | 0.78 | 417 | 70.8 M |
+| (d) one-shot (LatentSkill-style) | 0.80 | 0.77 | 320 | 35.4 M |
+| **ours** | **0.79** | **0.78** | **417** | **4.7 M** |
+
+These numbers were regenerated on 2026-11-08. The earlier table (in-context 0.85 / 0.87, ours 0.73 / 0.87,
+one-shot 0.71 / 0.67) was produced with evaluation seeds that did not depend on the run seed and came from Python's
+per-process string hash, so all 20 seeds replayed the same evaluation draws and averaging over seeds did not average
+out evaluation noise. Each seed now draws its own, reproducibly; the differences between (a), (c), (d) and ours that
+the earlier table showed were that shared noise.
 
 Three things to read off this.
 
@@ -165,7 +171,7 @@ enough to cover the library, every skill is refreshed every night, so the shared
 adapter is under no more strain than separate ones. The difference is the last
 column -- 4.7 M against 70.8 M, and the gap grows with every skill added.
 
-**The control forgets.** Without replay the same adapter collapses to 0.10, with
+**The control forgets.** Without replay the same adapter collapses to 0.09, with
 normalised retention reaching zero within a few skills. This is the baseline
 that makes the rest meaningful, and it is asserted as a test: if the setup ever
 stops detecting forgetting, the study has no result to report.
@@ -175,27 +181,32 @@ still small for much of it. At full library size the gap is wider: 1164 tokens
 per attempt for the in-context baseline against 353 once skills have been
 consolidated, which is what figure 3 shows.
 
-**We do not match the ceiling.** Keeping the library in context scores 0.85
-against our 0.73. That gap is the price of moving skills out of the prompt, and
-we report it rather than choosing a metric that hides it. What is bought with it
-is roughly half the prompt cost and flat storage.
+**No measurable gap to the in-context ceiling, in the simulator.** Keeping the
+library in context scores 0.80 against our 0.79 (0.76 against 0.78 on the oldest
+skills). An earlier version of this table reported a 0.85 vs 0.73 gap and called
+it the price of moving skills out of the prompt; that gap was evaluation noise
+shared across seeds (see above). This is a property of the simulated adapter,
+whose recall of a covered skill is held at 1.0; whether a real LoRA pays a price
+for leaving the prompt is what the GPU runs and the library-size sweep measure.
+What is bought is roughly half the prompt cost and flat storage.
 
 ## 4.2 Ablations
 
-**Replay budget** (0, 6, 12, 24, 48): 0.10, 0.45, 0.73, 0.73, 0.73. Retention
+**Replay budget** (0, 6, 12, 24, 48): 0.09, 0.56, 0.79, 0.79, 0.79. Retention
 saturates as soon as the buffer covers the library once, and buys nothing after
 that. A replay buffer does not need to grow with the library; it needs to cover
 it. This is what makes a fixed cap a design choice rather than a compromise.
 
-**Consolidation frequency** (K = 1, 3, 5): 0.71, 0.73, 0.87. Fewer, larger
-nights are both cheaper and better. Consolidating after every single skill is
-the worst and most expensive option, which suggests the self-triggered timing
-mechanism PEAM builds is not load-bearing at this scale.
+**Consolidation frequency** (K = 1, 3, 5): 0.80, 0.79, 0.80. Frequency makes no
+difference to retention here, so fewer, larger nights are simply cheaper. (An
+earlier version reported 0.71, 0.73, 0.87 and concluded that larger nights were
+also better; that was shared evaluation noise.) Either way, the self-triggered
+timing mechanism PEAM builds is not load-bearing at this scale.
 
 **Allocation under a scarce buffer.** At b=24 every allocation strategy covers
 the library and they are identical, so this grid runs at b=8, below one example
-per skill. There, tier-balanced allocation retains the oldest skills best (0.87)
-against uniform (0.53) and both recency and round-robin (0.27). Our default is
+per skill. There, tier-balanced allocation retains the oldest skills best (0.78)
+against uniform (0.51) and both recency and round-robin (0.22). Our default is
 round-robin, chosen for its coverage guarantee, and **the ablation does not
 support it**: on a binding budget, spreading replay across the tree beats
 rotating through skills.
