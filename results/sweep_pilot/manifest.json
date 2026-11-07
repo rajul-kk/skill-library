@@ -1,0 +1,59 @@
+{
+  "config": {
+    "name": "sweep_pilot",
+    "backend": "hf",
+    "models": [
+      "Qwen/Qwen2.5-1.5B-Instruct"
+    ],
+    "seeds": [
+      1000,
+      1001
+    ],
+    "seeds_by_model": {},
+    "milestones": [
+      10,
+      50
+    ],
+    "arms": [
+      "no_skill",
+      "ic_full",
+      "ic_topk",
+      "ours_b24",
+      "ours_cover",
+      "seq_no_replay",
+      "isolated"
+    ],
+    "night_every": 10,
+    "topk": 8,
+    "eval_max": 50,
+    "eval_full_up_to": 50,
+    "device": "cuda",
+    "dtype": "float16",
+    "out_dir": "runs/sweep_pilot",
+    "train": {
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ],
+      "learning_rate": 0.0002,
+      "epochs": 4,
+      "batch_size": 8,
+      "max_length": 1024,
+      "grad_clip": 1.0,
+      "grad_checkpointing": true,
+      "micro_batch_size": 2
+    },
+    "decode": {
+      "max_new_tokens": 96,
+      "batch_size": 16,
+      "max_batch_tokens": 32768
+    }
+  },
+  "gpu": "Tesla T4",
+  "notebook": "05_sweep_pilot"
+}

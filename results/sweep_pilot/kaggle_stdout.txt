@@ -1,0 +1,112 @@
+torch 2.11.0+cu130 | cuda True
+Tesla T4 15.6 GB bf16: True
+['Qwen/Qwen2.5-1.5B-Instruct'] [1000, 1001] [10, 50] ['no_skill', 'ic_full', 'ic_topk', 'ours_b24', 'ours_cover', 'seq_no_replay', 'isolated']
+seed 1000: 50 skills verified, 12 root, max 48 env steps
+seed 1001: 50 skills verified, 14 root, max 37 env steps
+loaded Qwen/Qwen2.5-1.5B-Instruct
+{
+  "prefill_tflops": 4.937755835933758,
+  "decode_batch16_seconds": 4.891007661819458,
+  "decode_mean_gen_tokens": 36.6875,
+  "train_tflops": 13.363070968055638,
+  "train_steps": 8,
+  "train_seconds": 17.690210580825806,
+  "train_loss": 1.5554289492429234,
+  "gpu": "Tesla T4"
+}
+budget assumed 10 TFLOP/s for prefill and training; rescale the protocol table by the measured values
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=10: success 0.00 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=50: success 0.02 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=10: success 0.20 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=50: success 0.20 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=10: success 0.10 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=50: success 0.06 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=10: success 0.50 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=50: success 0.28 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=10: success 0.50 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=50: success 0.32 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=10: success 0.50 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=50: success 0.14 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=10: success 0.50 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=50: success 0.18 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=10: success 0.10 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=50: success 0.02 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=10: success 0.50 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=50: success 0.16 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=10: success 0.30 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=50: success 0.08 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=10: success 0.40 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=50: success 0.14 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=10: success 0.40 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=50: success 0.26 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=10: success 0.40 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=50: success 0.00 on 50
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=10: success 0.40 on 10
+[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=50: success 0.20 on 50
+records: runs/sweep_pilot/records.jsonl
+== Qwen/Qwen2.5-1.5B-Instruct
+floor (no_skill root success >= 0.30): N=10:FLOOR(0.111), N=50:FLOOR(0.0769)
+headroom at N=10: FAILED best=ic_topk {'ic_full': 0.09090909090909091, 'ic_topk': 0.18181818181818182} vs no_skill 0
+arm               N seeds  success          95% CI   tokens   GFLOP/q  train PF
+ic_full          10     2     0.35     [0.20,0.50]      634    1723.4     0.000
+ic_full          50     2     0.18     [0.16,0.20]     2102    5920.9     0.000
+ic_topk          10     2     0.20     [0.10,0.30]      564    1531.0     0.000
+ic_topk          50     2     0.07     [0.06,0.08]      546    1479.3     0.000
+isolated         10     2     0.45     [0.40,0.50]      404    1093.1     0.146
+isolated         50     2     0.19     [0.18,0.20]      386    1043.7     0.715
+no_skill         10     2     0.05     [0.00,0.10]      244     663.5     0.000
+no_skill         50     2     0.02     [0.02,0.02]      243     661.2     0.000
+ours_b24         10     2     0.45     [0.40,0.50]      405    1096.7     0.146
+ours_b24         50     2     0.21     [0.14,0.28]      417    1142.4     1.842
+ours_cover       10     2     0.45     [0.40,0.50]      404    1093.1     0.146
+ours_cover       50     2     0.29     [0.26,0.32]      389    1051.0     2.158
+seq_no_replay    10     2     0.45     [0.40,0.50]      404    1093.1     0.146
+seq_no_replay    50     2     0.07     [0.00,0.14]      404    1100.9     0.715
+
+--- no_skill gather_kroukol (no such location 'nowhere')
+(empty)
+--- no_skill gather_skotinan (no such location 'nowhere')
+(empty)
+--- ic_full gather_kroukol (goal not met)
+goto(staikel)
+--- ic_full gather_skotinan (rebox is not at digaix)
+gather(rebox, 3)
+craft(dimusk)
+craft(rubridram)
+craft(dimusk)
+craft(rubridram)
+--- ic_topk gather_kroukol (unknown skill 'gather_kroukol')
+call(gather_kroukol)
+goto(staikel)
+gather(kroukol, 2)
+--- ic_topk gather_faver (goal not met)
+goto(ponum)
+--- ours_b24 make_gaiglil (unknown skill 'make_zunaskul')
+call(make_zunaskul)
+craft(gaiglil)
+--- ours_b24 make_draivox (need 1 gaiglil, have 0)
+call(make_tulesk)
+craft(draivox)
+--- ours_cover make_gaiglil ('meige' is not gatherable)
+goto(digaix)
+gather(meige, 2)
+call(gather_meige)
+craft(gaiglil)
+--- ours_cover make_draivox (unknown skill 'make_meplupou')
+goto(ponum)
+gather(skotinan, 2)
+call(make_meplupou)
+craft(draivox)
+--- seq_no_replay gather_rebox ('box' is not gatherable)
+goto(ponum)
+gather(box, 3)
+--- seq_no_replay make_gaiglil (unknown skill 'make_kladinan')
+call(make_kladinan)
+craft(gaiglil)
+--- isolated make_gaiglil (unknown skill 'make_gaiglil')
+call(make_naizi)
+craft(gaiglil)
+--- isolated make_draivox (need 1 gaiglil, have 0)
+call(make_rubridram)
+craft(draivox)
+download /kaggle/working/sweep_pilot_outputs.zip

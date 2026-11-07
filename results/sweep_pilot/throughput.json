@@ -1,0 +1,10 @@
+{
+  "prefill_tflops": 4.937755835933758,
+  "decode_batch16_seconds": 4.891007661819458,
+  "decode_mean_gen_tokens": 36.6875,
+  "train_tflops": 13.363070968055638,
+  "train_steps": 8,
+  "train_seconds": 17.690210580825806,
+  "train_loss": 1.5554289492429234,
+  "gpu": "Tesla T4"
+}
