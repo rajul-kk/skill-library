@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from env.reference import REFERENCE_PROGRAMS, verify_reference
@@ -93,6 +95,14 @@ def test_buffer_survives_a_state_round_trip():
     restored = ReplayBuffer.from_state_dict(buf.state_dict())
     assert restored.skills == buf.skills
     assert len(restored) == len(buf)
+
+
+def test_uniform_sampling_continues_identically_after_a_restore():
+    buf = make_buffer([f"s{i}" for i in range(12)], per_skill=1, max_total=4, strategy="uniform")
+    buf.sample()
+    restored = ReplayBuffer.from_state_dict(json.loads(json.dumps(buf.state_dict())))
+    for _ in range(3):
+        assert [e.skill for e in restored.sample()] == [e.skill for e in buf.sample()]
 
 
 # ---------------------------- consolidation ---------------------------- #

@@ -115,6 +115,7 @@ class ReplayBuffer:
             "order": self.order,
             "tier": self.tier,
             "cursor": self._cursor,
+            "rng": _jsonable(self._rng.getstate()),
             "pool": {
                 k: [e.__dict__ for e in v] for k, v in self.pool.items()
             },
@@ -126,5 +127,15 @@ class ReplayBuffer:
         buf.order = list(d["order"])
         buf.tier = {k: int(v) for k, v in d["tier"].items()}
         buf._cursor = int(d.get("cursor", 0))
+        if "rng" in d:  # older checkpoints lack it and restart the uniform strategy from the seed
+            buf._rng.setstate(_tupled(d["rng"]))
         buf.pool = {k: [Example(**e) for e in v] for k, v in d["pool"].items()}
         return buf
+
+
+def _jsonable(state):
+    return [_jsonable(x) for x in state] if isinstance(state, tuple) else state
+
+
+def _tupled(state):
+    return tuple(_tupled(x) for x in state) if isinstance(state, list) else state
