@@ -12,6 +12,7 @@ eval_full_up_to: 50
 device: cuda
 dtype: float16
 out_dir: runs/sweep_full
+prompt_wrapper: chat              # PROTOCOL_sweep section 12, 2026-11-08
 train:
   rank: 16
   alpha: 32

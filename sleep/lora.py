@@ -45,11 +45,17 @@ def build_peft_model(model, config: LoRAConfig, adapter_name: str = "default"):
 
 
 def encode(tokenizer, example: Example, max_length: int):
-    """Tokenise prompt+target, masking the prompt out of the loss."""
+    """Tokenise prompt+target, masking the prompt out of the loss.
+
+    The target ends with the tokenizer's EOS token, which generation stops on. Without it the adapter learned each
+    program but not where it ends, and kept writing lines after a correct program (sweep pilot 2, PROTOCOL_sweep
+    section 12)."""
     import torch
 
     prompt_ids = tokenizer(example.prompt, add_special_tokens=False)["input_ids"]
     target_ids = tokenizer(example.target + "\n", add_special_tokens=False)["input_ids"]
+    if getattr(tokenizer, "eos_token_id", None) is not None:
+        target_ids = target_ids + [tokenizer.eos_token_id]
     input_ids = (prompt_ids + target_ids)[:max_length]
     labels = ([-100] * len(prompt_ids) + target_ids)[:max_length]
     return {

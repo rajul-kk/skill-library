@@ -69,6 +69,14 @@ def test_prompt_tokens_are_masked_out_of_the_loss(tiny):
     assert labels[-1] != -100
 
 
+def test_targets_end_with_eos_so_the_model_learns_to_stop(tiny):
+    # without it a trained adapter wrote the right program and kept going (sweep pilot 2)
+    _, tokenizer = tiny
+    encoded = encode(tokenizer, examples(1)[0], max_length=512)
+    assert encoded["input_ids"].tolist()[-1] == tokenizer.eos_token_id
+    assert encoded["labels"].tolist()[-1] == tokenizer.eos_token_id
+
+
 def test_a_night_trains_only_the_adapter(tiny):
     model, tokenizer = tiny
     backend = LoRAAdapterBackend(model, tokenizer, LoRAConfig(rank=4, batch_size=2))
