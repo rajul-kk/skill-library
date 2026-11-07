@@ -1,6 +1,7 @@
 """Evaluation and metrics."""
 from __future__ import annotations
 
+import zlib
 from dataclasses import dataclass, field
 from statistics import mean
 from typing import Callable, Dict, List, Optional
@@ -61,6 +62,12 @@ class Snapshot:
         }
 
 
+def eval_seed(night: int, skill: str, repeat: int) -> int:
+    """Seed for one evaluation attempt. Stable across processes: hash() of a string is randomised per process
+    (PYTHONHASHSEED), which made every evaluation differ between runs."""
+    return zlib.crc32(f"{night}|{skill}|{repeat}".encode("utf-8")) % (2**31)
+
+
 def evaluate_library(
     library: SkillLibrary,
     policy_factory: Callable[[int], object],
@@ -83,7 +90,7 @@ def evaluate_library(
         task = TASKS[skill.task]
         successes, tokens = [], []
         for r in range(repeats):
-            policy = policy_factory(hash((night, skill.name, r)) % (2**31))
+            policy = policy_factory(eval_seed(night, skill.name, r))
             ok, _, tok, _, _, _ = attempt_task(task, library, policy, eval_config)
             successes.append(1.0 if ok else 0.0)
             tokens.append(tok)

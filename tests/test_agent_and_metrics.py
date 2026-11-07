@@ -134,3 +134,28 @@ def test_forward_transfer_reports_attempts_to_first_success():
     transfer = forward_transfer(loop.episodes, loop.library)
     assert transfer["tasks_solved"] == 15
     assert 1.0 <= transfer["mean_attempts_all"] <= 4.0
+
+
+_EVAL_SCRIPT = """
+import json, sys
+sys.path.insert(0, '.')
+from tests.test_agent_and_metrics import run_for_snapshots
+from sleep import SimulatedAdapter, SleepConfig
+from sleep.replay import ReplayConfig
+snaps = run_for_snapshots(lambda: SimulatedAdapter(), SleepConfig(every_k_tasks=3, replay=ReplayConfig(enabled=False, per_skill=0, max_total=0)))
+print(json.dumps([s.to_dict() for s in snaps]))
+"""
+
+
+def test_evaluation_does_not_depend_on_python_hash_randomisation():
+    import os
+    import subprocess
+    import sys
+
+    outs = []
+    for hashseed in ("1", "2"):
+        env = dict(os.environ, PYTHONHASHSEED=hashseed)
+        r = subprocess.run([sys.executable, "-c", _EVAL_SCRIPT], capture_output=True, text=True, env=env)
+        assert r.returncode == 0, r.stderr
+        outs.append(r.stdout)
+    assert outs[0] == outs[1]
