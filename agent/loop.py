@@ -91,6 +91,7 @@ class VoyagerLoop:
         config: Optional[LoopConfig] = None,
         library: Optional[SkillLibrary] = None,
         on_night: Optional[Callable[[NightRecord, SkillLibrary], None]] = None,
+        first_episode: int = 0,
     ) -> None:
         self.policy = policy
         self.consolidator = consolidator
@@ -98,6 +99,11 @@ class VoyagerLoop:
         self.library = library if library is not None else SkillLibrary()
         self.episodes: List[EpisodeRecord] = []
         self.on_night = on_night
+        self.first_episode = first_episode  # > 0 when a resumed run continues an earlier session's numbering
+
+    @property
+    def next_episode(self) -> int:
+        return self.first_episode + len(self.episodes)
 
     @property
     def night(self) -> int:
@@ -148,7 +154,7 @@ class VoyagerLoop:
     ):
         """One pass in prerequisite order, then retries of what is still unlearned."""
         tasks = tasks or curriculum_order()
-        episode = len(self.episodes)
+        episode = self.next_episode
         for task in tasks:
             self.run_episode(task, episode)
             episode += 1
@@ -166,7 +172,7 @@ class VoyagerLoop:
         if not self.consolidator.pending:
             return None
         night = self.consolidator.run_night(
-            self.library, episode if episode is not None else len(self.episodes)
+            self.library, episode if episode is not None else self.next_episode
         )
         if night is not None and self.on_night is not None:
             self.on_night(night, self.library)

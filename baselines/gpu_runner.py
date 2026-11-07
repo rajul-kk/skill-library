@@ -135,16 +135,20 @@ class GPURun:
         self.seed = (run_cfg.get("seeds") or [0])[0]
         self.snapshots: List[dict] = []
         self.library = SkillLibrary()
+        self.next_episode = 0
 
     def resume(self) -> Optional[int]:
         """Reload the newest night, if there is one. Returns the night number."""
         night = latest_night(self.root)
         if night is None:
             return None
-        self.library, _ = load_night(self.root, night, self.consolidator)
+        self.library, manifest = load_night(self.root, night, self.consolidator)
+        self.next_episode = manifest.episode + 1
         snapshot_file = self.root / "snapshots.json"
         if snapshot_file.exists():
-            self.snapshots = json.loads(snapshot_file.read_text(encoding="utf-8"))
+            # snapshots are written before the night's checkpoint commits; drop any whose checkpoint never landed
+            snapshots = json.loads(snapshot_file.read_text(encoding="utf-8"))
+            self.snapshots = [s for s in snapshots if s["night"] <= night]
         return night
 
     def _policy(self, seed: int):
@@ -164,6 +168,12 @@ class GPURun:
             seed=self.seed,
         )
         self.snapshots.append(snapshot.to_dict())
+        # snapshot first, then the checkpoint (whose manifest is the commit marker): a crash in between leaves an
+        # extra snapshot that resume() drops, never a checkpointed night without its snapshot
+        tmp = self.root / "snapshots.json.tmp"
+        tmp.parent.mkdir(parents=True, exist_ok=True)
+        tmp.write_text(json.dumps(self.snapshots, indent=2), encoding="utf-8")
+        tmp.replace(self.root / "snapshots.json")
         save_night(
             self.root,
             record.night,
@@ -181,19 +191,20 @@ class GPURun:
                 extra={"loss": record.stats.loss, "seconds": record.stats.seconds},
             ),
         )
-        (self.root / "snapshots.json").write_text(
-            json.dumps(self.snapshots, indent=2), encoding="utf-8"
-        )
 
     def run(self, max_nights: Optional[int] = None) -> VoyagerLoop:
         """Run the curriculum, optionally stopping after `max_nights` nights."""
         start_night = self.consolidator.night_count
         loop = VoyagerLoop(
-            self._policy(self.seed), self.consolidator, self.loop_config, self.library
+            self._policy(self.seed), self.consolidator, self.loop_config, self.library,
+            first_episode=self.next_episode,
         )
+
+        last_night_episode = [-1]
 
         def on_night(record, library):
             self._on_night(record, library)
+            last_night_episode[0] = record.episode
             if max_nights is not None and record.night - start_night >= max_nights:
                 raise NightBudgetReached()
 
@@ -206,4 +217,6 @@ class GPURun:
         except NightBudgetReached:
             pass
         self.library = loop.library
+        # NightBudgetReached fires before the night's episode is appended to loop.episodes
+        self.next_episode = max(loop.next_episode, last_night_episode[0] + 1)
         return loop

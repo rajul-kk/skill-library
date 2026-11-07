@@ -115,6 +115,32 @@ def test_the_next_session_resumes_where_the_last_one_stopped(tmp_path):
     assert second.snapshots
 
 
+def test_episode_numbers_continue_across_sessions(tmp_path):
+    config = base_config(tmp_path)
+    first = GPURun(config, "ours", tiny_model(), CharTokenizer(), policy_factory=ScriptedPolicy)
+    first.run(max_nights=1)
+    second = GPURun(config, "ours", tiny_model(), CharTokenizer(), policy_factory=ScriptedPolicy)
+    second.resume()
+    loop = second.run(max_nights=1)
+    m1 = json.loads((second.root / "night_001" / "manifest.json").read_text())
+    m2 = json.loads((second.root / "night_002" / "manifest.json").read_text())
+    assert m2["episode"] > m1["episode"]
+    assert loop.episodes[0].episode == m1["episode"] + 1
+    assert [s["night"] for s in second.snapshots] == [1, 2]
+
+
+def test_resume_drops_snapshots_of_nights_that_were_never_checkpointed(tmp_path):
+    config = base_config(tmp_path)
+    first = GPURun(config, "ours", tiny_model(), CharTokenizer(), policy_factory=ScriptedPolicy)
+    first.run(max_nights=1)
+    # a crash after the snapshot was written but before night 2's manifest
+    snaps = json.loads((first.root / "snapshots.json").read_text())
+    (first.root / "snapshots.json").write_text(json.dumps(snaps + [dict(snaps[0], night=2)]))
+    second = GPURun(config, "ours", tiny_model(), CharTokenizer(), policy_factory=ScriptedPolicy)
+    assert second.resume() == 1
+    assert [s["night"] for s in second.snapshots] == [1]
+
+
 def test_resuming_a_run_that_never_started_returns_nothing(tmp_path):
     run = GPURun(base_config(tmp_path), "ours", tiny_model(), CharTokenizer())
     assert run.resume() is None
