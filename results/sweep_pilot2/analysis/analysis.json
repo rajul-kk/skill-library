@@ -1,0 +1,2516 @@
+{
+  "models": {
+    "Qwen/Qwen2.5-1.5B-Instruct": {
+      "checks": {
+        "floor": {
+          "10": {
+            "check": "floor",
+            "no_skill_root_success": 1.0,
+            "threshold": 0.3,
+            "n_root": 9,
+            "passed": true
+          },
+          "50": {
+            "check": "floor",
+            "no_skill_root_success": 1.0,
+            "threshold": 0.3,
+            "n_root": 26,
+            "passed": true
+          }
+        },
+        "headroom": {
+          "milestone": 10,
+          "check": "headroom",
+          "no_skill_crafted_success": 0.0,
+          "in_context_crafted_success": {
+            "ic_full": 0.2727272727272727,
+            "ic_topk": 0.2727272727272727
+          },
+          "best_arm": "ic_full",
+          "margin": 0.2,
+          "passed": true
+        }
+      },
+      "milestones_in_analysis": [
+        10,
+        50
+      ],
+      "model_dropped": false,
+      "table": [
+        {
+          "arm": "ic_full",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.39999999999999997,
+          "success_lo": 0.1,
+          "success_hi": 0.7,
+          "prompt_tokens": 667.75,
+          "inf_tokens": 690.95,
+          "inf_gflops": 1863.24094976,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "ic_full",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.09,
+          "success_lo": 0.08,
+          "success_hi": 0.1,
+          "prompt_tokens": 2125.56,
+          "inf_tokens": 2143.7200000000003,
+          "inf_gflops": 6022.22220623872,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "ic_topk",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.4,
+          "success_lo": 0.3,
+          "success_hi": 0.5,
+          "prompt_tokens": 601.1,
+          "inf_tokens": 619.45,
+          "inf_gflops": 1665.5324667904,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "ic_topk",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.24,
+          "success_lo": 0.22,
+          "success_hi": 0.26,
+          "prompt_tokens": 585.2,
+          "inf_tokens": 605.88,
+          "inf_gflops": 1629.50385598464,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "isolated",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.1,
+          "success_lo": 0.0,
+          "success_hi": 0.2,
+          "prompt_tokens": 456.95000000000005,
+          "inf_tokens": 522.95,
+          "inf_gflops": 1429.8646614016002,
+          "train_pflops_cum": 0.179740071788544
+        },
+        {
+          "arm": "isolated",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.08,
+          "success_lo": 0.04,
+          "success_hi": 0.12,
+          "prompt_tokens": 444.35,
+          "inf_tokens": 508.59000000000003,
+          "inf_gflops": 1390.01412673536,
+          "train_pflops_cum": 0.885030705414144
+        },
+        {
+          "arm": "no_skill",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.45,
+          "success_lo": 0.4,
+          "success_hi": 0.5,
+          "prompt_tokens": 294.75,
+          "inf_tokens": 311.15,
+          "inf_gflops": 831.847940096,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "no_skill",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.26,
+          "success_lo": 0.24,
+          "success_hi": 0.28,
+          "prompt_tokens": 293.56,
+          "inf_tokens": 310.5,
+          "inf_gflops": 830.3630018150401,
+          "train_pflops_cum": 0.0
+        },
+        {
+          "arm": "ours_b24",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.1,
+          "success_lo": 0.0,
+          "success_hi": 0.2,
+          "prompt_tokens": 456.95000000000005,
+          "inf_tokens": 522.95,
+          "inf_gflops": 1429.8646614016002,
+          "train_pflops_cum": 0.179740071788544
+        },
+        {
+          "arm": "ours_b24",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.0,
+          "success_lo": 0.0,
+          "success_hi": 0.0,
+          "prompt_tokens": 444.35,
+          "inf_tokens": 531.54,
+          "inf_gflops": 1463.06985320448,
+          "train_pflops_cum": 2.278649082888192
+        },
+        {
+          "arm": "ours_cover",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.1,
+          "success_lo": 0.0,
+          "success_hi": 0.2,
+          "prompt_tokens": 456.95000000000005,
+          "inf_tokens": 522.95,
+          "inf_gflops": 1429.8646614016002,
+          "train_pflops_cum": 0.179740071788544
+        },
+        {
+          "arm": "ours_cover",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.0,
+          "success_lo": 0.0,
+          "success_hi": 0.0,
+          "prompt_tokens": 444.35,
+          "inf_tokens": 535.5799999999999,
+          "inf_gflops": 1475.94832592896,
+          "train_pflops_cum": 2.66887578968064
+        },
+        {
+          "arm": "seq_no_replay",
+          "milestone": 10,
+          "seeds": 2,
+          "success": 0.1,
+          "success_lo": 0.0,
+          "success_hi": 0.2,
+          "prompt_tokens": 456.95000000000005,
+          "inf_tokens": 522.95,
+          "inf_gflops": 1429.8646614016002,
+          "train_pflops_cum": 0.179740071788544
+        },
+        {
+          "arm": "seq_no_replay",
+          "milestone": 50,
+          "seeds": 2,
+          "success": 0.0,
+          "success_lo": 0.0,
+          "success_hi": 0.0,
+          "prompt_tokens": 444.35,
+          "inf_tokens": 521.0699999999999,
+          "inf_gflops": 1429.7486696448,
+          "train_pflops_cum": 0.885030705414144
+        }
+      ],
+      "primary": {
+        "ours_b24_vs_ic_full": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.0125,
+            "ratio": {
+              "10": {
+                "point": 0.33031360550721867,
+                "lo": 0.0,
+                "hi": 0.39755781283769187
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.14433589516053552,
+                  "lo": 0.0,
+                  "hi": 0.1731951978353342
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.28939417723802974,
+                  "lo": 0.0,
+                  "hi": 0.3487133433783408
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.32172799880853276,
+                  "lo": 0.0,
+                  "hi": 0.38803754596609474
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.3253632611807827,
+                  "lo": 0.0,
+                  "hi": 0.39246333232665104
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.3257722566437845,
+                  "lo": 0.0,
+                  "hi": 0.3929613261980039
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "ours_b24_vs_ic_topk": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.0125,
+            "ratio": {
+              "10": {
+                "point": 0.2961325174490869,
+                "lo": 0.0,
+                "hi": 0.5013615733736763
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.12902041442578435,
+                  "lo": 0.0,
+                  "hi": 0.21770605660193842
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.258686563298278,
+                  "lo": 0.0,
+                  "hi": 0.43833205435380806
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.2875894433085188,
+                  "lo": 0.0,
+                  "hi": 0.48776250728435155
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.29083896801817255,
+                  "lo": 0.0,
+                  "hi": 0.49332571289260063
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.0125,
+              "ratio": {
+                "10": {
+                  "point": 0.2912045649757143,
+                  "lo": 0.0,
+                  "hi": 0.4939516903059423
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        }
+      },
+      "secondary": {
+        "ours_cover_vs_ic_full": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.33031360550721867,
+                "lo": 0.0,
+                "hi": 0.39755781283769187
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.14433589516053552,
+                  "lo": 0.0,
+                  "hi": 0.1731951978353342
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.28939417723802974,
+                  "lo": 0.0,
+                  "hi": 0.3487133433783408
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.32172799880853276,
+                  "lo": 0.0,
+                  "hi": 0.38803754596609474
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3253632611807827,
+                  "lo": 0.0,
+                  "hi": 0.39246333232665104
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3257722566437845,
+                  "lo": 0.0,
+                  "hi": 0.3929613261980039
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "ours_cover_vs_ic_topk": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.2961325174490869,
+                "lo": 0.0,
+                "hi": 0.5013615733736763
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.12902041442578435,
+                  "lo": 0.0,
+                  "hi": 0.21770605660193842
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.258686563298278,
+                  "lo": 0.0,
+                  "hi": 0.43833205435380806
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2875894433085188,
+                  "lo": 0.0,
+                  "hi": 0.48776250728435155
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.29083896801817255,
+                  "lo": 0.0,
+                  "hi": 0.49332571289260063
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2912045649757143,
+                  "lo": 0.0,
+                  "hi": 0.4939516903059423
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "isolated_vs_ic_full": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.33031360550721867,
+                "lo": 0.0,
+                "hi": 0.39755781283769187
+              },
+              "50": {
+                "point": 3.74668964959769,
+                "lo": 1.6586963383838385,
+                "hi": 6.424279835390946
+              }
+            },
+            "wins_at": [
+              50
+            ],
+            "n_star": 50,
+            "n_star_interpolated": 20.83580447619612,
+            "n_star_ci": [
+              50.0,
+              50.0
+            ],
+            "n_star_distribution": {
+              "50": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.14433589516053552,
+                  "lo": 0.0,
+                  "hi": 0.1731951978353342
+                },
+                "50": {
+                  "point": 0.5227459481976116,
+                  "lo": 0.23179045812926447,
+                  "hi": 0.8948870232687863
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.28939417723802974,
+                  "lo": 0.0,
+                  "hi": 0.3487133433783408
+                },
+                "50": {
+                  "point": 2.3529586449897932,
+                  "lo": 1.0411762588054332,
+                  "hi": 4.036240502645246
+                }
+              },
+              "wins_at": [
+                50
+              ],
+              "n_star": 50,
+              "n_star_interpolated": 25.91627140806292,
+              "n_star_ci": [
+                50.0,
+                50.0
+              ],
+              "n_star_distribution": {
+                "50": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.32172799880853276,
+                  "lo": 0.0,
+                  "hi": 0.38803754596609474
+                },
+                "50": {
+                  "point": 3.620577708128913,
+                  "lo": 1.5998125122658426,
+                  "hi": 6.219490019636342
+                }
+              },
+              "wins_at": [
+                50
+              ],
+              "n_star": 50,
+              "n_star_interpolated": 21.254732229672438,
+              "n_star_ci": [
+                50.0,
+                50.0
+              ],
+              "n_star_distribution": {
+                "50": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3253632611807827,
+                  "lo": 0.0,
+                  "hi": 0.39246333232665104
+                },
+                "50": {
+                  "point": 3.826737084911154,
+                  "lo": 1.6905160349592934,
+                  "hi": 6.5751474038845865
+                }
+              },
+              "wins_at": [
+                50
+              ],
+              "n_star": 50,
+              "n_star_interpolated": 20.816366966052836,
+              "n_star_ci": [
+                50.0,
+                50.0
+              ],
+              "n_star_distribution": {
+                "50": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3257722566437845,
+                  "lo": 0.0,
+                  "hi": 0.3929613261980039
+                },
+                "50": {
+                  "point": 3.8511021597442263,
+                  "lo": 1.701233112746413,
+                  "hi": 6.617191814535555
+                }
+              },
+              "wins_at": [
+                50
+              ],
+              "n_star": 50,
+              "n_star_interpolated": 20.767928257870633,
+              "n_star_ci": [
+                50.0,
+                50.0
+              ],
+              "n_star_distribution": {
+                "50": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": 223.3193449804696,
+              "lo": 113.83702081667909,
+              "hi": 904.05462604653,
+              "p_never": 0.0
+            }
+          }
+        },
+        "isolated_vs_ic_topk": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.2961325174490869,
+                "lo": 0.0,
+                "hi": 0.5013615733736763
+              },
+              "50": {
+                "point": 0.3970978587860555,
+                "lo": 0.21621039944903583,
+                "hi": 0.5508072174738841
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.12902041442578435,
+                  "lo": 0.0,
+                  "hi": 0.21770605660193842
+                },
+                "50": {
+                  "point": 0.05304208163013621,
+                  "lo": 0.028998140327575216,
+                  "hi": 0.07327726072251119
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.258686563298278,
+                  "lo": 0.0,
+                  "hi": 0.43833205435380806
+                },
+                "50": {
+                  "point": 0.2387504388129728,
+                  "lo": 0.1302563336828223,
+                  "hi": 0.33050501343817124
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2875894433085188,
+                  "lo": 0.0,
+                  "hi": 0.48776250728435155
+                },
+                "50": {
+                  "point": 0.3673734421184419,
+                  "lo": 0.20014451027412,
+                  "hi": 0.5092790261559768
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.29083896801817255,
+                  "lo": 0.0,
+                  "hi": 0.49332571289260063
+                },
+                "50": {
+                  "point": 0.38829205952677404,
+                  "lo": 0.21149197254887533,
+                  "hi": 0.5384018072398379
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2912045649757143,
+                  "lo": 0.0,
+                  "hi": 0.4939516903059423
+                },
+                "50": {
+                  "point": 0.39076433940321537,
+                  "lo": 0.21283273233718,
+                  "hi": 0.5418445873462491
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "seq_no_replay_vs_ic_full": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.33031360550721867,
+                "lo": 0.0,
+                "hi": 0.39755781283769187
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.14433589516053552,
+                  "lo": 0.0,
+                  "hi": 0.1731951978353342
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.28939417723802974,
+                  "lo": 0.0,
+                  "hi": 0.3487133433783408
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.32172799880853276,
+                  "lo": 0.0,
+                  "hi": 0.38803754596609474
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3253632611807827,
+                  "lo": 0.0,
+                  "hi": 0.39246333232665104
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3257722566437845,
+                  "lo": 0.0,
+                  "hi": 0.3929613261980039
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "seq_no_replay_vs_ic_topk": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.2961325174490869,
+                "lo": 0.0,
+                "hi": 0.5013615733736763
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.12902041442578435,
+                  "lo": 0.0,
+                  "hi": 0.21770605660193842
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.258686563298278,
+                  "lo": 0.0,
+                  "hi": 0.43833205435380806
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2875894433085188,
+                  "lo": 0.0,
+                  "hi": 0.48776250728435155
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.29083896801817255,
+                  "lo": 0.0,
+                  "hi": 0.49332571289260063
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2912045649757143,
+                  "lo": 0.0,
+                  "hi": 0.4939516903059423
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        }
+      },
+      "exploratory_all_milestones": {
+        "ours_b24_vs_ic_full": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.33031360550721867,
+                "lo": 0.0,
+                "hi": 0.39755781283769187
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.14433589516053552,
+                  "lo": 0.0,
+                  "hi": 0.1731951978353342
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.28939417723802974,
+                  "lo": 0.0,
+                  "hi": 0.3487133433783408
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.32172799880853276,
+                  "lo": 0.0,
+                  "hi": 0.38803754596609474
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3253632611807827,
+                  "lo": 0.0,
+                  "hi": 0.39246333232665104
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.3257722566437845,
+                  "lo": 0.0,
+                  "hi": 0.3929613261980039
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        },
+        "ours_b24_vs_ic_topk": {
+          "tokens": {
+            "metric": "tokens",
+            "horizon": "inf",
+            "sizes": [
+              10,
+              50
+            ],
+            "seeds": [
+              1000,
+              1001
+            ],
+            "alpha": 0.05,
+            "ratio": {
+              "10": {
+                "point": 0.2961325174490869,
+                "lo": 0.0,
+                "hi": 0.5013615733736763
+              },
+              "50": {
+                "point": 0.0,
+                "lo": 0.0,
+                "hi": 0.0
+              }
+            },
+            "wins_at": [],
+            "n_star": null,
+            "n_star_interpolated": null,
+            "n_star_ci": [
+              "nan",
+              "nan"
+            ],
+            "n_star_distribution": {
+              "not_reached": 1.0
+            }
+          },
+          "flops": {
+            "100": {
+              "metric": "flops",
+              "horizon": 100.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.12902041442578435,
+                  "lo": 0.0,
+                  "hi": 0.21770605660193842
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "1000": {
+              "metric": "flops",
+              "horizon": 1000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.258686563298278,
+                  "lo": 0.0,
+                  "hi": 0.43833205435380806
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "10000": {
+              "metric": "flops",
+              "horizon": 10000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2875894433085188,
+                  "lo": 0.0,
+                  "hi": 0.48776250728435155
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "100000": {
+              "metric": "flops",
+              "horizon": 100000.0,
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.29083896801817255,
+                  "lo": 0.0,
+                  "hi": 0.49332571289260063
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            },
+            "inf": {
+              "metric": "flops",
+              "horizon": "inf",
+              "sizes": [
+                10,
+                50
+              ],
+              "seeds": [
+                1000,
+                1001
+              ],
+              "alpha": 0.05,
+              "ratio": {
+                "10": {
+                  "point": 0.2912045649757143,
+                  "lo": 0.0,
+                  "hi": 0.4939516903059423
+                },
+                "50": {
+                  "point": 0.0,
+                  "lo": 0.0,
+                  "hi": 0.0
+                }
+              },
+              "wins_at": [],
+              "n_star": null,
+              "n_star_interpolated": null,
+              "n_star_ci": [
+                "nan",
+                "nan"
+              ],
+              "n_star_distribution": {
+                "not_reached": 1.0
+              }
+            }
+          },
+          "break_even_queries": {
+            "10": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            },
+            "50": {
+              "point": "inf",
+              "lo": "nan",
+              "hi": "nan",
+              "p_never": 1.0
+            }
+          }
+        }
+      }
+    }
+  },
+  "primary": {
+    "ours": "ours_b24",
+    "comparators": [
+      "ic_full",
+      "ic_topk"
+    ],
+    "horizon": 10000.0,
+    "alpha": 0.0125
+  }
+}

@@ -1,0 +1,220 @@
+[{"stream_name":"stderr","time":7.019803072,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.019842635,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.984803255,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.984833855,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.984844806,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.984865327,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.585318472,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.585345302,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.585350308,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.585354361,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":25.989429759,"data":"torch 2.11.0+cu130 | cuda True\n"}
+,{"stream_name":"stdout","time":26.078312216,"data":"Tesla T4 15.6 GB bf16: True\n"}
+,{"stream_name":"stdout","time":26.114510577,"data":"['Qwen/Qwen2.5-1.5B-Instruct'] [1000, 1001] [10, 50] ['no_skill', 'ic_full', 'ic_topk', 'ours_b24', 'ours_cover', 'seq_no_replay', 'isolated']\n"}
+,{"stream_name":"stdout","time":26.154738602,"data":"seed 1000: 50 skills verified, 12 root, max 48 env steps\n"}
+,{"stream_name":"stdout","time":26.154759109,"data":"seed 1001: 50 skills verified, 14 root, max 37 env steps\n"}
+,{"stream_name":"stderr","time":47.659666528,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":47.65971626,"data":"\n"}
+,{"stream_name":"stderr","time":47.659723564,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":48.903318785,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":48.903345522,"data":"\n"}
+,{"stream_name":"stderr","time":48.903351025,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stdout","time":73.872229129,"data":"loaded Qwen/Qwen2.5-1.5B-Instruct\n"}
+,{"stream_name":"stdout","time":104.587014032,"data":"{\n"}
+,{"stream_name":"stdout","time":104.587044956,"data":"  \"prefill_tflops\": 6.715995524766686,\n"}
+,{"stream_name":"stdout","time":104.587054245,"data":"  \"decode_batch16_seconds\": 5.289208889007568,\n"}
+,{"stream_name":"stdout","time":104.587057505,"data":"  \"decode_mean_gen_tokens\": 53.625,\n"}
+,{"stream_name":"stdout","time":104.587060399,"data":"  \"train_tflops\": 13.414383797003934,\n"}
+,{"stream_name":"stdout","time":104.587063404,"data":"  \"train_steps\": 8,\n"}
+,{"stream_name":"stdout","time":104.58706629,"data":"  \"train_seconds\": 20.32972526550293,\n"}
+,{"stream_name":"stdout","time":104.587069217,"data":"  \"train_loss\": 1.6599894461105578,\n"}
+,{"stream_name":"stdout","time":104.587078995,"data":"  \"gpu\": \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":104.587081516,"data":"}\n"}
+,{"stream_name":"stdout","time":104.587083792,"data":"budget assumed 10 TFLOP/s for prefill and training; rescale the protocol table by the measured values\n"}
+,{"stream_name":"stdout","time":106.360862323,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":112.763321624,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=50: success 0.24 on 50\n"}
+,{"stream_name":"stdout","time":115.603537498,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=10: success 0.10 on 10\n"}
+,{"stream_name":"stdout","time":155.40812583,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=50: success 0.10 on 50\n"}
+,{"stream_name":"stdout","time":157.815838872,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=10: success 0.30 on 10\n"}
+,{"stream_name":"stdout","time":174.550405282,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=50: success 0.22 on 50\n"}
+,{"stream_name":"stdout","time":194.536181758,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=10: success 0.00 on 10\n"}
+,{"stream_name":"stdout","time":376.212666677,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":396.249634049,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=10: success 0.00 on 10\n"}
+,{"stream_name":"stdout","time":605.998505478,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":626.179264565,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=10: success 0.00 on 10\n"}
+,{"stream_name":"stdout","time":704.981187675,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":725.151914935,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=10: success 0.00 on 10\n"}
+,{"stream_name":"stdout","time":809.759713103,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=50: success 0.04 on 50\n"}
+,{"stream_name":"stdout","time":811.005538403,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=10: success 0.40 on 10\n"}
+,{"stream_name":"stdout","time":815.655378385,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=50: success 0.28 on 50\n"}
+,{"stream_name":"stdout","time":818.652280118,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=10: success 0.70 on 10\n"}
+,{"stream_name":"stdout","time":863.317079305,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=50: success 0.08 on 50\n"}
+,{"stream_name":"stdout","time":866.185708516,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":877.091539035,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=50: success 0.26 on 50\n"}
+,{"stream_name":"stdout","time":897.113221666,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=10: success 0.20 on 10\n"}
+,{"stream_name":"stdout","time":1079.772825858,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":1099.743895599,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=10: success 0.20 on 10\n"}
+,{"stream_name":"stdout","time":1312.925075548,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":1333.191980163,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=10: success 0.20 on 10\n"}
+,{"stream_name":"stdout","time":1412.209827788,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=50: success 0.00 on 50\n"}
+,{"stream_name":"stdout","time":1432.44865295,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=10: success 0.20 on 10\n"}
+,{"stream_name":"stdout","time":1517.40999856,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=50: success 0.12 on 50\n"}
+,{"stream_name":"stdout","time":1517.410032044,"data":"records: runs/sweep_pilot/records.jsonl\n"}
+,{"stream_name":"stdout","time":1528.637097291,"data":"== Qwen/Qwen2.5-1.5B-Instruct\n"}
+,{"stream_name":"stdout","time":1528.637125438,"data":"floor (no_skill root success \u003e= 0.30): N=10:ok(1), N=50:ok(1)\n"}
+,{"stream_name":"stdout","time":1528.637132037,"data":"headroom at N=10: ok best=ic_full {'ic_full': 0.2727272727272727, 'ic_topk': 0.2727272727272727} vs no_skill 0\n"}
+,{"stream_name":"stdout","time":1528.637137042,"data":"arm               N seeds  success          95% CI   tokens   GFLOP/q  train PF\n"}
+,{"stream_name":"stdout","time":1528.637141792,"data":"ic_full          10     2     0.40     [0.10,0.70]      691    1863.2     0.000\n"}
+,{"stream_name":"stdout","time":1528.637162721,"data":"ic_full          50     2     0.09     [0.08,0.10]     2144    6022.2     0.000\n"}
+,{"stream_name":"stdout","time":1528.637167697,"data":"ic_topk          10     2     0.40     [0.30,0.50]      619    1665.5     0.000\n"}
+,{"stream_name":"stdout","time":1528.637172193,"data":"ic_topk          50     2     0.24     [0.22,0.26]      606    1629.5     0.000\n"}
+,{"stream_name":"stdout","time":1528.637176786,"data":"isolated         10     2     0.10     [0.00,0.20]      523    1429.9     0.180\n"}
+,{"stream_name":"stdout","time":1528.637181236,"data":"isolated         50     2     0.08     [0.04,0.12]      509    1390.0     0.885\n"}
+,{"stream_name":"stdout","time":1528.637185881,"data":"no_skill         10     2     0.45     [0.40,0.50]      311     831.8     0.000\n"}
+,{"stream_name":"stdout","time":1528.637193679,"data":"no_skill         50     2     0.26     [0.24,0.28]      310     830.4     0.000\n"}
+,{"stream_name":"stdout","time":1528.637196949,"data":"ours_b24         10     2     0.10     [0.00,0.20]      523    1429.9     0.180\n"}
+,{"stream_name":"stdout","time":1528.637199964,"data":"ours_b24         50     2     0.00     [0.00,0.00]      532    1463.1     2.279\n"}
+,{"stream_name":"stdout","time":1528.637202949,"data":"ours_cover       10     2     0.10     [0.00,0.20]      523    1429.9     0.180\n"}
+,{"stream_name":"stdout","time":1528.637205942,"data":"ours_cover       50     2     0.00     [0.00,0.00]      536    1475.9     2.669\n"}
+,{"stream_name":"stdout","time":1528.637209019,"data":"seq_no_replay    10     2     0.10     [0.00,0.20]      523    1429.9     0.180\n"}
+,{"stream_name":"stdout","time":1528.637212016,"data":"seq_no_replay    50     2     0.00     [0.00,0.00]      521    1429.7     0.885\n"}
+,{"stream_name":"stdout","time":1528.637215083,"data":"[primary] ours_b24_vs_ic_full: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.9875\n"}
+,{"stream_name":"stdout","time":1528.637219837,"data":"    N=10   token ratio 0.33 [0,0.398]  FLOP ratio 0.322 [0,0.388]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637222946,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637226575,"data":"[primary] ours_b24_vs_ic_topk: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.9875\n"}
+,{"stream_name":"stdout","time":1528.637241425,"data":"    N=10   token ratio 0.296 [0,0.501]  FLOP ratio 0.288 [0,0.488]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637259343,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637263526,"data":"[secondary] ours_cover_vs_ic_full: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637267595,"data":"    N=10   token ratio 0.33 [0,0.398]  FLOP ratio 0.322 [0,0.388]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637271121,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637274715,"data":"[secondary] ours_cover_vs_ic_topk: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637278636,"data":"    N=10   token ratio 0.296 [0,0.501]  FLOP ratio 0.288 [0,0.488]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637282217,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637285751,"data":"[secondary] isolated_vs_ic_full: per-token N*=50 (interp 20.8, boot {'50': 1.0}, CI-wins at [50]); per-FLOP(H=1e4) N*=50 (boot {'50': 1.0}, CI-wins at [50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637289644,"data":"    N=10   token ratio 0.33 [0,0.398]  FLOP ratio 0.322 [0,0.388]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.63729319,"data":"    N=50   token ratio 3.75 [1.66,6.42]  FLOP ratio 3.62 [1.6,6.22]  break-even H* 223\n"}
+,{"stream_name":"stdout","time":1528.637296907,"data":"[secondary] isolated_vs_ic_topk: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637300902,"data":"    N=10   token ratio 0.296 [0,0.501]  FLOP ratio 0.288 [0,0.488]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637309277,"data":"    N=50   token ratio 0.397 [0.216,0.551]  FLOP ratio 0.367 [0.2,0.509]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637312009,"data":"[secondary] seq_no_replay_vs_ic_full: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637314676,"data":"    N=10   token ratio 0.33 [0,0.398]  FLOP ratio 0.322 [0,0.388]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637317077,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637319591,"data":"[secondary] seq_no_replay_vs_ic_topk: per-token N*=None (interp nan, boot {'not_reached': 1.0}, CI-wins at []); per-FLOP(H=1e4) N*=None (boot {'not_reached': 1.0}, CI-wins at []); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1528.637322943,"data":"    N=10   token ratio 0.296 [0,0.501]  FLOP ratio 0.288 [0,0.488]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.637338949,"data":"    N=50   token ratio 0 [0,0]  FLOP ratio 0 [0,0]  break-even H* inf\n"}
+,{"stream_name":"stdout","time":1528.63734305,"data":"\n"}
+,{"stream_name":"stdout","time":1528.660176629,"data":"--- no_skill make_gaiglil (unknown skill 'gather_wood')\n"}
+,{"stream_name":"stdout","time":1528.660196076,"data":"call(gather_wood)\n"}
+,{"stream_name":"stdout","time":1528.660204456,"data":"gather(wood, 1)\n"}
+,{"stream_name":"stdout","time":1528.66020805,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1528.660220646,"data":"--- no_skill make_draivox (unknown skill 'gather_wood')\n"}
+,{"stream_name":"stdout","time":1528.660235604,"data":"call(gather_wood)\n"}
+,{"stream_name":"stdout","time":1528.660239664,"data":"goto(workshop)\n"}
+,{"stream_name":"stdout","time":1528.660242755,"data":"craft(draivox)\n"}
+,{"stream_name":"stdout","time":1528.660245951,"data":"--- ic_full gather_kroukol (unknown skill 'gather_kroukol')\n"}
+,{"stream_name":"stdout","time":1528.660249133,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660252295,"data":"--- ic_full gather_rebox (unknown skill 'gather_rebox')\n"}
+,{"stream_name":"stdout","time":1528.660255487,"data":"call(gather_rebox)\n"}
+,{"stream_name":"stdout","time":1528.660259433,"data":"--- ic_topk gather_kroukol (unknown skill 'gather_kroukol')\n"}
+,{"stream_name":"stdout","time":1528.660263124,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660266665,"data":"--- ic_topk gather_faver (unknown skill 'gather_faver')\n"}
+,{"stream_name":"stdout","time":1528.660269967,"data":"call(gather_faver)\n"}
+,{"stream_name":"stdout","time":1528.660273552,"data":"--- ours_b24 gather_kroukol ('skotira' has no recipe)\n"}
+,{"stream_name":"stdout","time":1528.660277757,"data":"goto(staikel)\n"}
+,{"stream_name":"stdout","time":1528.660281026,"data":"gather(kroukol, 2)\n"}
+,{"stream_name":"stdout","time":1528.660283845,"data":"call(gather_faver)\n"}
+,{"stream_name":"stdout","time":1528.660286888,"data":"craft(skotira)\n"}
+,{"stream_name":"stdout","time":1528.660289872,"data":"call(make_nasena)\n"}
+,{"stream_name":"stdout","time":1528.660292835,"data":"craft(lairel)\n"}
+,{"stream_name":"stdout","time":1528.660295708,"data":"--- ours_b24 gather_skotinan ('dogma' has no recipe)\n"}
+,{"stream_name":"stdout","time":1528.660298856,"data":"goto(ponum)\n"}
+,{"stream_name":"stdout","time":1528.66030181,"data":"gather(skotinan, 3)\n"}
+,{"stream_name":"stdout","time":1528.660305484,"data":"call(gather_rebox)\n"}
+,{"stream_name":"stdout","time":1528.660309173,"data":"craft(dogma)\n"}
+,{"stream_name":"stdout","time":1528.660312975,"data":"call(make_sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660315901,"data":"call(make_koubum)\n"}
+,{"stream_name":"stdout","time":1528.660319064,"data":"call(make_maivail)\n"}
+,{"stream_name":"stdout","time":1528.660321998,"data":"call(make_vailakoul)\n"}
+,{"stream_name":"stdout","time":1528.660325208,"data":"call(make_rebox)\n"}
+,{"stream_name":"stdout","time":1528.660328647,"data":"call(make_gabrougar)\n"}
+,{"stream_name":"stdout","time":1528.660332915,"data":"call(make_fastman)\n"}
+,{"stream_name":"stdout","time":1528.660336236,"data":"call(make_treetlen)\n"}
+,{"stream_name":"stdout","time":1528.660339925,"data":"call(make_fastgaidair)\n"}
+,{"stream_name":"stdout","time":1528.660343212,"data":"call(make_tartlan)\n"}
+,{"stream_name":"stdout","time":1528.660346377,"data":"call(make_tartmeleker)\n"}
+,{"stream_name":"stdout","time":1528.660349498,"data":"--- ours_cover gather_kroukol ('skotinan' has no recipe)\n"}
+,{"stream_name":"stdout","time":1528.660352758,"data":"goto(staikel)\n"}
+,{"stream_name":"stdout","time":1528.660355988,"data":"gather(kroukol, 2)\n"}
+,{"stream_name":"stdout","time":1528.660359242,"data":"call(gather_skotinan)\n"}
+,{"stream_name":"stdout","time":1528.660362429,"data":"craft(skotinan)\n"}
+,{"stream_name":"stdout","time":1528.660365512,"data":"craft(reva)\n"}
+,{"stream_name":"stdout","time":1528.660368534,"data":"craft(demen)\n"}
+,{"stream_name":"stdout","time":1528.660371502,"data":"goto(ponum)\n"}
+,{"stream_name":"stdout","time":1528.660374516,"data":"gather(zourar, 2)\n"}
+,{"stream_name":"stdout","time":1528.660377626,"data":"craft(reva)\n"}
+,{"stream_name":"stdout","time":1528.660387025,"data":"craft(sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660390462,"data":"goto(nasan)\n"}
+,{"stream_name":"stdout","time":1528.66039358,"data":"gather(meble, 2)\n"}
+,{"stream_name":"stdout","time":1528.660396895,"data":"craft(reva)\n"}
+,{"stream_name":"stdout","time":1528.660400132,"data":"craft(kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660403473,"data":"craft(kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660406579,"data":"call(make_gaiglil)\n"}
+,{"stream_name":"stdout","time":1528.660409802,"data":"call(make_taizi)\n"}
+,{"stream_name":"stdout","time":1528.660413011,"data":"--- ours_cover gather_skotinan ('demenbron' has no recipe)\n"}
+,{"stream_name":"stdout","time":1528.660417107,"data":"goto(ponum)\n"}
+,{"stream_name":"stdout","time":1528.660420331,"data":"gather(skotinan, 3)\n"}
+,{"stream_name":"stdout","time":1528.660423977,"data":"call(gather_rebox)\n"}
+,{"stream_name":"stdout","time":1528.660427042,"data":"craft(demenbron)\n"}
+,{"stream_name":"stdout","time":1528.660430092,"data":"call(make_demenbron)\n"}
+,{"stream_name":"stdout","time":1528.660433391,"data":"call(make_brougour)\n"}
+,{"stream_name":"stdout","time":1528.660441292,"data":"call(make_sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660444955,"data":"call(make_koubum)\n"}
+,{"stream_name":"stdout","time":1528.66044818,"data":"--- seq_no_replay gather_kroukol ('dimen' has no recipe)\n"}
+,{"stream_name":"stdout","time":1528.660451594,"data":"goto(staikel)\n"}
+,{"stream_name":"stdout","time":1528.660455437,"data":"gather(kroukol, 2)\n"}
+,{"stream_name":"stdout","time":1528.660458897,"data":"craft(zourar)\n"}
+,{"stream_name":"stdout","time":1528.66046233,"data":"craft(dimen)\n"}
+,{"stream_name":"stdout","time":1528.66046566,"data":"craft(sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660469346,"data":"craft(vaira)\n"}
+,{"stream_name":"stdout","time":1528.660472523,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1528.660475926,"data":"craft(drougla)\n"}
+,{"stream_name":"stdout","time":1528.660479125,"data":"craft(kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660482355,"data":"craft(kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660485609,"data":"--- seq_no_replay gather_skotinan (need 2 kroukol, have 0)\n"}
+,{"stream_name":"stdout","time":1528.660489257,"data":"goto(ponum)\n"}
+,{"stream_name":"stdout","time":1528.660492525,"data":"gather(skotinan, 3)\n"}
+,{"stream_name":"stdout","time":1528.660496269,"data":"craft(sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660499549,"data":"craft(koubum)\n"}
+,{"stream_name":"stdout","time":1528.660502806,"data":"craft(vailakoul)\n"}
+,{"stream_name":"stdout","time":1528.660506234,"data":"craft(kabroutro)\n"}
+,{"stream_name":"stdout","time":1528.660510082,"data":"craft(maivail)\n"}
+,{"stream_name":"stdout","time":1528.660513432,"data":"--- isolated gather_kroukol (unknown skill 'gather_kroukol')\n"}
+,{"stream_name":"stdout","time":1528.660516667,"data":"goto(staikel)\n"}
+,{"stream_name":"stdout","time":1528.660519823,"data":"gather(kroukol, 2)\n"}
+,{"stream_name":"stdout","time":1528.660523203,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1528.660529577,"data":"craft(dimen)\n"}
+,{"stream_name":"stdout","time":1528.660533517,"data":"craft(zourar)\n"}
+,{"stream_name":"stdout","time":1528.660536625,"data":"craft(sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660539816,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1528.660542892,"data":"--- isolated gather_skotinan (unknown skill 'gather_skotinan')\n"}
+,{"stream_name":"stdout","time":1528.660550486,"data":"goto(ponum)\n"}
+,{"stream_name":"stdout","time":1528.660553785,"data":"gather(skotinan, 3)\n"}
+,{"stream_name":"stdout","time":1528.660557082,"data":"call(make_sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.6605602,"data":"call(make_koubum)\n"}
+,{"stream_name":"stdout","time":1528.66056323,"data":"call(make_vailakoul)\n"}
+,{"stream_name":"stdout","time":1528.66056654,"data":"call(make_maivail)\n"}
+,{"stream_name":"stdout","time":1528.660569727,"data":"call(make_kabroutro)\n"}
+,{"stream_name":"stdout","time":1528.660573412,"data":"call(make_sougaibrem)\n"}
+,{"stream_name":"stdout","time":1528.660577002,"data":"call(make_koubum)\n"}
+,{"stream_name":"stdout","time":1528.660580625,"data":"call(make_vailakoul)\n"}
+,{"stream_name":"stdout","time":1528.66058365,"data":"call(make_maivail)\n"}
+,{"stream_name":"stdout","time":1528.69517372,"data":"download /kaggle/working/sweep_pilot_outputs.zip\n"}
+,{"stream_name":"stderr","time":1534.930420461,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1534.93046554,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1535.098932838,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1535.098977184,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1535.871212871,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1535.965547918,"data":"[NbConvertApp] Writing 134578 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1538.436190325,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1538.973462128,"data":"[NbConvertApp] Writing 407277 bytes to __results__.html\n"}
+]
