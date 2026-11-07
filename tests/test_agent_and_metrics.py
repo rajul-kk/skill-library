@@ -159,3 +159,11 @@ def test_evaluation_does_not_depend_on_python_hash_randomisation():
         assert r.returncode == 0, r.stderr
         outs.append(r.stdout)
     assert outs[0] == outs[1]
+
+
+def test_evaluation_noise_differs_between_run_seeds():
+    """Each run seed must draw its own evaluation randomness, or averaging over seeds never averages it out."""
+    from analysis.metrics import eval_seed
+
+    assert eval_seed(0, 1, "craft_planks", 0) != eval_seed(1, 1, "craft_planks", 0)
+    assert eval_seed(3, 2, "mine_stone", 1) == eval_seed(3, 2, "mine_stone", 1)

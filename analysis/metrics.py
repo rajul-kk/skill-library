@@ -62,10 +62,12 @@ class Snapshot:
         }
 
 
-def eval_seed(night: int, skill: str, repeat: int) -> int:
+def eval_seed(run_seed: int, night: int, skill: str, repeat: int) -> int:
     """Seed for one evaluation attempt. Stable across processes: hash() of a string is randomised per process
-    (PYTHONHASHSEED), which made every evaluation differ between runs."""
-    return zlib.crc32(f"{night}|{skill}|{repeat}".encode("utf-8")) % (2**31)
+    (PYTHONHASHSEED), which made every evaluation differ between runs. The run seed is part of it so that each
+    seed's evaluation draws its own randomness; without it every seed replayed the same draws and averaging over
+    seeds did not average out evaluation noise."""
+    return zlib.crc32(f"{run_seed}|{night}|{skill}|{repeat}".encode("utf-8")) % (2**31)
 
 
 def evaluate_library(
@@ -90,7 +92,7 @@ def evaluate_library(
         task = TASKS[skill.task]
         successes, tokens = [], []
         for r in range(repeats):
-            policy = policy_factory(eval_seed(night, skill.name, r))
+            policy = policy_factory(eval_seed(seed, night, skill.name, r))
             ok, _, tok, _, _, _ = attempt_task(task, library, policy, eval_config)
             successes.append(1.0 if ok else 0.0)
             tokens.append(tok)
