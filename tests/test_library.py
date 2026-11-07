@@ -56,7 +56,15 @@ def test_re_adding_a_skill_keeps_its_original_learning_time(library):
     stored = library["mine_stone"]
     assert stored.body == "goto(cave)"
     assert stored.learned_at_size == original.learned_at_size
-    assert stored.consolidated_night == 2
+    # the adapter learned the old body, so the new one is not in weights yet and must be served in full
+    assert stored.consolidated_night is None
+
+
+def test_re_adding_the_same_body_keeps_it_consolidated(library):
+    original = library["mine_stone"]
+    original.consolidated_night = 2
+    library.add(Skill(name="mine_stone", description="d", body=original.body, task="mine_stone"))
+    assert library["mine_stone"].consolidated_night == 2
 
 
 def test_consolidation_swaps_full_text_for_a_pointer(library):

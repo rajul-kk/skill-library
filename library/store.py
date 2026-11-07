@@ -47,7 +47,8 @@ class SkillLibrary:
             skill.learned_at_night = existing.learned_at_night
             skill.learned_at_size = existing.learned_at_size
             skill.uses = existing.uses
-            if skill.consolidated_night is None:
+            # consolidation is of a body: a replaced body is no longer what the adapter learned
+            if skill.consolidated_night is None and skill.body == existing.body:
                 skill.consolidated_night = existing.consolidated_night
         self._skills[skill.name] = skill
         return skill
