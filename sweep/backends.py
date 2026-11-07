@@ -67,6 +67,9 @@ class SimulatedSweepBackend:
     def count_tokens(self, text: str) -> int:
         return heuristic_token_count(text)
 
+    def wrap(self, prompt: str) -> str:
+        return prompt  # no tokenizer: the wrapper only matters for a real model
+
     def start_arm(self, arm) -> None:
         self.adapters = {}
         self.rng = random.Random(f"{self.seed}-{arm.key}")
@@ -132,6 +135,11 @@ class HFSweepBackend:
 
     def count_tokens(self, text: str) -> int:
         return len(self.tokenizer(text, add_special_tokens=False)["input_ids"])
+
+    def wrap(self, prompt: str) -> str:
+        from .prompts import wrap
+
+        return wrap(prompt, self.cfg.prompt_wrapper, self.tokenizer)
 
     # ---------------- adapters ---------------- #
 

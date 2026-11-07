@@ -79,6 +79,7 @@ class SweepConfig:
     device: str = "cuda"
     dtype: str = "float16"
     out_dir: str = "runs/sweep"
+    prompt_wrapper: str = "raw"               # "raw" or "chat" (the model's chat template, same for every arm)
     train: TrainConfig = field(default_factory=TrainConfig)
     decode: DecodeConfig = field(default_factory=DecodeConfig)
 
@@ -99,6 +100,8 @@ class SweepConfig:
         self.arm_list()
         if sorted(self.milestones) != list(self.milestones) or self.milestones[0] < 1:
             raise ValueError("milestones must be increasing and positive")
+        if self.prompt_wrapper not in ("raw", "chat"):
+            raise ValueError(f"unknown prompt_wrapper {self.prompt_wrapper!r}")
         if self.backend not in ("hf", "simulated"):
             raise ValueError(f"unknown backend {self.backend!r}")
         unknown = set(self.seeds_by_model) - set(self.models)

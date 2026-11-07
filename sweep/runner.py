@@ -70,7 +70,8 @@ class ArmRun:
         self.night += 1
         lib = self.world.prefix(k)
         new = [
-            Example(s.name, build_prompt(self.world, self.arm.prompt, s, lib, self.cfg.topk), s.program, self.night)
+            Example(s.name, self.backend.wrap(build_prompt(self.world, self.arm.prompt, s, lib, self.cfg.topk)), s.program,
+                    self.night)
             for s in self.pending
         ]
         if self.arm.weights == CUMULATIVE:
@@ -109,7 +110,7 @@ class ArmRun:
         targets = eval_set(self.world, k, self.seed, self.cfg)
         queries = [
             Query(
-                prompt=build_prompt(self.world, self.arm.prompt, s, lib, self.cfg.topk),
+                prompt=self.backend.wrap(build_prompt(self.world, self.arm.prompt, s, lib, self.cfg.topk)),
                 skill=s,
                 adapter=self.adapter_for(s),
                 context_full=in_context_names(self.arm.prompt, s, lib, self.cfg.topk),
@@ -133,7 +134,7 @@ class ArmRun:
                 **self.common(), milestone=k, skill=q.skill.name, is_root=q.skill.is_root,
                 age_rank=k - q.skill.index, success=int(ok), prompt_tokens=self.backend.count_tokens(q.prompt),
                 gen_tokens=g.gen_tokens, lora_params=self.backend.lora_params if q.adapter else 0,
-                in_context=q.skill.name in q.context_full, program=program, error=error,
+                in_context=q.skill.name in q.context_full, program=program, error=error, text=g.text,
             ))
         append_jsonl(self.out, rows)
         return rows

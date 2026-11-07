@@ -12,6 +12,7 @@ eval_full_up_to: 50
 device: cuda
 dtype: float16
 out_dir: runs/sweep_pilot
+prompt_wrapper: chat
 train:
   rank: 16
   alpha: 32

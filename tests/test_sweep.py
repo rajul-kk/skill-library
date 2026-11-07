@@ -66,7 +66,7 @@ def test_prompts_carry_what_each_arm_is_allowed_to_see(world):
     assert task.program not in ptr and "(in weights)" in ptr
     assert "Known skills:\n(none)" in none
     assert len(none) < len(ptr) < len(topk) < len(full)
-    assert f"Do not call {task.name} itself" in ptr
+    assert f"never call {task.name}" in ptr
     assert in_context_names("pointers", task, lib, 8) == set()
     assert task.name in in_context_names("topk", task, lib, 8)
 
@@ -116,6 +116,7 @@ def test_the_simulated_sweep_writes_every_record_kind(sim_records):
     assert len(done) == 3 * 7
     attempts = [r for r in recs if r["kind"] == "attempt"]
     assert {r["milestone"] for r in attempts} == {10, 25}
+    assert all("text" in r for r in attempts)
     trains = [r for r in recs if r["kind"] == "train"]
     assert {r["arm"] for r in trains} == {"ours_b24", "ours_cover", "seq_no_replay", "isolated"}
 
@@ -177,7 +178,7 @@ def test_real_tiny_model_runs_every_arm_kind(tmp_path):
 
     cfg = from_dict(dict(
         backend="hf", models=["HuggingFaceTB/SmolLM2-135M-Instruct"], seeds=[0], milestones=[10],
-        arms=["no_skill", "ic_topk", "ours_b24", "isolated"], device="cpu", dtype="float32",
+        arms=["no_skill", "ic_topk", "ours_b24", "isolated"], device="cpu", dtype="float32", prompt_wrapper="chat",
         train={"rank": 4, "alpha": 8, "epochs": 1, "batch_size": 4, "learning_rate": 1e-3},
         decode={"max_new_tokens": 24, "batch_size": 10},
     ))
@@ -193,6 +194,9 @@ def test_real_tiny_model_runs_every_arm_kind(tmp_path):
     attempts = [r for r in recs if r["kind"] == "attempt"]
     assert len(attempts) == 4 * 10
     assert all(0 < r["gen_tokens"] <= 24 for r in attempts)
+    assert all(isinstance(r["text"], str) for r in attempts)
+    wrapped = backend.wrap("Program:\n")
+    assert "Program:\n" in wrapped and len(wrapped) > len("Program:\n")  # the chat template surrounds the prompt
     assert all(r["lora_params"] > 0 for r in attempts if r["arm"] in ("ours_b24", "isolated"))
     # the base weights must come back untouched after LoRA arms unload
     assert not any("lora_" in n for n, _ in backend.base.named_parameters())

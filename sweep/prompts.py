@@ -64,16 +64,29 @@ def skills_block(arm_prompt: str, task: GenSkill, library: Sequence[GenSkill], k
 
 
 def build_prompt(world: WorldSpec, arm_prompt: str, task: GenSkill, library: Sequence[GenSkill], k: int) -> str:
-    """Grammar, format example, the arm's skills block, then the task with its own skill banned."""
+    """Grammar, format example, the arm's skills block, then the task with its own skill banned.
+
+    The rules line was revised after the first pilot (PROTOCOL_sweep section 12): the model called the banned skill it was
+    asked to write, copying the example's call(), and wrote prose after the program."""
     return (
         f"{world.dsl_reference()}\n"
         f"{FORMAT_EXAMPLE}\n"
         f"Known skills:\n{skills_block(arm_prompt, task, library, k)}\n"
         f"Task: {task.description}\n"
         f"Goal: obtain {task.task.goal_text()}\n"
-        f"Do not call {task.name} itself; write its steps (other skills may be called).\n"
+        f"Rules: call() only skills listed under Known skills, and never call {task.name}. "
+        f"Answer with the program only: DSL instructions, one per line, no other text.\n"
         f"Program:\n"
     )
+
+
+def wrap(prompt: str, wrapper: str, tokenizer=None) -> str:
+    """Prompt wrapper (PROTOCOL_sweep section 6): raw text, or the model's chat template as one user turn."""
+    if wrapper == "raw":
+        return prompt
+    if wrapper == "chat":
+        return tokenizer.apply_chat_template([{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True)
+    raise ValueError(f"unknown prompt wrapper {wrapper!r}")
 
 
 def in_context_names(arm_prompt: str, task: GenSkill, library: Sequence[GenSkill], k: int) -> Set[str]:
