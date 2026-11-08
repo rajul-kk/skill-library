@@ -1,0 +1,159 @@
+[{"stream_name":"stderr","time":7.163241711,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.163292807,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":8.163183648,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.163211754,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.163221597,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.163224297,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.777399507,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.777431812,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.777437918,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.777442672,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":26.526391525,"data":"torch 2.11.0+cu130 | cuda True\n"}
+,{"stream_name":"stdout","time":26.602168505,"data":"Tesla T4 15.6 GB bf16: True\n"}
+,{"stream_name":"stdout","time":26.636439997,"data":"['Qwen/Qwen2.5-1.5B-Instruct'] [1000, 1001] [10, 50] ['no_skill', 'ic_full', 'ic_topk', 'ours_b24', 'ours_cover', 'seq_no_replay', 'isolated']\n"}
+,{"stream_name":"stdout","time":26.676123908,"data":"seed 1000: 50 skills verified, 12 root, max 48 env steps\n"}
+,{"stream_name":"stdout","time":26.676142353,"data":"seed 1001: 50 skills verified, 14 root, max 37 env steps\n"}
+,{"stream_name":"stderr","time":47.82342273,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":47.823453022,"data":"\n"}
+,{"stream_name":"stderr","time":47.82345943,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":48.998304141,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":48.99834666,"data":"\n"}
+,{"stream_name":"stderr","time":48.998351982,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stdout","time":73.860774711,"data":"loaded Qwen/Qwen2.5-1.5B-Instruct\n"}
+,{"stream_name":"stdout","time":106.576847337,"data":"{\n"}
+,{"stream_name":"stdout","time":106.576879441,"data":"  \"prefill_tflops\": 6.590347726504231,\n"}
+,{"stream_name":"stdout","time":106.576885253,"data":"  \"decode_batch16_seconds\": 5.472535848617554,\n"}
+,{"stream_name":"stdout","time":106.576889869,"data":"  \"decode_mean_gen_tokens\": 53.625,\n"}
+,{"stream_name":"stdout","time":106.576898295,"data":"  \"train_tflops\": 12.394523612262121,\n"}
+,{"stream_name":"stdout","time":106.576901777,"data":"  \"train_steps\": 8,\n"}
+,{"stream_name":"stdout","time":106.576904727,"data":"  \"train_seconds\": 22.051687479019165,\n"}
+,{"stream_name":"stdout","time":106.576907745,"data":"  \"train_loss\": 2.3017228208482265,\n"}
+,{"stream_name":"stdout","time":106.576919117,"data":"  \"gpu\": \"Tesla T4\"\n"}
+,{"stream_name":"stdout","time":106.576921933,"data":"}\n"}
+,{"stream_name":"stdout","time":106.576924206,"data":"budget assumed 10 TFLOP/s for prefill and training; rescale the protocol table by the measured values\n"}
+,{"stream_name":"stdout","time":108.408021766,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":115.289071241,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] no_skill N=50: success 0.24 on 50\n"}
+,{"stream_name":"stdout","time":118.425133351,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=10: success 0.10 on 10\n"}
+,{"stream_name":"stdout","time":162.176568365,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_full N=50: success 0.10 on 50\n"}
+,{"stream_name":"stdout","time":164.700305217,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=10: success 0.30 on 10\n"}
+,{"stream_name":"stdout","time":182.276953837,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ic_topk N=50: success 0.22 on 50\n"}
+,{"stream_name":"stdout","time":199.613612924,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":384.017902138,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_b24 N=50: success 0.26 on 50\n"}
+,{"stream_name":"stdout","time":401.473942049,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":621.790900405,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] ours_cover N=50: success 0.28 on 50\n"}
+,{"stream_name":"stdout","time":639.180260998,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":711.365904978,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] seq_no_replay N=50: success 0.22 on 50\n"}
+,{"stream_name":"stdout","time":728.787235397,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":813.123659663,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1000] isolated N=50: success 0.22 on 50\n"}
+,{"stream_name":"stdout","time":814.478186233,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=10: success 0.40 on 10\n"}
+,{"stream_name":"stdout","time":819.53158373,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] no_skill N=50: success 0.28 on 50\n"}
+,{"stream_name":"stdout","time":822.776082078,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=10: success 0.70 on 10\n"}
+,{"stream_name":"stdout","time":871.03344156,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_full N=50: success 0.08 on 50\n"}
+,{"stream_name":"stdout","time":874.10911865,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":885.896151157,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ic_topk N=50: success 0.26 on 50\n"}
+,{"stream_name":"stdout","time":907.632438923,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=10: success 0.40 on 10\n"}
+,{"stream_name":"stdout","time":1095.992401792,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_b24 N=50: success 0.30 on 50\n"}
+,{"stream_name":"stdout","time":1118.127737461,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=10: success 0.50 on 10\n"}
+,{"stream_name":"stdout","time":1341.692754496,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] ours_cover N=50: success 0.34 on 50\n"}
+,{"stream_name":"stdout","time":1363.816577663,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=10: success 0.40 on 10\n"}
+,{"stream_name":"stdout","time":1433.477597803,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] seq_no_replay N=50: success 0.22 on 50\n"}
+,{"stream_name":"stdout","time":1455.606141536,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=10: success 0.40 on 10\n"}
+,{"stream_name":"stdout","time":1540.591411344,"data":"[Qwen/Qwen2.5-1.5B-Instruct seed=1001] isolated N=50: success 0.28 on 50\n"}
+,{"stream_name":"stdout","time":1540.591443926,"data":"records: runs/sweep_pilot/records.jsonl\n"}
+,{"stream_name":"stdout","time":1552.10212449,"data":"== Qwen/Qwen2.5-1.5B-Instruct\n"}
+,{"stream_name":"stdout","time":1552.102163938,"data":"floor (no_skill root success \u003e= 0.30): N=10:ok(1), N=50:ok(1)\n"}
+,{"stream_name":"stdout","time":1552.102169653,"data":"headroom at N=10: ok best=ic_full {'ic_full': 0.2727272727272727, 'ic_topk': 0.2727272727272727} vs no_skill 0\n"}
+,{"stream_name":"stdout","time":1552.102173276,"data":"arm               N seeds  success          95% CI   tokens   GFLOP/q  train PF\n"}
+,{"stream_name":"stdout","time":1552.102176671,"data":"ic_full          10     2     0.40     [0.10,0.70]      691    1863.2     0.000\n"}
+,{"stream_name":"stdout","time":1552.102201402,"data":"ic_full          50     2     0.09     [0.08,0.10]     2144    6022.2     0.000\n"}
+,{"stream_name":"stdout","time":1552.102207095,"data":"ic_topk          10     2     0.40     [0.30,0.50]      619    1665.5     0.000\n"}
+,{"stream_name":"stdout","time":1552.10221167,"data":"ic_topk          50     2     0.24     [0.22,0.26]      606    1629.5     0.000\n"}
+,{"stream_name":"stdout","time":1552.102216635,"data":"isolated         10     2     0.45     [0.40,0.50]      479    1291.1     0.180\n"}
+,{"stream_name":"stdout","time":1552.102221179,"data":"isolated         50     2     0.25     [0.22,0.28]      473    1276.9     0.887\n"}
+,{"stream_name":"stdout","time":1552.102225556,"data":"no_skill         10     2     0.45     [0.40,0.50]      311     831.8     0.000\n"}
+,{"stream_name":"stdout","time":1552.102230207,"data":"no_skill         50     2     0.26     [0.24,0.28]      310     830.4     0.000\n"}
+,{"stream_name":"stdout","time":1552.1022348,"data":"ours_b24         10     2     0.45     [0.40,0.50]      479    1291.1     0.180\n"}
+,{"stream_name":"stdout","time":1552.102239568,"data":"ours_b24         50     2     0.28     [0.26,0.30]      462    1243.3     2.284\n"}
+,{"stream_name":"stdout","time":1552.10224566,"data":"ours_cover       10     2     0.50     [0.50,0.50]      477    1283.0     0.180\n"}
+,{"stream_name":"stdout","time":1552.102251575,"data":"ours_cover       50     2     0.31     [0.28,0.34]      464    1247.2     2.675\n"}
+,{"stream_name":"stdout","time":1552.102257038,"data":"seq_no_replay    10     2     0.45     [0.40,0.50]      479    1291.1     0.180\n"}
+,{"stream_name":"stdout","time":1552.102261875,"data":"seq_no_replay    50     2     0.22     [0.22,0.22]      464    1248.1     0.887\n"}
+,{"stream_name":"stdout","time":1552.102266861,"data":"[primary] ours_b24_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.9875\n"}
+,{"stream_name":"stdout","time":1552.102273864,"data":"    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224\n"}
+,{"stream_name":"stdout","time":1552.102278437,"data":"    N=50   token ratio 14.4 [12,17.5]  FLOP ratio 12.7 [10.6,15.4]  break-even H* 131\n"}
+,{"stream_name":"stdout","time":1552.102283411,"data":"[primary] ours_b24_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.9875\n"}
+,{"stream_name":"stdout","time":1552.102290516,"data":"    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309\n"}
+,{"stream_name":"stdout","time":1552.102306809,"data":"    N=50   token ratio 1.53 [1.5,1.56]  FLOP ratio 1.29 [1.26,1.32]  break-even H* 3.47e+03\n"}
+,{"stream_name":"stdout","time":1552.102311402,"data":"[secondary] ours_cover_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.10231711,"data":"    N=10   token ratio 1.81 [1.07,7]  FLOP ratio 1.79 [1.05,6.92]  break-even H* 172\n"}
+,{"stream_name":"stdout","time":1552.102321297,"data":"    N=50   token ratio 15.9 [12.8,19.9]  FLOP ratio 13.7 [11,17.1]  break-even H* 137\n"}
+,{"stream_name":"stdout","time":1552.102341297,"data":"[secondary] ours_cover_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.102345614,"data":"    N=10   token ratio 1.62 [1.35,2.08]  FLOP ratio 1.6 [1.33,2.05]  break-even H* 225\n"}
+,{"stream_name":"stdout","time":1552.102349363,"data":"    N=50   token ratio 1.69 [1.67,1.7]  FLOP ratio 1.39 [1.37,1.4]  break-even H* 3.12e+03\n"}
+,{"stream_name":"stdout","time":1552.102353227,"data":"[secondary] isolated_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.102357758,"data":"    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224\n"}
+,{"stream_name":"stdout","time":1552.102362029,"data":"    N=50   token ratio 12.6 [9.85,16]  FLOP ratio 12.3 [9.57,15.6]  break-even H* 57.4\n"}
+,{"stream_name":"stdout","time":1552.102365987,"data":"[secondary] isolated_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.102369838,"data":"    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309\n"}
+,{"stream_name":"stdout","time":1552.102373468,"data":"    N=50   token ratio 1.33 [1.28,1.38]  FLOP ratio 1.24 [1.2,1.28]  break-even H* 2.11e+03\n"}
+,{"stream_name":"stdout","time":1552.102377093,"data":"[secondary] seq_no_replay_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.102381332,"data":"    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224\n"}
+,{"stream_name":"stdout","time":1552.10238521,"data":"    N=50   token ratio 11.3 [10.1,12.7]  FLOP ratio 11 [9.89,12.4]  break-even H* 65.8\n"}
+,{"stream_name":"stdout","time":1552.102390909,"data":"[secondary] seq_no_replay_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95\n"}
+,{"stream_name":"stdout","time":1552.102395546,"data":"    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309\n"}
+,{"stream_name":"stdout","time":1552.102399293,"data":"    N=50   token ratio 1.2 [1.09,1.32]  FLOP ratio 1.12 [1.02,1.24]  break-even H* 3.61e+03\n"}
+,{"stream_name":"stdout","time":1552.102403231,"data":"\n"}
+,{"stream_name":"stdout","time":1552.125987458,"data":"--- no_skill make_gaiglil (unknown skill 'gather_wood')\n"}
+,{"stream_name":"stdout","time":1552.12601067,"data":"call(gather_wood)\n"}
+,{"stream_name":"stdout","time":1552.126015425,"data":"gather(wood, 1)\n"}
+,{"stream_name":"stdout","time":1552.126019217,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1552.126039001,"data":"--- no_skill make_draivox (unknown skill 'gather_wood')\n"}
+,{"stream_name":"stdout","time":1552.126057869,"data":"call(gather_wood)\n"}
+,{"stream_name":"stdout","time":1552.126062166,"data":"goto(workshop)\n"}
+,{"stream_name":"stdout","time":1552.126065779,"data":"craft(draivox)\n"}
+,{"stream_name":"stdout","time":1552.126069542,"data":"--- ic_full gather_kroukol (unknown skill 'gather_kroukol')\n"}
+,{"stream_name":"stdout","time":1552.126074478,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1552.126078759,"data":"--- ic_full gather_rebox (unknown skill 'gather_rebox')\n"}
+,{"stream_name":"stdout","time":1552.126082445,"data":"call(gather_rebox)\n"}
+,{"stream_name":"stdout","time":1552.126086046,"data":"--- ic_topk gather_kroukol (unknown skill 'gather_kroukol')\n"}
+,{"stream_name":"stdout","time":1552.126089813,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1552.126093364,"data":"--- ic_topk gather_faver (unknown skill 'gather_faver')\n"}
+,{"stream_name":"stdout","time":1552.126097061,"data":"call(gather_faver)\n"}
+,{"stream_name":"stdout","time":1552.126100623,"data":"--- ours_b24 make_gaiglil (unknown skill 'make_zubizedem')\n"}
+,{"stream_name":"stdout","time":1552.126104337,"data":"call(make_tulesk)\n"}
+,{"stream_name":"stdout","time":1552.126107849,"data":"call(make_zubizedem)\n"}
+,{"stream_name":"stdout","time":1552.126111346,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1552.126114829,"data":"--- ours_b24 make_draivox (need 1 gaiglil, have 0)\n"}
+,{"stream_name":"stdout","time":1552.126118448,"data":"call(make_tulesk)\n"}
+,{"stream_name":"stdout","time":1552.126122132,"data":"craft(draivox)\n"}
+,{"stream_name":"stdout","time":1552.126131858,"data":"--- ours_cover make_gaiglil (unknown skill 'make_zunkul')\n"}
+,{"stream_name":"stdout","time":1552.126134678,"data":"call(make_zunkul)\n"}
+,{"stream_name":"stdout","time":1552.126137126,"data":"goto(digaix)\n"}
+,{"stream_name":"stdout","time":1552.126140452,"data":"gather(kroukol, 2)\n"}
+,{"stream_name":"stdout","time":1552.126167079,"data":"call(gather_kroukol)\n"}
+,{"stream_name":"stdout","time":1552.126171561,"data":"goto(staikel)\n"}
+,{"stream_name":"stdout","time":1552.126175881,"data":"gather(vail, 1)\n"}
+,{"stream_name":"stdout","time":1552.126179666,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1552.126200163,"data":"--- ours_cover make_draivox (unknown skill 'make_mulesk')\n"}
+,{"stream_name":"stdout","time":1552.126204681,"data":"call(make_mulesk)\n"}
+,{"stream_name":"stdout","time":1552.126209029,"data":"craft(draivox)\n"}
+,{"stream_name":"stdout","time":1552.126213443,"data":"--- seq_no_replay make_gaiglil (unknown skill 'make_krasnak')\n"}
+,{"stream_name":"stdout","time":1552.126217841,"data":"call(make_krasnak)\n"}
+,{"stream_name":"stdout","time":1552.12622208,"data":"craft(gaiglil)\n"}
+,{"stream_name":"stdout","time":1552.126226375,"data":"--- seq_no_replay make_draivox (unknown skill 'make_klaskinan')\n"}
+,{"stream_name":"stdout","time":1552.12623083,"data":"call(make_klaskinan)\n"}
+,{"stream_name":"stdout","time":1552.12623743,"data":"craft(draivox)\n"}
+,{"stream_name":"stdout","time":1552.126259175,"data":"--- isolated make_gaiglil (unknown skill 'make_gaiglil')\n"}
+,{"stream_name":"stdout","time":1552.126264771,"data":"call(make_gaiglil)\n"}
+,{"stream_name":"stdout","time":1552.126269671,"data":"--- isolated make_draivox (unknown skill 'make_draivox')\n"}
+,{"stream_name":"stdout","time":1552.126274972,"data":"call(make_draivox)\n"}
+,{"stream_name":"stdout","time":1552.159354376,"data":"download /kaggle/working/sweep_pilot_outputs.zip\n"}
+,{"stream_name":"stderr","time":1558.071565365,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1558.071593751,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1558.244358243,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1558.244387358,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1559.011252843,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1559.104813909,"data":"[NbConvertApp] Writing 133039 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1561.587789229,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1562.116197687,"data":"[NbConvertApp] Writing 406548 bytes to __results__.html\n"}
+]

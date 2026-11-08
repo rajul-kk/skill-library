@@ -1,0 +1,43 @@
+== Qwen/Qwen2.5-1.5B-Instruct
+floor (no_skill root success >= 0.30): N=10:ok(1), N=50:ok(1)
+headroom at N=10: ok best=ic_full {'ic_full': 0.2727272727272727, 'ic_topk': 0.2727272727272727} vs no_skill 0
+arm               N seeds  success          95% CI   tokens   GFLOP/q  train PF
+ic_full          10     2     0.40     [0.10,0.70]      691    1863.2     0.000
+ic_full          50     2     0.09     [0.08,0.10]     2144    6022.2     0.000
+ic_topk          10     2     0.40     [0.30,0.50]      619    1665.5     0.000
+ic_topk          50     2     0.24     [0.22,0.26]      606    1629.5     0.000
+isolated         10     2     0.45     [0.40,0.50]      479    1291.1     0.180
+isolated         50     2     0.25     [0.22,0.28]      473    1276.9     0.887
+no_skill         10     2     0.45     [0.40,0.50]      311     831.8     0.000
+no_skill         50     2     0.26     [0.24,0.28]      310     830.4     0.000
+ours_b24         10     2     0.45     [0.40,0.50]      479    1291.1     0.180
+ours_b24         50     2     0.28     [0.26,0.30]      462    1243.3     2.284
+ours_cover       10     2     0.50     [0.50,0.50]      477    1283.0     0.180
+ours_cover       50     2     0.31     [0.28,0.34]      464    1247.2     2.675
+seq_no_replay    10     2     0.45     [0.40,0.50]      479    1291.1     0.180
+seq_no_replay    50     2     0.22     [0.22,0.22]      464    1248.1     0.887
+[primary] ours_b24_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.9875
+    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224
+    N=50   token ratio 14.4 [12,17.5]  FLOP ratio 12.7 [10.6,15.4]  break-even H* 131
+[primary] ours_b24_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.9875
+    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309
+    N=50   token ratio 1.53 [1.5,1.56]  FLOP ratio 1.29 [1.26,1.32]  break-even H* 3.47e+03
+[secondary] ours_cover_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95
+    N=10   token ratio 1.81 [1.07,7]  FLOP ratio 1.79 [1.05,6.92]  break-even H* 172
+    N=50   token ratio 15.9 [12.8,19.9]  FLOP ratio 13.7 [11,17.1]  break-even H* 137
+[secondary] ours_cover_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95
+    N=10   token ratio 1.62 [1.35,2.08]  FLOP ratio 1.6 [1.33,2.05]  break-even H* 225
+    N=50   token ratio 1.69 [1.67,1.7]  FLOP ratio 1.39 [1.37,1.4]  break-even H* 3.12e+03
+[secondary] isolated_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.95
+    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224
+    N=50   token ratio 12.6 [9.85,16]  FLOP ratio 12.3 [9.57,15.6]  break-even H* 57.4
+[secondary] isolated_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95
+    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309
+    N=50   token ratio 1.33 [1.28,1.38]  FLOP ratio 1.24 [1.2,1.28]  break-even H* 2.11e+03
+[secondary] seq_no_replay_vs_ic_full: per-token N*=10 (interp 10, boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); per-FLOP(H=1e4) N*=10 (boot {'10': 0.7525, '50': 0.2475}, CI-wins at [50]); interval level 0.95
+    N=10   token ratio 1.62 [0.846,7]  FLOP ratio 1.6 [0.834,6.92]  break-even H* 224
+    N=50   token ratio 11.3 [10.1,12.7]  FLOP ratio 11 [9.89,12.4]  break-even H* 65.8
+[secondary] seq_no_replay_vs_ic_topk: per-token N*=10 (interp 10, boot {'10': 1.0}, CI-wins at [10, 50]); per-FLOP(H=1e4) N*=10 (boot {'10': 1.0}, CI-wins at [10, 50]); interval level 0.95
+    N=10   token ratio 1.45 [1.07,2.08]  FLOP ratio 1.43 [1.05,2.05]  break-even H* 309
+    N=50   token ratio 1.2 [1.09,1.32]  FLOP ratio 1.12 [1.02,1.24]  break-even H* 3.61e+03
+
