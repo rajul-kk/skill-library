@@ -1,4 +1,4 @@
-"""Generate notebooks/05_sweep_pilot.ipynb, the Kaggle notebook for the 1B-class pilot."""
+"""Generate the Kaggle sweep notebooks: 05_sweep_pilot.ipynb (pilot) and 06_sweep_confirmatory.ipynb (reduced design)."""
 import _paths  # noqa: F401
 
 import json
@@ -193,6 +193,61 @@ shutil.make_archive("/kaggle/working/sweep_pilot_outputs", "zip", str(OUT))
 print("download /kaggle/working/sweep_pilot_outputs.zip")
 '''
 
+CONF_INTRO = """
+# 06 - Library-size sweep: confirmatory runs (reduced design, PROTOCOL_sweep.md section 5)
+
+Runs `configs/sweep_reduced.yaml` in the registered order: Qwen2.5-1.5B seeds 0-9, then Qwen2.5-3B seeds 0-7, every arm.
+One Kaggle session cannot hold the whole design, so the notebook is re-run until nothing is left:
+
+- it starts from `results/sweep_reduced/records.jsonl` in the attached repo (every earlier session's rows, merged), so arms
+  already marked done are skipped;
+- it starts no new (model, seed) after `MAX_HOURS`; a seed cut off by the session limit loses only its unfinished arm,
+  whose rows are dropped by the analysis (`finished_runs_only`);
+- its output `runs/sweep_reduced/records.jsonl` is merged back into the repo by `scripts/kaggle_sweep.py`.
+"""
+
+CONF_CONFIG = '''
+import shutil
+from pathlib import Path
+from sweep.config import load_sweep_config
+from sweep.runner import finished_arms
+
+cfg = load_sweep_config("configs/sweep_reduced.yaml")
+OUT = Path(cfg.out_dir)
+RECORDS = OUT / "records.jsonl"
+OUT.mkdir(parents=True, exist_ok=True)
+prior = Path("results/sweep_reduced/records.jsonl")
+if prior.exists() and not RECORDS.exists():
+    shutil.copyfile(prior, RECORDS)
+arm_keys = {a.key for a in cfg.arm_list()}
+TODO = [(m, s) for m in cfg.models for s in cfg.seeds_for(m) if not arm_keys <= finished_arms(RECORDS, m, s)]
+print(len(TODO), "(model, seed) pairs left:", TODO)
+'''
+
+CONF_RUN = '''
+import gc, time
+from sweep.backends import HFSweepBackend
+from sweep.runner import run_model_seed, write_manifest
+
+MAX_HOURS = 8.5          # no new (model, seed) after this; Kaggle stops GPU sessions at 12 h
+started, backend, loaded = time.time(), None, None
+for model, seed in TODO:
+    if (time.time() - started) / 3600 > MAX_HOURS:
+        print("time budget reached; the next session continues from here")
+        break
+    if model != loaded:
+        backend = None
+        gc.collect(); torch.cuda.empty_cache()
+        backend, loaded = HFSweepBackend(cfg, model, seed=seed), model
+        write_manifest(cfg, OUT, {"gpu": GPU, "notebook": "06_sweep_confirmatory"})
+    backend.seed = seed
+    run_model_seed(cfg, model, seed, backend, RECORDS)
+    torch.cuda.empty_cache()
+left = [(m, s) for m in cfg.models for s in cfg.seeds_for(m) if not arm_keys <= finished_arms(RECORDS, m, s)]
+print("left after this session:", left)
+'''
+
+
 if __name__ == "__main__":
     path = write("05_sweep_pilot.ipynb", [
         md(INTRO),
@@ -203,5 +258,11 @@ if __name__ == "__main__":
         md("## Run the pilot"), code(RUN),
         md("## Analyse (exploratory)"), code(ANALYSE), code(SAMPLES),
         md("## Package outputs"), code(PACK),
+    ])
+    print(path)
+    path = write("06_sweep_confirmatory.ipynb", [
+        md(CONF_INTRO),
+        md("## Setup"), code(SETUP), code(CONF_CONFIG),
+        md("## Run (resumes; stops starting seeds after MAX_HOURS)"), code(CONF_RUN),
     ])
     print(path)
