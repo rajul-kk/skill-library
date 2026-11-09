@@ -14,7 +14,7 @@ def cells(path, kind="code"):
 
 
 def test_there_are_notebooks():
-    assert len(NOTEBOOKS) == 5
+    assert len(NOTEBOOKS) == 6
 
 
 @pytest.mark.parametrize("path", NOTEBOOKS, ids=lambda p: p.name)

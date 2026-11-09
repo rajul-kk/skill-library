@@ -249,4 +249,6 @@ def test_micro_batches_give_the_full_batch_gradient():
         grads.append((loss, model.lm_head.weight.grad.clone()))
     for loss, g in grads[1:]:
         assert abs(loss - grads[0][0]) < 1e-4
-        assert torch.allclose(g, grads[0][1], atol=1e-6, rtol=1e-4)
+        # Same gradient up to float32 summation order: elementwise allclose at atol 1e-6 fails on CPU (oneDNN) with
+        # differences of a few 1e-6 on entries up to ~8; the whole-gradient relative error is ~1e-6 (float64: <=1e-7).
+        assert ((g - grads[0][1]).norm() / grads[0][1].norm()).item() < 1e-5
