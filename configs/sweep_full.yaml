@@ -23,7 +23,8 @@ train:
   batch_size: 8
   max_length: 1024
   grad_clip: 1.0
-  grad_checkpointing: false
+  grad_checkpointing: true        # PROTOCOL_sweep section 12, 2026-11-09 (memory only, as in the pilot)
+  micro_batch_size: 2
 decode:
   max_new_tokens: 96
   batch_size: 16
